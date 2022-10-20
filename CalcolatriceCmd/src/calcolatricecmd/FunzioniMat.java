@@ -18,8 +18,16 @@ public class FunzioniMat {
     
     //metodo che, date le lunghezze dei due cateti di un 
     //triangolo rettangolo, restituisce la lunghezza dell'ipotenusa
-    public double pitagora(int a, int b) {
+    public double pitagora(double a, double b) {
         return Math.sqrt((a*a) + (b*b));
+    }
+    
+    public double seno(double angolo) {
+        return Math.sin(angolo);
+    }
+    
+    public double coseno(double angolo) {
+        return Math.cos(angolo); 
     }
     
 }
