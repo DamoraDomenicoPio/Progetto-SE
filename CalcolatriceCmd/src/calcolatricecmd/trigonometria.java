@@ -18,6 +18,13 @@ public class trigonometria {
         return Math.cos(angolo); 
     }
 
-
+    public static double tangente(double angolo) {
+        return Math.tan(angolo);
+    }
+    
+    public static double cotangente (double angolo) {
+        return 1/Math.tan(angolo);
+    }
+            
     
 }
