@@ -32,7 +32,11 @@ public class CalcolatriceCmd {
                     + "6. Tangente * Inserisci un angolo in radianti per conoscere la tangente *\n"
                     + "7. Cotangente * Inserisci un angolo in radianti per conoscere la cotangente *\n"
                     + "8. Memorizza valore * Inserisci un numero per memorizzarlo *\n"
-                    + "9. Visualizza valore * Visualizza il valore memorizzato precedentemente *\n");
+                    + "9. Visualizza valore * Visualizza il valore memorizzato precedentemente *\n"
+                    + "10. Addizione * Inserisci 2 numeri per conoscere la loro somma *\n"
+                    + "11. Sottrazione * Inserisci 2 numeri per conoscere la loro sottrazione *\n"
+                    + "12. Moltiplicazione * Inserisci 2 numeri per conoscere la loro moltiplicazione *\n"
+                    + "13. Divisione * Inserisci 2 numeri per conoscere la loro divisione *\n");
             i=scan.nextInt();
             switch(i) {
                 case 1:
@@ -81,6 +85,30 @@ public class CalcolatriceCmd {
                 case 9:
                     System.out.println("Inserisci un numero");
                     System.out.println("Valore memorizzato:" + f.getVal());
+                    break;
+                case 10:
+                    System.out.println("Inserisci due numeri");
+                    a=scan.nextDouble();
+                    b=scan.nextDouble();
+                    System.out.println("Risultato: " + Funzioni.somma(a, b));
+                    break;
+                case 11:
+                    System.out.println("Inserisci due numeri");
+                    a=scan.nextDouble();
+                    b=scan.nextDouble();
+                    System.out.println("Risultato: " + Funzioni.sottrazione(a, b));
+                    break;
+                case 12:
+                    System.out.println("Inserisci due numeri");
+                    a=scan.nextDouble();
+                    b=scan.nextDouble();
+                    System.out.println("Risultato: " + Funzioni.moltiplicazione(a, b));
+                    break;
+                case 13:
+                    System.out.println("Inserisci due numeri");
+                    a=scan.nextDouble();
+                    b=scan.nextDouble();
+                    System.out.println("Risultato: " + Funzioni.divisione(a, b));
                     break;
                 default:
                     if(i!=-1){
