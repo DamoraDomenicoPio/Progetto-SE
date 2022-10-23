@@ -45,9 +45,9 @@ public class CalcolatriceCmd {
                     System.out.println("Risultato: " + Funzioni.seno(a));
                     break;
                 case 3:
-                    System.out.println("Inserisci un numero" + Funzioni.coseno(a));
+                    System.out.println("Inserisci un numero");
                     a=scan.nextDouble();
-                    System.out.println("Risultato: ");
+                    System.out.println("Risultato: " + Funzioni.coseno(a));
                     break;
                 case 4:
                     System.out.println("Inserisci un numero");
