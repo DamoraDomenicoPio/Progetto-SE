@@ -8,7 +8,27 @@ package calcolatricecmd;
  *
  * @author assun
  */
-public class trigonometria {
+public class Funzioni {
+    double valore; 
+
+    public Funzioni(double valore) {
+        this.valore = valore;
+    }
+    
+    public double setVal(double valore) {
+        this.valore = valore; 
+        return valore; 
+    }
+    
+    public double getVal() {
+        return this.valore;
+    }
+    
+    //metodo che, date le lunghezze dei due cateti di un 
+    //triangolo rettangolo, restituisce la lunghezza dell'ipotenusa
+    public static double pitagora(double a, double b) {
+        return Math.sqrt((a*a) + (b*b));
+    }
     
     public static double seno(double angolo) {
         return Math.sin(angolo);
@@ -25,6 +45,4 @@ public class trigonometria {
     public static double cotangente (double angolo) {
         return 1/Math.tan(angolo);
     }
-            
-    
 }
