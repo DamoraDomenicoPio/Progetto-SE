@@ -31,26 +31,33 @@ public class CalcolatriceCmd {
         switch(i) {
             case 1:
                 System.out.println("Inserisci due numeri");
-                Teorema.pitagora(a, b)
+                a=scan.nextDouble();
+                b=scan.nextDouble();
+                //Teorema.pitagora(a, b);
+                System.out.println("Risultato: ");
                 break;
             case 2:
                 System.out.println("Inserisci un numero");
-                
+                a=scan.nextDouble();
+                System.out.println("Risultato: ");
                 break;
             case 3:
                 System.out.println("Inserisci un numero");
-                
+                a=scan.nextDouble();
+                System.out.println("Risultato: ");
                 break;
             case 4:
                 System.out.println("Inserisci un numero");
-                
+                a=scan.nextDouble();
+                System.out.println("Risultato: ");
                 break;
             case 5:
                 System.out.println("Inserisci un numero");
-                
+                a=scan.nextDouble();
+                System.out.println("Risultato: ");
                 break;
             default:
-              // code block
+                System.out.println("odice non valido");
       }
                 
     }
