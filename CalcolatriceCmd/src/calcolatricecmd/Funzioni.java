@@ -45,4 +45,12 @@ public class Funzioni {
     public static double cotangente (double angolo) {
         return 1/Math.tan(angolo);
     }
+    
+    public static double radicaQuadrata(double x) {
+        return Math.sqrt(x);
+    }
+    
+    public static double logaritmo10(double x) {
+        return Math.log(x)/Math.log(10); 
+    }
 }
