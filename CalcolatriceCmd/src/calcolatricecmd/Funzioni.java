@@ -62,6 +62,10 @@ public class Funzioni {
         return a + b; 
     }
     
+    public static double sottrazione(double a, double b) {
+        return a - b; 
+    }
+            
     
     public static double moltiplicazione(double a, double b) {
         return a * b; 
