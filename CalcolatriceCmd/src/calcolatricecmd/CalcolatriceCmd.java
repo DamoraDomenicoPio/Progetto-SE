@@ -19,6 +19,7 @@ public class CalcolatriceCmd {
         // TODO code application logic here
         int i=0;
         double a=0.0, b=0.0;
+        Funzioni f=new Funzioni(0.0);
         Scanner scan = new Scanner(System.in);
         System.out.println("*** CALCOLATRICE ***\n");
         while (i!=-1){
@@ -29,7 +30,9 @@ public class CalcolatriceCmd {
                     + "4. Radice quadrata * Inserisci un numero per conoscere la sua radice quadrata *\n"
                     + "5. Logaritmo * Inserisci un numero per conoscere il suo logaritmo in base 10\n"
                     + "6. Tangente * Inserisci un angolo in radianti per conoscere la tangente *\n"
-                    + "7. Cotangente * Inserisci un angolo in radianti per conoscere la cotangente *\n");
+                    + "7. Cotangente * Inserisci un angolo in radianti per conoscere la cotangente *\n"
+                    + "8. Memorizza valore * Inserisci un numero per memorizzarlo *\n"
+                    + "9. Visualizza valore * Visualizza il valore memorizzato precedentemente *\n");
             i=scan.nextInt();
             switch(i) {
                 case 1:
@@ -69,13 +72,22 @@ public class CalcolatriceCmd {
                     a=scan.nextDouble();
                     System.out.println("Risultato: " + Funzioni.cotangente(a));
                     break;
+                case 8:
+                    System.out.println("Inserisci un numero");
+                    a=scan.nextDouble();
+                    f.setVal(a);
+                    System.out.println("Valore memorizzato");
+                    break;
+                case 9:
+                    System.out.println("Inserisci un numero");
+                    System.out.println("Valore memorizzato:" + f.getVal());
+                    break;
                 default:
                     if(i!=-1){
                         System.out.println("Codice non valido");
-                    }
-                    System.out.println();
-                    
+                    }   
             }
+            System.out.println();
         }
         
                 
