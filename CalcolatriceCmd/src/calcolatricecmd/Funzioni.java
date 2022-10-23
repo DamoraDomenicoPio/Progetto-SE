@@ -53,4 +53,26 @@ public class Funzioni {
     public static double logaritmo10(double x) {
         return Math.log(x)/Math.log(10); 
     }
+    
+    
+    
+    // --------- SPIRINT 2 -----------
+    
+    public static double somma(double a, double b) {
+        return a + b; 
+    }
+    
+    public static double sottrazione(double a, double b) {
+        return a - b; 
+    }
+            
+    
+    public static double moltiplicazione(double a, double b) {
+        return a * b; 
+    }
+    
+    
+    public static double divisione(double dividendo, double divisore) {
+        return dividendo/divisore;
+    } 
 }
