@@ -8,7 +8,6 @@ package se.project.figures;
  *
  * @author assun
  */
-public class Shape {
-    private int x; 
-    private int y; // coordinate che indicano la posizione 
+public interface Shape {
+    
 }
