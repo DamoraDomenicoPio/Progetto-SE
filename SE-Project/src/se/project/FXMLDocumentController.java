@@ -9,8 +9,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 
@@ -31,6 +33,14 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem lineButton;
     @FXML
     private ColorPicker colorPicker;
+    @FXML
+    private Group group;
+    @FXML
+    private Menu fileMenu;
+    @FXML
+    private MenuItem saveButton;
+    @FXML
+    private MenuItem loadButton;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
