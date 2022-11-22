@@ -6,64 +6,40 @@ package shapes;
 
 import static java.lang.Math.abs;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 /**
  *
  * @author Domenico
  */
-public class RectangleTool {
-    private double xStart;
-    private double yStart;
-    private double xEnd;
-    private double yEnd;
+public class RectangleTool extends ShapeTool{
+    
     private double height;
-    private double weight;
+    private double width;
     
-    public void setStartPoint(double x, double y){
-        this.xStart=x;
-        this.yStart=y;
-    }
     
-    public Rectangle setEndPoint(double x, double y){
+    
+    @Override
+    public Shape setEndPoint(double x, double y){
+        
         this.xEnd=x;
-        this.yEnd=x;
-        this.height=abs(xStart-xEnd);
-        this.weight=abs(yStart-yEnd);
-        return new Rectangle(xStart, yStart, height, weight);
+        this.yEnd=y;
+        this.width=abs(xStart-xEnd);
+        this.height=abs(yStart-yEnd);
+        if(xStart > xEnd) {
+            double t=xStart;
+            xStart=xEnd;
+            xEnd=t;
+        }
+        if(yStart > yEnd) {
+            double t=yStart;
+            yStart=yEnd;
+            yEnd=t;
+        }
+        return new Rectangle(this.xStart, this.yStart, this.width, this.height);
     }
 
-    public double getxStart() {
-        return xStart;
-    }
-
-    public void setxStart(double xStart) {
-        this.xStart = xStart;
-    }
-
-    public double getyStart() {
-        return yStart;
-    }
-
-    public void setyStart(double yStart) {
-        this.yStart = yStart;
-    }
-
-    public double getxEnd() {
-        return xEnd;
-    }
-
-    public void setxEnd(double xEnd) {
-        this.xEnd = xEnd;
-    }
-
-    public double getyEnd() {
-        return yEnd;
-    }
-
-    public void setyEnd(double yEnd) {
-        this.yEnd = yEnd;
-    }
-
+    
     public double getHeight() {
         return height;
     }
@@ -72,13 +48,15 @@ public class RectangleTool {
         this.height = height;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWidth(double width) {
+        this.width = width;
     }
+
+    
     
     
 }

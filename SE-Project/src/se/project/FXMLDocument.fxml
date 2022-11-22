@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -15,7 +15,7 @@
    <children>
       <SplitPane dividerPositions="0.2857142857142857" layoutX="300.0" layoutY="23.0" prefHeight="577.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="0.0">
                <children>
                   <VBox alignment="TOP_CENTER" layoutX="33.0" layoutY="106.0" prefHeight="575.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -37,14 +37,14 @@
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Canvas fx:id="canvas" height="575.0" onMousePressed="#canvasOnMousePressed" onMouseReleased="#canvasOnMouseReleased" width="567.0" />
+                  <Group fx:id="group" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="575.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
             <items>

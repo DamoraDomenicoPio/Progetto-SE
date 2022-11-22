@@ -21,8 +21,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import shapes.RectangleShape;
+import javafx.scene.shape.Shape;
+import shapes.EllipseTool;
+import shapes.LineSegmentTool;
 import shapes.RectangleTool;
+import shapes.ShapeTool;
+import shapes.ShapeFactory;
 
 
 /**
@@ -49,16 +53,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem loadButton;
     @FXML
-    private Canvas canvas;
-    
-    public GraphicsContext g;
-    public ColorPicker cpLine = new ColorPicker(Color.BLACK);
-    public ColorPicker cpFill = new ColorPicker(Color.BLACK);
-    
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!!!!! Ciao Mondo ");
-    }
+    private Group group;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,42 +62,44 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void saveOnAction(ActionEvent event) {
-        g=canvas.getGraphicsContext2D();
-        //group.getChildren();
+        
     }
 
     @FXML
     private void addEllipse(ActionEvent event) {
+        shapeToInsert=new EllipseTool();
     }
 
     @FXML
     private void addRectangle(ActionEvent event) {
-        RectangleShape r= new RectangleShape();
-        //group.getChildren().add(r.getRectangle());
+        shapeToInsert=new RectangleTool();
     }
 
     @FXML
     private void addLine(ActionEvent event) {
+        shapeToInsert=new LineSegmentTool();
     }
 
-    private RectangleTool r= new RectangleTool();
-    public Rectangle rectangle=new Rectangle();
+    
+    private double xPressed=0;
+    private double yPressed=0;
+    private ShapeTool shapeToInsert;
+    
+
+    @FXML
+    private void groupOnMouseReleased(MouseEvent event) {
+        shapeToInsert.setStartPoint(xPressed, yPressed);
+        Shape shape= shapeToInsert.setEndPoint(event.getX(), event.getY());
+        shape.setFill(Color.WHITE);
+        shape.setStroke(Color.BLACK);
+        group.getChildren().add(shape);
+    }
+
     
     @FXML
-    private void canvasOnMouseReleased(MouseEvent event) {
-        Rectangle rec= r.setEndPoint(event.getSceneX(), event.getSceneY());
-        
-        g = canvas.getGraphicsContext2D();
-        g.setStroke(cpLine.getValue());
-        g.setFill(cpFill.getValue());
-
-        g.fillRect(r.getxStart(),r.getyStart(),r.getHeight(), r.getWeight());
-        g.strokeRect(r.getxStart(),r.getyStart(),r.getHeight(), r.getWeight());
-    }
-
-    @FXML
-    private void canvasOnMousePressed(MouseEvent event) {
-        r.setStartPoint(event.getSceneX(), event.getSceneY());
+    private void groupOnMousePressed(MouseEvent event) {
+        xPressed=event.getX();
+        yPressed=event.getY();
     }
     
 }
