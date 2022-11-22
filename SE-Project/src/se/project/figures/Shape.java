@@ -9,6 +9,6 @@ package se.project.figures;
  * @author assun
  */
 public class Shape {
-    int x; 
-    int y; // coordinate che indicano la posizione 
+    private int x; 
+    private int y; // coordinate che indicano la posizione 
 }

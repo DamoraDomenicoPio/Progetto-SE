@@ -9,8 +9,8 @@ package se.project.figures;
  * @author assun
  */
 public class Rectangle extends Shape {
-    int height; 
-    int width; 
+    private int height; 
+    private int width; 
     
     
 }
