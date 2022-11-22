@@ -9,7 +9,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 
 /**
  *
@@ -17,10 +20,18 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
     private Label label;
-    
     @FXML
+    private MenuButton shapesButton;
+    @FXML
+    private MenuItem EllipseButton;
+    @FXML
+    private MenuItem rectangleButton;
+    @FXML
+    private MenuItem lineButton;
+    @FXML
+    private ColorPicker colorPicker;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!!!!! Ciao Mondo ");
