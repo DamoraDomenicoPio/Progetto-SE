@@ -133,12 +133,10 @@ public class FXMLDocumentController implements Initializable {
         // TASTO DESTRO
         if (event.getButton() == MouseButton.SECONDARY){
             if(event.getTarget() instanceof  Shape){
-                System.out.println("Selected a "+ event.getTarget().getClass().getName());
                 selectedShape = (Shape) event.getTarget();
             }
             else {
                 selectedShape = null; 
-                System.out.println("Unselected");
             }
         }
         //TASTO SINISTRO 
