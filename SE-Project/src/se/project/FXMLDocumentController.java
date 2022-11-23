@@ -73,6 +73,8 @@ public class FXMLDocumentController implements Initializable {
     private double xPressed=0;
     private double yPressed=0;
     private String shapeToInsert="";
+    @FXML
+    private MenuItem deleteButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -165,4 +167,14 @@ public class FXMLDocumentController implements Initializable {
         selectedShape.setStroke(borderColorPicker.getValue());
         selectedShape.setFill(insideColorPicker.getValue());
     }
+
+    @FXML
+    private void deleteOnAction(ActionEvent event) {
+        if(selectedShape!=null){
+            group.getChildren().remove(selectedShape);
+            selectedShape=null;
+        }
+    }
+
+    
 }
