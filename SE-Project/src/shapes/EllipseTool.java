@@ -5,6 +5,7 @@
 package shapes;
 
 import static java.lang.Math.abs;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
 
@@ -15,6 +16,7 @@ import javafx.scene.shape.Shape;
 public class EllipseTool extends ShapeTool{
     private double radiusX;
     private double radiusY;
+    
     
     @Override
     public Shape setEndPoint(double x, double y){
@@ -41,6 +43,15 @@ public class EllipseTool extends ShapeTool{
     public void setRadiusY(double radiusY) {
         this.radiusY = radiusY;
     }
-    
+
+    @Override
+    public void setColor(ColorPicker colorPicker) {
+         this.cpLine = colorPicker;
+    }
+
+    @Override
+    public void setFill(ColorPicker colorPicker) {
+        this.cpFill = colorPicker;
+    }
     
 }

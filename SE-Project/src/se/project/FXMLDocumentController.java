@@ -90,8 +90,8 @@ public class FXMLDocumentController implements Initializable {
         ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
         shapeTool.setStartPoint(xPressed, yPressed);
         Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-        shape.setFill(Color.WHITE);
-        shape.setStroke(Color.BLACK);
+        shape.setFill(Color.TRANSPARENT);
+        shape.setStroke(colorPicker.getValue());
         group.getChildren().add(shape);
     }
 

@@ -4,6 +4,7 @@
  */
 package shapes;
 
+import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -16,6 +17,8 @@ public abstract class ShapeTool {
     public double yStart;
     public double xEnd;
     public double yEnd;
+    public ColorPicker cpLine;
+    public ColorPicker cpFill;
     
     public void setStartPoint(double x, double y){
         this.xStart=x;
@@ -23,6 +26,8 @@ public abstract class ShapeTool {
     }
     
     public abstract Shape setEndPoint(double x, double y);
+    public abstract void setColor(ColorPicker colorPicker);
+    public abstract void setFill(ColorPicker colorPicker);
     
     public double getxStart() {
         return xStart;
@@ -55,4 +60,5 @@ public abstract class ShapeTool {
     public void setyEnd(double yEnd) {
         this.yEnd = yEnd;
     }
+    
 }

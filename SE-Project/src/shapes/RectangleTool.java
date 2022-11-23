@@ -5,6 +5,7 @@
 package shapes;
 
 import static java.lang.Math.abs;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -16,9 +17,7 @@ public class RectangleTool extends ShapeTool{
     
     private double height;
     private double width;
-    
-    
-    
+   
     @Override
     public Shape setEndPoint(double x, double y){
         
@@ -56,7 +55,14 @@ public class RectangleTool extends ShapeTool{
         this.width = width;
     }
 
-    
-    
-    
+   @Override
+    public void setColor(ColorPicker colorPicker) {
+         this.cpLine = colorPicker;
+    }
+
+    @Override
+    public void setFill(ColorPicker colorPicker) {
+        this.cpFill = colorPicker;
+    }
+
 }
