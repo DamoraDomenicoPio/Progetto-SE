@@ -4,6 +4,7 @@
  */
 package shapes;
 
+import java.io.Serializable;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -11,7 +12,7 @@ import javafx.scene.shape.Shape;
  *
  * @author Domenico
  */
-public abstract class ShapeTool {
+public abstract class ShapeTool{
     public double xStart;
     public double yStart;
     public double xEnd;
