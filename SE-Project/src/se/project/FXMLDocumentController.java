@@ -63,7 +63,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Group group;
    
-    private Shape selectedShape; 
+    private Shape selectedShape = null; 
+    private Shape copiedShape = null; 
 
     @FXML
     private ColorPicker borderColorPicker;
@@ -133,16 +134,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
         // TASTO DESTRO
-        if (event.getButton() == MouseButton.SECONDARY){
+        if (event.getButton() == MouseButton.SECONDARY){  // Conthorls wheter the right button of the mouse has been clicked 
             if(event.getTarget() instanceof  Shape){
-                selectedShape = (Shape) event.getTarget();
+                this.selectedShape = (Shape) event.getTarget();
             }
             else {
-                selectedShape = null; 
+                this.selectedShape = null; 
             }
         }
         //TASTO SINISTRO 
-        else {
+        else {   // Otherwise the left button has been clicked 
             if(shapeToInsert!=""){
                 ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
                 shapeTool.setStartPoint(xPressed, yPressed);
@@ -162,6 +163,19 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    private void copyOnAction(ActionEvent event) {
+        if (this.selectedShape != null) { // If a shape has been selected
+            this.copiedShape = this.selectedShape;  // Copies the selected shape
+        }
+        // If nothing was selected, nothig gets copied 
+    }
+
+    @FXML
+    private void pasteOnAction(ActionEvent event) {
+        if (this.copiedShape != null) { // If a shape has been selected
+            group.getChildren().add(copiedShape);  // 
+        }
+    }
     private void changeColorShape(ActionEvent event) {
         System.out.println("cambio colore");
         selectedShape.setStroke(borderColorPicker.getValue());

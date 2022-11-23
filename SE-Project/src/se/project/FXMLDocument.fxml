@@ -75,6 +75,9 @@
             <items>
               <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
                   <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
+              <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
             </items>
           </Menu>
         </menus>
