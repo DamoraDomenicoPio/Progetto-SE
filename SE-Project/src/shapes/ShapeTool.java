@@ -12,7 +12,7 @@ import javafx.scene.shape.Shape;
  *
  * @author Domenico
  */
-public abstract class ShapeTool {
+public abstract class ShapeTool{
     public double xStart;
     public double yStart;
     public double xEnd;
