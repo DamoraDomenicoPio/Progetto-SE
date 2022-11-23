@@ -143,19 +143,14 @@ public class FXMLDocumentController implements Initializable {
         }
         //TASTO SINISTRO 
         else {
-            System.out.println("Rilasciato");
-            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
-            shapeTool.setStartPoint(xPressed, yPressed);
-            Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-            shape.setFill(Color.WHITE);
-            shape.setStroke(Color.BLACK);
-        if(shapeToInsert!=""){
-            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
-            shapeTool.setStartPoint(xPressed, yPressed);
-            Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-            shape.setStroke(borderColorPicker.getValue());
-            shape.setFill(insideColorPicker.getValue());
-            group.getChildren().add(shape);
+            if(shapeToInsert!=""){
+                ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+                shapeTool.setStartPoint(xPressed, yPressed);
+                Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+                shape.setStroke(borderColorPicker.getValue());
+                shape.setFill(insideColorPicker.getValue());
+                group.getChildren().add(shape);
+            }
         }
     }
 
@@ -164,4 +159,5 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
         yPressed=event.getY();
+    }
 }
