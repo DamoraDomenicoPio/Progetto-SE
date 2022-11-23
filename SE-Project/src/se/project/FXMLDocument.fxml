@@ -63,7 +63,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="2.0" onMouseClicked="#changeColorShape" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
             <items>
@@ -74,7 +74,7 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
-                  <MenuItem mnemonicParsing="false" text="Fill shape" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
             </items>
           </Menu>
         </menus>

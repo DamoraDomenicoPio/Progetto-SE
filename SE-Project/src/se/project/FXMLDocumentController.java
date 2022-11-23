@@ -63,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Group group;
    
-    private Shape selected; 
+    private Shape selectedShape; 
 
     @FXML
     private ColorPicker borderColorPicker;
@@ -134,10 +134,10 @@ public class FXMLDocumentController implements Initializable {
         if (event.getButton() == MouseButton.SECONDARY){
             if(event.getTarget() instanceof  Shape){
                 System.out.println("Selected a "+ event.getTarget().getClass().getName());
-                this.selected = (Shape) event.getTarget();
+                selectedShape = (Shape) event.getTarget();
             }
             else {
-                this.selected = null; 
+                selectedShape = null; 
                 System.out.println("Unselected");
             }
         }
@@ -159,5 +159,12 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
         yPressed=event.getY();
+    }
+
+    @FXML
+    private void changeColorShape(ActionEvent event) {
+        System.out.println("cambio colore");
+        selectedShape.setStroke(borderColorPicker.getValue());
+        selectedShape.setFill(insideColorPicker.getValue());
     }
 }
