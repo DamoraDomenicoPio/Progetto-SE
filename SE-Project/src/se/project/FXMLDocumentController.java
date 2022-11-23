@@ -176,6 +176,8 @@ public class FXMLDocumentController implements Initializable {
             group.getChildren().add(copiedShape);  // 
         }
     }
+    
+    @FXML
     private void changeColorShape(ActionEvent event) {
         System.out.println("cambio colore");
         selectedShape.setStroke(borderColorPicker.getValue());
