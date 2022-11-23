@@ -9,7 +9,7 @@ package shapes;
  *
  * @author Domenico
  */
-/*
+
 public class ShapeFactory {
     public static ShapeTool getShape(String shapeName){
         if(shapeName.equalsIgnoreCase("RECTANGLE")) return new RectangleTool();
@@ -18,4 +18,3 @@ public class ShapeFactory {
         return null;
     }
 }
-*/

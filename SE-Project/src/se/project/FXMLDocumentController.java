@@ -22,8 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import shapes.EllipseTool;
-import shapes.LineSegmentTool;
 import shapes.RectangleTool;
 import shapes.ShapeTool;
 import shapes.ShapeFactory;
@@ -67,29 +65,31 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void addEllipse(ActionEvent event) {
-        shapeToInsert=new EllipseTool();
+        shapeToInsert="Ellipse";
     }
 
     @FXML
     private void addRectangle(ActionEvent event) {
-        shapeToInsert=new RectangleTool();
+        shapeToInsert="Rectangle";
     }
 
     @FXML
     private void addLine(ActionEvent event) {
-        shapeToInsert=new LineSegmentTool();
+        shapeToInsert="Line";
     }
 
     
     private double xPressed=0;
     private double yPressed=0;
-    private ShapeTool shapeToInsert;
+    private String shapeToInsert="";
     
 
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
-        shapeToInsert.setStartPoint(xPressed, yPressed);
-        Shape shape= shapeToInsert.setEndPoint(event.getX(), event.getY());
+        System.out.println("Rilasciato");
+        ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+        shapeTool.setStartPoint(xPressed, yPressed);
+        Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
         shape.setFill(Color.WHITE);
         shape.setStroke(Color.BLACK);
         group.getChildren().add(shape);
