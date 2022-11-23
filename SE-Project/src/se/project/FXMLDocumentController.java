@@ -42,7 +42,6 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem rectangleButton;
     @FXML
     private MenuItem lineButton;
-    @FXML
     private ColorPicker colorPicker;
     @FXML
     private Menu fileMenu;
@@ -52,6 +51,10 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem loadButton;
     @FXML
     private Group group;
+    @FXML
+    private ColorPicker borderColorPicker;
+    @FXML
+    private ColorPicker insideColorPicker;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +80,6 @@ public class FXMLDocumentController implements Initializable {
     private void addLine(ActionEvent event) {
         shapeToInsert="Line";
     }
-
     
     private double xPressed=0;
     private double yPressed=0;
@@ -86,13 +88,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
-        System.out.println("Rilasciato");
-        ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
-        shapeTool.setStartPoint(xPressed, yPressed);
-        Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-        shape.setFill(Color.TRANSPARENT);
-        shape.setStroke(colorPicker.getValue());
-        group.getChildren().add(shape);
+        if(shapeToInsert!=""){
+            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            shapeTool.setStartPoint(xPressed, yPressed);
+            Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+            shape.setStroke(borderColorPicker.getValue());
+            shape.setFill(insideColorPicker.getValue());
+            group.getChildren().add(shape);
+        }
     }
 
     
@@ -100,6 +103,6 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
         yPressed=event.getY();
-    }
+    } 
     
 }

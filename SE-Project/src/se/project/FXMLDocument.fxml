@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
@@ -10,16 +11,17 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
    <children>
       <SplitPane dividerPositions="0.2857142857142857" layoutX="300.0" layoutY="23.0" prefHeight="577.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="0.0">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="33.0" layoutY="106.0" prefHeight="575.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <MenuButton fx:id="shapesButton" mnemonicParsing="false" text="Shapes">
+                        <MenuButton fx:id="shapesButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Shapes">
                           <items>
                             <MenuItem fx:id="EllipseButton" mnemonicParsing="false" onAction="#addEllipse" text="Ellipse" />
                             <MenuItem fx:id="rectangleButton" mnemonicParsing="false" onAction="#addRectangle" text="Rectangle" />
@@ -29,7 +31,24 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </MenuButton>
-                        <ColorPicker fx:id="colorPicker" />
+                        <Label text="Border Color">
+                           <VBox.margin>
+                              <Insets bottom="-30.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="borderColorPicker" prefHeight="26.0" prefWidth="130.0" translateY="15.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                           <value>
+                              <Color />
+                           </value></ColorPicker>
+                        <Label text="Inside Color">
+                           <VBox.margin>
+                              <Insets bottom="-45.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="insideColorPicker" layoutX="57.0" layoutY="123.0" prefHeight="26.0" prefWidth="130.0" translateY="30.0" />
                      </children>
                      <padding>
                         <Insets top="20.0" />
@@ -55,6 +74,7 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Fill shape" />
             </items>
           </Menu>
         </menus>
