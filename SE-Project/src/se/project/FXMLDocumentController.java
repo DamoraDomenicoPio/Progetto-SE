@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -61,6 +62,9 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem loadButton;
     @FXML
     private Group group;
+   
+    private Shape selected; 
+
     @FXML
     private ColorPicker borderColorPicker;
     @FXML
@@ -126,6 +130,25 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
+        // TASTO DESTRO
+        if (event.getButton() == MouseButton.SECONDARY){
+            if(event.getTarget() instanceof  Shape){
+                System.out.println("Selected a "+ event.getTarget().getClass().getName());
+                this.selected = (Shape) event.getTarget();
+            }
+            else {
+                this.selected = null; 
+                System.out.println("Unselected");
+            }
+        }
+        //TASTO SINISTRO 
+        else {
+            System.out.println("Rilasciato");
+            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            shapeTool.setStartPoint(xPressed, yPressed);
+            Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+            shape.setFill(Color.WHITE);
+            shape.setStroke(Color.BLACK);
         if(shapeToInsert!=""){
             ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
@@ -141,6 +164,4 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
         yPressed=event.getY();
-    } 
-    
 }
