@@ -23,11 +23,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -76,6 +78,10 @@ public class FXMLDocumentController implements Initializable {
     private String shapeToInsert="";
     @FXML
     private MenuItem deleteButton;
+    @FXML
+    private TextField shapeSize;
+    @FXML
+    private Button applySizeButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -192,10 +198,20 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void groupOnMouseDragged(MouseEvent event) {
+    private void changeShapeSize(MouseEvent event) {
+        try{
+            double size= Double.parseDouble(shapeSize.getText());
+            if(size<0)
+                shapeSize.setText("1");
+            else{
+                selectedShape.setScaleX(size);
+                selectedShape.setScaleY(size);
+            }
+            }
+        catch (Exception e){
+        }
     }
 
-    
 
-    
+     
 }
