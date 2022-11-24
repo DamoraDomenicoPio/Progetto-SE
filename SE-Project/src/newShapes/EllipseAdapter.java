@@ -46,5 +46,5 @@ public class EllipseAdapter extends Ellipse{
                 Paint.valueOf(values[5]),
                 Double.parseDouble(values[6]));
     }
-    
+
 }

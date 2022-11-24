@@ -64,7 +64,7 @@ public class FXMLDocumentController implements Initializable {
     private Group group;
    
     private Shape selectedShape = null; 
-    private Shape copiedShape = null; 
+    private String copiedShape = null; 
 
     @FXML
     private ColorPicker borderColorPicker;
@@ -134,6 +134,7 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMouseReleased(MouseEvent event) {
         // TASTO DESTRO
         if (event.getButton()==MouseButton.SECONDARY){  // Conthorls wheter the right button of the mouse has been clicked 
+            //SELEZIONE
             if(event.getTarget() instanceof  Shape){
                 this.selectedShape = (Shape) event.getTarget();
             }
@@ -163,16 +164,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void copyOnAction(ActionEvent event) {
-        if (this.selectedShape != null) { // If a shape has been selected
-            this.copiedShape = this.selectedShape;  // Copies the selected shape
-        }
-        // If nothing was selected, nothig gets copied 
+        copySelected();
     }
 
     @FXML
     private void pasteOnAction(ActionEvent event) {
         if (this.copiedShape != null) { // If a shape has been selected
-            group.getChildren().add(copiedShape);  // 
+            group.getChildren().add(ShapeFactory.shapeCreate(copiedShape));
+              
         }
     }
     
@@ -185,17 +184,35 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteOnAction(ActionEvent event) {
+        deleteSelected();
+    }
+
+    @FXML
+    private void cutOnAction(ActionEvent event) {
+        copySelected(); 
+        deleteSelected();
+    }
+
+    @FXML
+    private void changeColorShape(MouseEvent event) {
+        System.out.println("cambio colore");
+        selectedShape.setStroke(borderColorPicker.getValue());
+        selectedShape.setFill(insideColorPicker.getValue());
+    }
+
+    
+    private void deleteSelected() {
         if(selectedShape!=null){
             group.getChildren().remove(selectedShape);
             selectedShape=null;
         }
     }
-
-    @FXML
-    private void groupOnMouseDragged(MouseEvent event) {
-    }
-
     
-
+    private void copySelected() {
+    if (this.selectedShape != null) { // If a shape has been selected
+            this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
+        }
+        // If nothing was selected, nothig gets copied 
+    }
     
 }

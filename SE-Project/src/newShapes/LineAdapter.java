@@ -67,6 +67,6 @@ public class LineAdapter extends Line{
         this.lengthY = lengthY;
     }
     
-    
-    
+
+        
 }

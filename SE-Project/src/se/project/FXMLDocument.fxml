@@ -77,7 +77,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
               <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                   <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
             </items>
           </Menu>
         </menus>
