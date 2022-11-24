@@ -6,8 +6,8 @@ package shapes;
 
 import static java.lang.Math.abs;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import newShapes.RectangleAdapter;
 
 /**
  *
@@ -35,7 +35,10 @@ public class RectangleTool extends ShapeTool{
             yStart=yEnd;
             yEnd=t;
         }
-        return new Rectangle(this.xStart, this.yStart, this.width, this.height);
+        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height);
+        
+        
+        return r;
     }
 
     
@@ -55,14 +58,6 @@ public class RectangleTool extends ShapeTool{
         this.width = width;
     }
 
-   @Override
-    public void setColor(ColorPicker colorPicker) {
-         this.cpLine = colorPicker;
-    }
 
-    @Override
-    public void setFill(ColorPicker colorPicker) {
-        this.cpFill = colorPicker;
-    }
 
 }

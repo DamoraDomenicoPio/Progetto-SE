@@ -8,6 +8,7 @@ import static java.lang.Math.abs;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
+import newShapes.EllipseAdapter;
 
 /**
  *
@@ -25,7 +26,7 @@ public class EllipseTool extends ShapeTool{
         this.yEnd=y;
         this.radiusX=abs(xStart-xEnd);
         this.radiusY=abs(yStart-yEnd);
-        return new Ellipse(this.xStart, this.yStart, this.radiusX, this.radiusY);
+        return new EllipseAdapter(this.xStart, this.yStart, this.radiusX, this.radiusY);
     }
 
     public double getRadiusX() {
@@ -44,14 +45,6 @@ public class EllipseTool extends ShapeTool{
         this.radiusY = radiusY;
     }
 
-    @Override
-    public void setColor(ColorPicker colorPicker) {
-         this.cpLine = colorPicker;
-    }
 
-    @Override
-    public void setFill(ColorPicker colorPicker) {
-        this.cpFill = colorPicker;
-    }
     
 }

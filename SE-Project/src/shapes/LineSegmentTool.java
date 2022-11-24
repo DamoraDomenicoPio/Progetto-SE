@@ -7,6 +7,7 @@ package shapes;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
+import newShapes.LineAdapter;
 
 /**
  *
@@ -20,17 +21,9 @@ public class LineSegmentTool extends ShapeTool{
     public Shape setEndPoint(double x, double y) {
         this.xEnd=x;
         this.yEnd=y;
-        return new Line(this.xStart, this.yStart, this.xEnd, this.yEnd);
+        return new LineAdapter(this.xStart, this.yStart, this.xEnd, this.yEnd);
     }
 
-    @Override
-    public void setColor(ColorPicker colorPicker) {
-         this.cpLine = colorPicker;
-    }
 
-    @Override
-    public void setFill(ColorPicker colorPicker) {
-        
-    }
     
 }

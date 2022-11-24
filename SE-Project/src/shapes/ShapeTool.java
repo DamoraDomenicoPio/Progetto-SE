@@ -17,8 +17,6 @@ public abstract class ShapeTool{
     public double yStart;
     public double xEnd;
     public double yEnd;
-    public ColorPicker cpLine;
-    public ColorPicker cpFill;
     
     public void setStartPoint(double x, double y){
         this.xStart=x;
@@ -26,8 +24,8 @@ public abstract class ShapeTool{
     }
     
     public abstract Shape setEndPoint(double x, double y);
-    public abstract void setColor(ColorPicker colorPicker);
-    public abstract void setFill(ColorPicker colorPicker);
+    
+    
     
     public double getxStart() {
         return xStart;

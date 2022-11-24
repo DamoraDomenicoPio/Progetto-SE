@@ -88,7 +88,7 @@ public class FXMLDocumentController implements Initializable {
         try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showOpenDialog(null).getPath())))){
             for(Node i: group.getChildren()){
                 Shape s=(Shape) i;
-                o.write(s.toString().replace("[", ";").replace("]", "\n"));
+                o.write(s.toString()+"\n");
             }
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,7 +105,6 @@ public class FXMLDocumentController implements Initializable {
             while(i.hasNext()){
                 String shapeString=i.next();
                 Shape s= ShapeFactory.shapeCreate(shapeString);
-                
                 group.getChildren().add(s);
             }
         } catch (FileNotFoundException ex) {
@@ -134,7 +133,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
         // TASTO DESTRO
-        if (event.getButton() == MouseButton.SECONDARY){  // Conthorls wheter the right button of the mouse has been clicked 
+        if (event.getButton()==MouseButton.SECONDARY){  // Conthorls wheter the right button of the mouse has been clicked 
             if(event.getTarget() instanceof  Shape){
                 this.selectedShape = (Shape) event.getTarget();
             }
@@ -191,6 +190,12 @@ public class FXMLDocumentController implements Initializable {
             selectedShape=null;
         }
     }
+
+    @FXML
+    private void groupOnMouseDragged(MouseEvent event) {
+    }
+
+    
 
     
 }
