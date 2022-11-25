@@ -257,8 +257,6 @@ public class FXMLDocumentController implements Initializable {
         shapeToInsert = "RESIZE";
     }
 
-    @FXML
-    private void changeColorShape(MouseEvent event) {
-    }
+    
     
 }
