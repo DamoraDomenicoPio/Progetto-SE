@@ -14,9 +14,11 @@ public class MoveTool extends ObjectTool{
 
     @Override
     public Shape setEndPoint(double x, double y) {
-        System.out.println("move set end point ");
-        this.shape.move(x, y);
+        if (this.shape != null) {
+            this.shape.move(x, y);
+        }
         return (Shape) this.shape;
+
     }
     
 }

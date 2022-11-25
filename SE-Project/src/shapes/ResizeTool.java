@@ -14,8 +14,9 @@ public class ResizeTool extends ObjectTool{
 
     @Override
     public Shape setEndPoint(double x, double y) {
-        System.out.println("RESIZE set end point");
-        super.shape.newResize(x, y);
+        if (this.shape != null){
+            super.shape.newResize(x, y);
+        }
         return (Shape) super.shape; 
     }
     
