@@ -4,6 +4,7 @@
  */
 package newShapes;
 
+import static java.lang.Math.abs;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 
@@ -11,18 +12,10 @@ import javafx.scene.shape.Ellipse;
  *
  * @author Domenico
  */
-public class EllipseAdapter extends Ellipse{
+public class EllipseAdapter extends Ellipse implements NewShape{
 
     public EllipseAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
-        
-        this.setOnMouseDragged(event->{
-            if(event.isSecondaryButtonDown()){
-                this.setCenterX(event.getX());
-                this.setCenterY(event.getY());
-            }
-            
-        });
     }
 
     public EllipseAdapter(double d, double d1, double d2, double d3, Paint fill, Paint stroke, double strokeWidth) {
@@ -47,4 +40,21 @@ public class EllipseAdapter extends Ellipse{
                 Double.parseDouble(values[6]));
     }
 
+    @Override
+    public void move(double x, double y) {
+        this.setCenterX(x);
+        this.setCenterY(y);    
+    }
+
+    @Override
+    public void newResize(double x, double y) {
+        double centerX = super.getCenterX(); 
+        double centerY = getCenterY(); 
+        
+        super.setRadiusX(abs(centerX-x));
+        super.setRadiusY(abs(centerY-y));
+    }    
+    
+    
+    
 }

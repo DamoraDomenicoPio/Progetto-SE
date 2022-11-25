@@ -5,6 +5,7 @@
 package shapes;
 
 import javafx.scene.shape.Shape;
+import newShapes.NewShape;
 
 /**
  *
@@ -12,14 +13,14 @@ import javafx.scene.shape.Shape;
  * A Tool that executes a trasformation on a give object 
  */
 public abstract class ObjectTool extends ShapeTool{
-    private Shape shape; //The shape on which the trasformation will be executed
+    protected NewShape shape; //The shape on which the trasformation will be executed
 
-    public Shape getShape() {
+    public NewShape getShape() {
         return shape;
     }
 
     public void setShape(Shape shape) {
-        this.shape = shape;
+        this.shape = (NewShape) shape;
     }
     
     

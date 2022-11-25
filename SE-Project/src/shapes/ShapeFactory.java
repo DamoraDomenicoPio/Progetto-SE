@@ -26,6 +26,13 @@ public class ShapeFactory {
         else if(shapeName.equalsIgnoreCase("LINE")){
             return new LineSegmentTool();
         }
+        else if(shapeName.equalsIgnoreCase("MOVE")){
+            return new MoveTool(); 
+        }
+        else if(shapeName.equalsIgnoreCase("RESIZE")){
+            System.out.println("Nuovo resize tool");
+            return new ResizeTool(); 
+        }
         return null;
     }
     

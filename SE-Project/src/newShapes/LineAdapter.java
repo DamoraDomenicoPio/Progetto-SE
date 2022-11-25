@@ -11,7 +11,7 @@ import javafx.scene.shape.Line;
  *
  * @author Domenico
  */
-public class LineAdapter extends Line{
+public class LineAdapter extends Line implements NewShape{
     private double lengthX;
     private double lengthY;
 
@@ -19,14 +19,6 @@ public class LineAdapter extends Line{
         super(d, d1, d2, d3);
         this.lengthX=d-d2;
         this.lengthY=d1-d3;
-        this.setOnMouseDragged(event->{
-            if(event.isSecondaryButtonDown()){
-                this.setStartX(event.getX());
-                this.setStartY(event.getY());
-                this.setEndX(event.getX()+this.lengthX);
-                this.setEndY(event.getY()+this.lengthY);
-            }
-        });
     }
 
     public LineAdapter(double d, double d1, double d2, double d3, Paint stroke, double strokeWidth) {
@@ -66,6 +58,22 @@ public class LineAdapter extends Line{
     public void setLengthY(double lengthY) {
         this.lengthY = lengthY;
     }
+
+    @Override
+    public void move(double x, double y) {
+        this.setStartX(x);
+        this.setStartY(y);
+        this.setEndX(x+this.lengthX);
+        this.setEndY(y+this.lengthY);    
+    }
+
+    @Override
+    public void newResize(double x, double y) {
+        this.setEndX(x);
+        this.setEndY(y);
+    }
+    
+    
     
 
         

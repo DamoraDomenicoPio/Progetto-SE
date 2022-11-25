@@ -36,6 +36,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.FileChooser;
+import shapes.ObjectTool;
 import shapes.ShapeTool;
 import shapes.ShapeFactory;
 
@@ -82,6 +83,10 @@ public class FXMLDocumentController implements Initializable {
     private TextField shapeSize;
     @FXML
     private Button applySizeButton;
+    @FXML
+    private MenuItem deleteButton11;
+    @FXML
+    private MenuItem deleteButton111;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -153,10 +158,17 @@ public class FXMLDocumentController implements Initializable {
             if(shapeToInsert!=""){
                 ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
                 shapeTool.setStartPoint(xPressed, yPressed);
-                Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-                shape.setStroke(borderColorPicker.getValue());
-                shape.setFill(insideColorPicker.getValue());
-                group.getChildren().add(shape);
+                if (shapeTool instanceof ObjectTool){
+                    ((ObjectTool) shapeTool).setShape(selectedShape);
+                    Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+
+                }
+                else {
+                    Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+                    shape.setStroke(borderColorPicker.getValue());
+                    shape.setFill(insideColorPicker.getValue());
+                    group.getChildren().add(shape);
+                }
             }
         }
     }
@@ -199,12 +211,7 @@ public class FXMLDocumentController implements Initializable {
         deleteSelected();
     }
 
-    @FXML
-    private void changeColorShape(MouseEvent event) {
-        System.out.println("cambio colore");
-        selectedShape.setStroke(borderColorPicker.getValue());
-        selectedShape.setFill(insideColorPicker.getValue());
-    }
+   
 
     
     private void deleteSelected() {
@@ -237,6 +244,21 @@ public class FXMLDocumentController implements Initializable {
             this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
         }
         // If nothing was selected, nothig gets copied 
+    }
+
+    @FXML
+    private void moveOnAction(ActionEvent event) {
+        shapeToInsert="MOVE";
+
+    }
+
+    @FXML
+    private void resizeOnAction(ActionEvent event) {
+        shapeToInsert = "RESIZE";
+    }
+
+    @FXML
+    private void changeColorShape(MouseEvent event) {
     }
     
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
    <children>
       <SplitPane dividerPositions="0.2857142857142857" layoutX="300.0" layoutY="23.0" prefHeight="577.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
         <items>
@@ -91,12 +91,18 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
               <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                   <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
                   <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Draw">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
+                  <MenuItem fx:id="deleteButton11" mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
+                  <MenuItem fx:id="deleteButton111" mnemonicParsing="false" onAction="#resizeOnAction" text="Resize" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </children>
