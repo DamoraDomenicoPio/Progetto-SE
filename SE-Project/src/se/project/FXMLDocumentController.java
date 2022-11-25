@@ -211,8 +211,6 @@ public class FXMLDocumentController implements Initializable {
         deleteSelected();
     }
 
-   
-
     
     private void deleteSelected() {
         if(selectedShape!=null){
@@ -237,8 +235,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-     
-    
     private void copySelected() {
     if (this.selectedShape != null) { // If a shape has been selected
             this.copiedShape = this.selectedShape.toString();  // Copies the selected shape

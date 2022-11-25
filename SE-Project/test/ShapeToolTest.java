@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
+import javafx.scene.shape.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 import shapes.*;
@@ -12,9 +13,9 @@ import shapes.ShapeFactory;
  *
  * @author Domenico
  */
-public class JUnitTest {
+public class ShapeToolTest {
     
-    public JUnitTest() {
+    public ShapeToolTest() {
     }
     
     @Test
@@ -25,25 +26,12 @@ public class JUnitTest {
         assertTrue(ShapeFactory.getShape("Elipse") == null);
     }
     
-    /*@BeforeAll
-    public static void setUpClass() {
+    @Test
+    public void testShapeCreate(){
+        assertTrue(ShapeFactory.shapeCreate("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
+        assertTrue(ShapeFactory.shapeCreate("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
+        assertTrue(ShapeFactory.shapeCreate("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
+        assertTrue(ShapeFactory.getShape("Ellipse;258.0;208.0;0.0") == null);
     }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }*/
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

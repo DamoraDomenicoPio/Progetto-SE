@@ -80,7 +80,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <MenuBar layoutY="2.0" onMouseClicked="#changeColorShape" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
             <items>
