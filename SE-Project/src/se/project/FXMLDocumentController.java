@@ -126,7 +126,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addEllipse(ActionEvent event) {
         shapeToInsert="Ellipse";
-    }
+    } 
 
     @FXML
     private void addRectangle(ActionEvent event) {
