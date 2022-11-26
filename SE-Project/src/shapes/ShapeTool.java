@@ -11,6 +11,7 @@ import javafx.scene.shape.Shape;
 /**
  * 
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * 
  */
 public abstract class ShapeTool{
     public double xStart;
@@ -20,8 +21,8 @@ public abstract class ShapeTool{
     
     /**
      * 
-     * @param x
-     * @param y 
+     * @param x double which contains the x coordinate of the starting point
+     * @param y double which contains the y coordinate of the starting point
      */
     public void setStartPoint(double x, double y){
         this.xStart=x;
@@ -30,9 +31,9 @@ public abstract class ShapeTool{
     
     /**
      * 
-     * @param x
-     * @param y
-     * @return 
+     * @param x double which contains the x coordinate of the end point
+     * @param y double which contains the y coordinate of the end point
+     * @return a Shape 
      */
     public abstract Shape setEndPoint(double x, double y);
     

@@ -20,7 +20,7 @@ import newShapes.*;
 public class ShapeFactory {
     /**
      * 
-     * @param shapeName
+     * @param shapeName string containing the shape to create 
      * @return a shape given a string
      */
     public static ShapeTool getShape(String shapeName){
@@ -44,7 +44,7 @@ public class ShapeFactory {
     }
     /**
      * 
-     * @param shapeName
+     * @param shapeString string containing the shape to create
      * @return a shape given a string
      */
     
