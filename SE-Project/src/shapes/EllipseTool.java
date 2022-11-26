@@ -5,8 +5,6 @@
 package shapes;
 
 import static java.lang.Math.abs;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
 import newShapes.EllipseAdapter;
 
