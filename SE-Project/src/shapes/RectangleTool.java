@@ -25,10 +25,10 @@ public class RectangleTool extends ShapeTool{
      */
     private double width;
     /**
-     *  
-     * @param x double which contains the x coordinate of the ending point.
-     * @param y double which contains the y coordinate of the ending point.
-     * @return a Shape.
+     * Returns a shape with modified coordinates
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape with modified coordinates
      */
     @Override
     public Shape setEndPoint(double x, double y){
