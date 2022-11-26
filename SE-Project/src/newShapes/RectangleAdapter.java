@@ -9,17 +9,33 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 /**
- *
- * @author Domenico
+ * The RectangleAdapter class creates and manages a rectangle.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public class RectangleAdapter extends Rectangle implements NewShape{
 
     
-    
+    /**
+     * Creates a new instance of Rectangle with the given position and size.
+     * @param d horizontal position of the rectangle
+     * @param d1 vertical position of the rectangle
+     * @param d2 width of the rectangle
+     * @param d3 height of the rectangle
+     */
     public RectangleAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
     }
     
+    /**
+     * Creates a new instance of Rectangle with the given position and size.
+     * @param d horizontal position of the rectangle
+     * @param d1 vertical position of the rectangle
+     * @param d2 width of the rectangle
+     * @param d3 height of the rectangle
+     * @param fill the fill color of the rectangle
+     * @param stroke the stroke color of the rectangle.
+     * @param strokeWidth the width of the stroke of the rectangle.
+     */
     public RectangleAdapter(double d, double d1, double d2, double d3, Paint fill, Paint stroke, double strokeWidth) {
         this(d, d1, d2, d3);
         this.setFill(fill);
@@ -27,11 +43,20 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         this.setStrokeWidth(strokeWidth);
     }
 
+    /**
+     * Returns a string representation of this {@code RectangleAdapter} object.
+     * @return a string representation of this {@code RectangleAdapter} object.
+     */
     @Override
     public String toString() {
         return "Rectangle;" + this.getX() + ";" + this.getY() + ";" + this.getWidth() + ";" + this.getHeight() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
     }
 
+    /**
+     * Return a Rectangle from a string.
+     * @param string String representing the object.
+     * @return a Rectangle Object
+     */
     public static Rectangle stringToRectangle(String string) {
         String[] values=string.split(";");
         return new RectangleAdapter(Double.parseDouble(values[0]),
@@ -43,18 +68,28 @@ public class RectangleAdapter extends Rectangle implements NewShape{
                 Double.parseDouble(values[6]));
     }
 
+    /**
+     * Method that allows you to move the rectangle
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     */
     @Override
     public void move(double x, double y) {
-        System.out.println("Move rettangolo");
+        System.out.println("Move rettangle");
         this.setX(x);
         this.setY(y);
     }
 
-    @Override
+    /**
+     * Method that allows you to resize the rectangle
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     */
+   @Override
     public void newResize(double x, double y) {
-        System.out.println("RESIZE RETTANGOLO");
-        double startX = super.getX(); 
-        double startY = super.getY(); 
+        System.out.println("RESIZE RETTANGLE");
+        double startX = super.getX();
+        double startY = super.getY();
         
         super.setHeight(abs(startY-y));
         super.setWidth(abs(startX-x));
