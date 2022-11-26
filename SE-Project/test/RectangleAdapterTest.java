@@ -8,8 +8,6 @@ import javafx.scene.shape.*;
 import newShapes.RectangleAdapter;
 import org.junit.*;
 import static org.junit.Assert.*;
-import shapes.*;
-import shapes.ShapeFactory;
 
 /**
  *
