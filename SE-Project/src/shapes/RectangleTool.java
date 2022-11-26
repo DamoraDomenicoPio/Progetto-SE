@@ -17,18 +17,18 @@ import newShapes.RectangleAdapter;
 
 public class RectangleTool extends ShapeTool{
     /**
-     * 
+     * Represents the height of the rectangle.
      */
     private double height;
     /**
-     * 
+     * Represents the width of the rectangle.
      */
     private double width;
     /**
-     * 
-     * @param x
-     * @param y
-     * @return 
+     *  
+     * @param x double which contains the x coordinate of the ending point.
+     * @param y double which contains the y coordinate of the ending point.
+     * @return a Shape.
      */
     @Override
     public Shape setEndPoint(double x, double y){

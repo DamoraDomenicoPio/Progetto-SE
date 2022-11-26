@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Domenico
+ * 
  */
 public class SEProject extends Application {
     

@@ -13,20 +13,16 @@ import newShapes.NewShape;
 
 public abstract class ObjectTool extends ShapeTool{
     /**
-     * 
+     * Represents the shape on which the trasformation will be executed.
      */
-    protected NewShape shape; //The shape on which the trasformation will be executed
-    /**
-     * 
-     * @return 
-     */
+    protected NewShape shape; 
+    
+    
     public NewShape getShape() {
         return shape;
     }
-    /**
-     * 
-     * @param shape 
-     */
+    
+    
     public void setShape(Shape shape) {
         this.shape = (NewShape) shape;
     }
