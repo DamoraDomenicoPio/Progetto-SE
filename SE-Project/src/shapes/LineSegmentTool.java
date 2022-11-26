@@ -10,20 +10,21 @@ import javafx.scene.shape.Shape;
 import newShapes.LineAdapter;
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The LineSegmentTool allows you to create a new line
  */
 public class LineSegmentTool extends ShapeTool{
-    
-    
-
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return a new instance of LineAdapter.
+     */
     @Override
     public Shape setEndPoint(double x, double y) {
         this.xEnd=x;
         this.yEnd=y;
         return new LineAdapter(this.xStart, this.yStart, this.xEnd, this.yEnd);
     }
-
-
-    
 }

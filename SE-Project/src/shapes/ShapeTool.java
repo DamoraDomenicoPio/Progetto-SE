@@ -9,8 +9,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public abstract class ShapeTool{
     public double xStart;
