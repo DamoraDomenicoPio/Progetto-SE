@@ -12,12 +12,21 @@ import newShapes.NewShape;
 */
 
 public abstract class ObjectTool extends ShapeTool{
+    /**
+     * 
+     */
     protected NewShape shape; //The shape on which the trasformation will be executed
-
+    /**
+     * 
+     * @return 
+     */
     public NewShape getShape() {
         return shape;
     }
-
+    /**
+     * 
+     * @param shape 
+     */
     public void setShape(Shape shape) {
         this.shape = (NewShape) shape;
     }

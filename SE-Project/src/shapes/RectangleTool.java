@@ -16,12 +16,20 @@ import newShapes.RectangleAdapter;
  */
 
 public class RectangleTool extends ShapeTool{
-    
+    /**
+     * 
+     */
     private double height;
+    /**
+     * 
+     */
     private double width;
     /**
-    * Creates a new instance of RectangleAdapter.
-    */
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     @Override
     public Shape setEndPoint(double x, double y){
         

@@ -13,8 +13,11 @@ import javafx.scene.shape.Shape;
 
 public class ResizeTool extends ObjectTool{
     /**
-    * Change the size of a shape.
-    */
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     @Override
     public Shape setEndPoint(double x, double y) {
         if (this.shape != null){

@@ -18,11 +18,22 @@ public abstract class ShapeTool{
     public double xEnd;
     public double yEnd;
     
+    /**
+     * 
+     * @param x
+     * @param y 
+     */
     public void setStartPoint(double x, double y){
         this.xStart=x;
         this.yStart=y;
     }
     
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     public abstract Shape setEndPoint(double x, double y);
     
     

@@ -14,13 +14,13 @@ import javafx.scene.shape.Shape;
 
 public class MoveTool extends ObjectTool{
 
-    @Override
     /**
-     *Change the position of a shape
+     * 
      * @param x
      * @param y
+     * @return 
      */
-    
+    @Override
     public Shape setEndPoint(double x, double y) {
         if (this.shape != null) {
             this.shape.move(x, y);
