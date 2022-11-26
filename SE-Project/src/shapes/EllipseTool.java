@@ -15,15 +15,22 @@ import newShapes.EllipseAdapter;
  * The EllipseTool allows you to create a new ellipse
  */
 public class EllipseTool extends ShapeTool{
+    /**
+     * radius of the ellipse on the horizontal axis
+     */
     private double radiusX;
+    /**
+     * radius of the ellipse on the vertical axis
+     */
     private double radiusY;
     
-    
-    @Override
     /**
-     * Creates a new instance of EllipseAdapter.
+     * Returns a shape representing the ellipse
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape representing the ellipse
      */
-    
+    @Override
     public Shape setEndPoint(double x, double y){
         
         this.xEnd=x;
