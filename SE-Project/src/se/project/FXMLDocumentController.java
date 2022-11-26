@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
+/**
+ *  Package se.project per la consegna
  */
 package se.project;
 
@@ -42,8 +41,9 @@ import shapes.ShapeFactory;
 
 
 /**
- *
- * @author Domenico
+ * The FXMLDocumentController class is the application controller.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca 
+ * 
  */
 public class FXMLDocumentController implements Initializable {
     
@@ -92,9 +92,16 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    /**
+    *
+    * Method that allows saving the drawing sheet inside a file. 
+    * Clicking the 'Save' button opens a selection window in which the user can select a file (.txt) and 
+    * choose it as the destination for saving.
+    * @param event ActionEvent object generated when the 'Save' button is clicked. 
+    */
     @FXML
-    private void saveOnAction(ActionEvent event){
+    private void saveOnAction (ActionEvent event){
         FileChooser fileChooser = new FileChooser();
         try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showOpenDialog(null).getPath())))){
             for(Node i: group.getChildren()){
@@ -106,6 +113,14 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    /**
+    *
+    * Method that allows loading a drawing sheet saved inside a file. 
+    * Clicking the 'Load' button opens a selection window in which the user can select a file (.txt) 
+    * in which a drawing sheet is saved. 
+    * Once the file has been chosen, the drawing sheet is loaded.
+    * @param event ActionEvent object generated when the 'Load' button is clicked. 
+    */
     @FXML
     private void loadOnAction(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -122,30 +137,43 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    /**
+     * Method which, after having chosen the 'Ellipse' shape within the application,
+     * modifies the string ShapeToinsert with the value "Ellipse".
+     * @param event ActionEvent object generated when Ellipse shape is selected.
+     */
     @FXML
     private void addEllipse(ActionEvent event) {
         shapeToInsert="Ellipse";
     }
-
+    
+    /**
+     * Method which, after having chosen the 'Rectangle' shape within the application,
+     * modifies the string ShapeToinsert with the value "Rectangle".
+     * @param event ActionEvent object generated when Rectangle shape is selected.
+     */
     @FXML
     private void addRectangle(ActionEvent event) {
         shapeToInsert="Rectangle";
     }
-
+    
+    /**
+     * Method which, after having chosen the 'Line' shape within the application,
+     * modifies the string ShapeToinsert with the value "Line".
+     * @param event ActionEvent object generated when Line shape is selected.
+     */
     @FXML
     private void addLine(ActionEvent event) {
         shapeToInsert="Line";
     }
     
     
-    
-
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
-        // TASTO DESTRO
-        if (event.getButton()==MouseButton.SECONDARY){  // Conthorls wheter the right button of the mouse has been clicked 
-            //SELEZIONE
+        // Right key
+        if (event.getButton()==MouseButton.SECONDARY){  
+            // Selection
             if(event.getTarget() instanceof  Shape){
                 this.selectedShape = (Shape) event.getTarget();
             }
@@ -153,7 +181,7 @@ public class FXMLDocumentController implements Initializable {
                 this.selectedShape = null; 
             }
         }
-        //TASTO SINISTRO 
+        // Left key 
         else {   // Otherwise the left button has been clicked 
             if(shapeToInsert!=""){
                 ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
@@ -179,12 +207,20 @@ public class FXMLDocumentController implements Initializable {
         xPressed=event.getX();
         yPressed=event.getY();
     }
-
+    
+    /**
+     * Method that invokes the copySelected() method.
+     * @param event ActionEvent object generated when the button 'Copy' is selected.
+     */
     @FXML
     private void copyOnAction(ActionEvent event) {
         copySelected();
     }
-
+    
+    /**
+     * Method that allows to paste a copied or cutted object on the drawing sheet.
+     * @param event ActionEvent object generated when the button 'Paste' is selected.
+     */
     @FXML
     private void pasteOnAction(ActionEvent event) {
         if (this.copiedShape != null) { // If a shape has been selected
@@ -193,32 +229,47 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    /**
+     * Method that allows to change the color inside the selected shape and its border, by using 
+     * the two colorPicker on the window.
+     * @param event ActionEvent object generated when the button 'Change Color' is selected.
+     */
     @FXML
     private void changeColorShape(ActionEvent event) {
         System.out.println("cambio colore");
         selectedShape.setStroke(borderColorPicker.getValue());
         selectedShape.setFill(insideColorPicker.getValue());
     }
-
+    
+    /**
+     * Method that invokes the deleteSelected() method.
+     * @param event ActionEvent object generated when the button 'Delete' is selected.
+     */
     @FXML
     private void deleteOnAction(ActionEvent event) {
         deleteSelected();
     }
-
+    
+    /**
+     * Method that allows to cut a selected object on the drawing sheet.
+     * @param event ActionEvent object generated when the button 'Cut' is selected.
+     */
     @FXML
     private void cutOnAction(ActionEvent event) {
         copySelected(); 
         deleteSelected();
     }
 
-    
+    /**
+     * Method that allows to delete a selected object on the drawing sheet.
+     */
     private void deleteSelected() {
         if(selectedShape!=null){
             group.getChildren().remove(selectedShape);
             selectedShape=null;
         }
     }
-
+    
     @FXML
     private void changeShapeSize(MouseEvent event) {
         try{
@@ -234,20 +285,29 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
+    /**
+     * Method that allows to copy a selected object on the drawing sheet.
+     */
     private void copySelected() {
     if (this.selectedShape != null) { // If a shape has been selected
             this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
         }
         // If nothing was selected, nothig gets copied 
     }
-
+    
+    /**
+     * Method that changes the shapeToInsert string to the string "MOVE".
+     * @param event ActionEvent object generated when the button 'Move' is selected.
+     */
     @FXML
     private void moveOnAction(ActionEvent event) {
         shapeToInsert="MOVE";
-
     }
-
+    
+    /**
+     * Method that changes the shapeToInsert string to the string "RESIZE".
+     * @param event ActionEvent object generated when the button 'Resize' is selected.
+     */
     @FXML
     private void resizeOnAction(ActionEvent event) {
         shapeToInsert = "RESIZE";
