@@ -16,10 +16,10 @@ import newShapes.LineAdapter;
  */
 public class LineSegmentTool extends ShapeTool{
     /**
-     * 
-     * @param x
-     * @param y
-     * @return a new instance of LineAdapter.
+     * Returns a shape representing the line
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape representing the line
      */
     @Override
     public Shape setEndPoint(double x, double y) {

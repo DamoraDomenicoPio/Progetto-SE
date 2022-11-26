@@ -13,10 +13,10 @@ import javafx.scene.shape.Shape;
 
 public class ResizeTool extends ObjectTool{
     /**
-     * 
-     * @param x
-     * @param y
-     * @return 
+     * Returns a shape with the modified components
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape with the modified components
      */
     @Override
     public Shape setEndPoint(double x, double y) {

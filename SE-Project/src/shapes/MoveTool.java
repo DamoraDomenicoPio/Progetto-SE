@@ -15,10 +15,10 @@ import javafx.scene.shape.Shape;
 public class MoveTool extends ObjectTool{
 
     /**
-     * 
-     * @param x
-     * @param y
-     * @return 
+     * Returns a shape with modified coordinates
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape with modified coordinates
      */
     @Override
     public Shape setEndPoint(double x, double y) {
