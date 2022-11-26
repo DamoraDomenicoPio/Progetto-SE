@@ -11,12 +11,18 @@ import newShapes.*;
 
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * Implementation of the pattern factory method for the creation of the shapes
  */
 
-public class ShapeFactory {
 
+public class ShapeFactory {
+    /**
+     * 
+     * @param shapeName
+     * @return a shape given a string
+     */
     public static ShapeTool getShape(String shapeName){
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
             return new RectangleTool();
@@ -36,6 +42,11 @@ public class ShapeFactory {
         }
         return null;
     }
+    /**
+     * 
+     * @param shapeName
+     * @return a shape given a string
+     */
     
     public static Shape shapeCreate(String shapeString){
         String[] values=shapeString.split(";", 2);

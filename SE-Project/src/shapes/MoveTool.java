@@ -7,18 +7,25 @@ package shapes;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author assun
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * Class representing the move action
  */
+
 public class MoveTool extends ObjectTool{
 
     @Override
+    /**
+     *Change the position of a shape
+     * @param x
+     * @param y
+     */
+    
     public Shape setEndPoint(double x, double y) {
         if (this.shape != null) {
             this.shape.move(x, y);
         }
         return (Shape) this.shape;
-
     }
     
 }

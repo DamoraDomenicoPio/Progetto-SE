@@ -10,14 +10,18 @@ import javafx.scene.shape.Shape;
 import newShapes.RectangleAdapter;
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The RectangleTool allows you to create a new rectangle
  */
+
 public class RectangleTool extends ShapeTool{
     
     private double height;
     private double width;
-   
+    /**
+    * Creates a new instance of RectangleAdapter.
+    */
     @Override
     public Shape setEndPoint(double x, double y){
         

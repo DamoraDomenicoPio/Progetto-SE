@@ -8,9 +8,11 @@ import static java.lang.Math.abs;
 import javafx.scene.shape.Shape;
 import newShapes.EllipseAdapter;
 
+
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The EllipseTool allows you to create a new ellipse
  */
 public class EllipseTool extends ShapeTool{
     private double radiusX;
@@ -18,6 +20,10 @@ public class EllipseTool extends ShapeTool{
     
     
     @Override
+    /**
+     * Creates a new instance of EllipseAdapter.
+     */
+    
     public Shape setEndPoint(double x, double y){
         
         this.xEnd=x;

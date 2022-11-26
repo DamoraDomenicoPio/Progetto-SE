@@ -7,11 +7,14 @@ package shapes;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author assun
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
-public class ResizeTool extends ObjectTool{
 
+public class ResizeTool extends ObjectTool{
+    /**
+    * Change the size of a shape.
+    */
     @Override
     public Shape setEndPoint(double x, double y) {
         if (this.shape != null){
