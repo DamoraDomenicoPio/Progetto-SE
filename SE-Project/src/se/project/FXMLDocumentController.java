@@ -31,9 +31,15 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import shapes.ObjectTool;
 import shapes.ShapeTool;
@@ -49,13 +55,9 @@ public class FXMLDocumentController implements Initializable {
     
     private Label label;
     @FXML
-    private MenuButton shapesButton;
+    private Button rectangleButton;
     @FXML
-    private MenuItem EllipseButton;
-    @FXML
-    private MenuItem rectangleButton;
-    @FXML
-    private MenuItem lineButton;
+    private Button lineButton;
     private ColorPicker colorPicker;
     @FXML
     private Menu fileMenu;
@@ -67,6 +69,7 @@ public class FXMLDocumentController implements Initializable {
     private Group group;
    
     private Shape selectedShape = null; 
+    
     private String copiedShape = null; 
 
     @FXML
@@ -75,7 +78,11 @@ public class FXMLDocumentController implements Initializable {
     private ColorPicker insideColorPicker;
     
     private double xPressed=0;
+    
     private double yPressed=0;
+    
+    private boolean selectionButtonStatus = false;
+    
     private String shapeToInsert="";
     @FXML
     private MenuItem deleteButton;
@@ -84,9 +91,20 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button applySizeButton;
     @FXML
-    private MenuItem deleteButton11;
+    private Line lineIntoButton;
     @FXML
-    private MenuItem deleteButton111;
+    private Rectangle rectangleIntoButton;
+    @FXML
+    private Button ellipseButton;
+    @FXML
+    private Ellipse ellipseIntoButton;
+    @FXML
+    private Polyline polygonIntoSelectionButton;
+    @FXML
+    private Button undoButton;
+    @FXML
+    private Text arrowIntoUndoButton;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -156,6 +174,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addRectangle(ActionEvent event) {
         shapeToInsert="Rectangle";
+        rectangleIntoButton.setFill(insideColorPicker.getValue());
+        rectangleIntoButton.setStroke(borderColorPicker.getValue());
     }
     
     /**
@@ -166,6 +186,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addLine(ActionEvent event) {
         shapeToInsert="Line";
+        lineIntoButton.setStroke(borderColorPicker.getValue());
     }
     
     
@@ -311,6 +332,46 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void resizeOnAction(ActionEvent event) {
         shapeToInsert = "RESIZE";
+    }
+
+    @FXML
+    private void borderColorSelected(ActionEvent event) {
+        ellipseIntoButton.setStroke(borderColorPicker.getValue());
+        rectangleIntoButton.setStroke(borderColorPicker.getValue());
+        lineIntoButton.setStroke(borderColorPicker.getValue());
+    }
+
+    @FXML
+    private void insideColorSelected(ActionEvent event) {
+        ellipseIntoButton.setFill(insideColorPicker.getValue());
+        rectangleIntoButton.setFill(insideColorPicker.getValue());
+    }
+
+    @FXML
+    private void onSelectionButtonPressed(ActionEvent event) {
+        if(selectionButtonStatus == false){
+            selectionButtonStatus = true;
+            polygonIntoSelectionButton.setStroke(Color.DODGERBLUE);
+            polygonIntoSelectionButton.setFill(Color.DODGERBLUE);
+        }else{
+            selectionButtonStatus = false;
+            polygonIntoSelectionButton.setStroke(Color.rgb(191, 191, 191));
+            polygonIntoSelectionButton.setFill(Color.rgb(191, 191, 191));   
+        }
+    }
+
+    @FXML
+    private void undoOnMouseReleased(MouseEvent event) {
+        arrowIntoUndoButton.setFill(Color.BLACK);
+    }
+
+    @FXML
+    private void undoOnMousePressed(MouseEvent event) {
+        arrowIntoUndoButton.setFill(Color.DODGERBLUE);
+    }
+
+    @FXML
+    private void undoOnAction(ActionEvent event) {
     }
 
     

@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -15,95 +14,157 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
    <children>
-      <VBox prefHeight="604.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <MenuBar layoutY="2.0" prefHeight="32.0" prefWidth="800.0" AnchorPane.bottomAnchor="568.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
-                  <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#loadOnAction" text="Load" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
-              <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
-                  <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
-                  <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Draw">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
-                  <MenuItem mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
-                  <MenuItem mnemonicParsing="false" onAction="#resizeOnAction" text="Resize" />
-               </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <SplitPane dividerPositions="0.2857142857142857" layoutX="300.0" layoutY="28.0" prefHeight="572.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="0.0">
+      <VBox prefHeight="604.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="26.0" prefWidth="800.0">
+              <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
+                        <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#loadOnAction" text="Load" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
+                    <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
+                        <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
+                        <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Draw">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
+                        <MenuItem mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
+                        <MenuItem mnemonicParsing="false" onAction="#resizeOnAction" text="Resize" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <HBox prefHeight="24.0" prefWidth="800.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <MenuButton fx:id="shapesButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Shapes">
-                          <items>
-                            <MenuItem fx:id="EllipseButton" mnemonicParsing="false" onAction="#addEllipse" text="Ellipse" />
-                            <MenuItem fx:id="rectangleButton" mnemonicParsing="false" onAction="#addRectangle" text="Rectangle" />
-                              <MenuItem fx:id="lineButton" mnemonicParsing="false" onAction="#addLine" text="Line" />
-                          </items>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </MenuButton>
-                        <Label text="Border Color">
-                           <VBox.margin>
-                              <Insets bottom="-30.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ColorPicker fx:id="borderColorPicker" prefHeight="29.0" prefWidth="130.0" translateY="15.0">
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                           <value>
-                              <Color />
-                           </value></ColorPicker>
-                        <Label text="Inside Color">
-                           <VBox.margin>
-                              <Insets bottom="-45.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ColorPicker fx:id="insideColorPicker" layoutX="57.0" layoutY="123.0" prefHeight="30.0" prefWidth="130.0" translateY="30.0">
-                           <VBox.margin>
-                              <Insets bottom="25.0" />
-                           </VBox.margin></ColorPicker>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="71.0" text="Size">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="186.0" spacing="10.0">
-                           <children>
-                              <TextField fx:id="shapeSize" maxHeight="25.0" maxWidth="28.0" prefHeight="25.0" prefWidth="28.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button fx:id="applySizeButton" maxHeight="25.0" maxWidth="70.0" mnemonicParsing="false" onMouseClicked="#changeShapeSize" prefHeight="25.0" prefWidth="70.0" text="Apply" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding>
-                  </VBox>
+                  <Label text="Shapes">
+                     <HBox.margin>
+                        <Insets left="54.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Border Color">
+                     <HBox.margin>
+                        <Insets left="80.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Inside Color">
+                     <HBox.margin>
+                        <Insets left="80.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="39.0" text="Size">
+                     <HBox.margin>
+                        <Insets left="76.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Selection">
+                     <HBox.margin>
+                        <Insets left="58.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Back">
+                     <HBox.margin>
+                        <Insets left="21.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="160.0" prefWidth="100.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="800.0">
+               <children>
+                  <Button fx:id="lineButton" mnemonicParsing="false" onAction="#addLine" prefHeight="26.0" prefWidth="33.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <Line fx:id="lineIntoButton" endX="-89.50711059570312" endY="9.69288444519043" startX="-100.0" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="rectangleButton" mnemonicParsing="false" onAction="#addRectangle" prefHeight="26.0" prefWidth="35.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <Rectangle fx:id="rectangleIntoButton" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="ellipseButton" mnemonicParsing="false" onAction="#addEllipse" prefHeight="26.0" prefWidth="35.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <Ellipse fx:id="ellipseIntoButton" fill="WHITE" radiusX="9.0" radiusY="8.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Button>
+                  <ColorPicker fx:id="borderColorPicker" onAction="#borderColorSelected">
+                     <value>
+                        <Color />
+                     </value>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ColorPicker>
+                  <ColorPicker fx:id="insideColorPicker" onAction="#insideColorSelected">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ColorPicker>
+                  <TextField fx:id="shapeSize" prefHeight="26.0" prefWidth="45.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="applySizeButton" mnemonicParsing="false" onMouseClicked="#changeShapeSize" prefHeight="26.0" prefWidth="61.0" text="Apply">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onSelectionButtonPressed" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
+                     <HBox.margin>
+                        <Insets left="15.0" right="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <Polyline fx:id="polygonIntoSelectionButton" fill="CHARTREUSE" points="-27.59998893737793, 0.20000457763671875, -18.015867233276367, -13.95462417602539, -27.599973678588867, 0.20000457763671875, -32.58307647705078, -7.295635223388672" stroke="#bfbfbf" strokeWidth="3.0" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoOnMousePressed" onMouseReleased="#undoOnMouseReleased" prefHeight="27.0" prefWidth="23.0" textFill="#bfbfbf">
+                     <graphic>
+                        <Text fx:id="arrowIntoUndoButton" scaleX="-1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="➜" wrappingWidth="15.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+         </children></VBox>
+      <SplitPane layoutX="300.0" layoutY="101.0" prefHeight="499.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="462.0" prefWidth="799.0">
                <children>
                   <Group fx:id="group" />
                </children>
