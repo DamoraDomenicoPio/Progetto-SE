@@ -84,6 +84,7 @@ public class FXMLDocumentController implements Initializable {
     private boolean selectionButtonStatus = false;
     
     private String shapeToInsert="";
+    private String actionToDo="";
     @FXML
     private MenuItem deleteButton;
     @FXML
@@ -164,6 +165,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addEllipse(ActionEvent event) {
         shapeToInsert="Ellipse";
+        this.actionToDo="ADD";
     }
     
     /**
@@ -174,6 +176,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addRectangle(ActionEvent event) {
         shapeToInsert="Rectangle";
+        this.actionToDo="ADD";
         rectangleIntoButton.setFill(insideColorPicker.getValue());
         rectangleIntoButton.setStroke(borderColorPicker.getValue());
     }
@@ -186,13 +189,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addLine(ActionEvent event) {
         shapeToInsert="Line";
+        this.actionToDo="ADD";
         lineIntoButton.setStroke(borderColorPicker.getValue());
     }
     
     
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
-        // Right key
+        /*// Right key
         if (event.getButton()==MouseButton.SECONDARY){  
             // Selection
             if(event.getTarget() instanceof  Shape){
@@ -219,7 +223,20 @@ public class FXMLDocumentController implements Initializable {
                     group.getChildren().add(shape);
                 }
             }
+        }*/
+    }
+    
+    @FXML
+    private void groupOnMouseDragged(MouseEvent event) {
+        if(this.selectedShape!=null){
+            ShapeTool shapeTool= ShapeFactory.getShape(actionToDo);
+            if(shapeTool!=null){
+                ((ObjectTool) shapeTool).setShape(selectedShape);
+                selectedShape= shapeTool.setEndPoint(event.getX(), event.getY());
+            }
+            
         }
+        
     }
 
     
@@ -227,6 +244,27 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
         yPressed=event.getY();
+        System.out.println(this.actionToDo);
+        if(this.actionToDo=="ADD"){
+            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            shapeTool.setStartPoint(xPressed, yPressed);
+            Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
+            shape.setStroke(borderColorPicker.getValue());
+            shape.setFill(insideColorPicker.getValue());
+            group.getChildren().add(shape);
+            //((ObjectTool) shapeTool).setShape(selectedShape);
+            //shape= shapeTool.setEndPoint(event.getX(), event.getY());
+            this.selectedShape=shape;
+        }
+        else{
+            
+            if(this.selectionButtonStatus && event.getTarget() instanceof Shape){
+                this.selectedShape=(Shape) event.getTarget();
+            }
+            else{
+                this.selectedShape=null;
+            }
+        }
     }
     
     /**
@@ -322,7 +360,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveOnAction(ActionEvent event) {
-        shapeToInsert="MOVE";
+        actionToDo="MOVE";
     }
     
     /**
@@ -331,7 +369,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void resizeOnAction(ActionEvent event) {
-        shapeToInsert = "RESIZE";
+        actionToDo = "RESIZE";
     }
 
     @FXML
@@ -353,10 +391,12 @@ public class FXMLDocumentController implements Initializable {
             selectionButtonStatus = true;
             polygonIntoSelectionButton.setStroke(Color.DODGERBLUE);
             polygonIntoSelectionButton.setFill(Color.DODGERBLUE);
+            this.actionToDo="SELECT";
         }else{
             selectionButtonStatus = false;
             polygonIntoSelectionButton.setStroke(Color.rgb(191, 191, 191));
             polygonIntoSelectionButton.setFill(Color.rgb(191, 191, 191));   
+            this.actionToDo="";
         }
     }
 
@@ -373,6 +413,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void undoOnAction(ActionEvent event) {
     }
+
+    
 
     
     

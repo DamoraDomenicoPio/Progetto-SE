@@ -36,7 +36,7 @@ public class ShapeFactory {
         else if(shapeName.equalsIgnoreCase("MOVE")){
             return new MoveTool(); 
         }
-        else if(shapeName.equalsIgnoreCase("RESIZE")){
+        else if(shapeName.equalsIgnoreCase("RESIZE") || shapeName.equalsIgnoreCase("ADD")){
             System.out.println("Nuovo resize tool");
             return new ResizeTool(); 
         }
