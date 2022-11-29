@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
+import tools.LineSegmentTool;
+import tools.EllipseTool;
+import tools.RectangleTool;
 import javafx.scene.shape.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import shapes.*;
-import shapes.ShapeFactory;
+import tools.ShapeFactory;
 
 /**
  *

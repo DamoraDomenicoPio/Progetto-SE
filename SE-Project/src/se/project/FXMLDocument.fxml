@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.project.FXMLDocumentController">
    <children>
       <VBox prefHeight="604.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -46,6 +46,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#changeColorShape" text="Color Shape" />
                         <MenuItem mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
                         <MenuItem mnemonicParsing="false" onAction="#resizeOnAction" text="Resize" />
+                        <MenuItem mnemonicParsing="false" onAction="#BringToFrontOnAction" text="Bring to front" />
                      </items>
                   </Menu>
               </menus>

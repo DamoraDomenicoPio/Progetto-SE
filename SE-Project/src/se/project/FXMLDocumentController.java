@@ -374,6 +374,16 @@ public class FXMLDocumentController implements Initializable {
     private void undoOnAction(ActionEvent event) {
     }
 
+    /**
+     * <b>Method that Brings the selected shape on top of all the others</b>
+     * @param event 
+     */
+    @FXML
+    private void BringToFrontOnAction(ActionEvent event) {
+        this.selectedShape.toFront();  // Node's class method that brings the node 
+                                        // on which the function in invoked on on top of its siblings 
+    }
+
     
     
 }
