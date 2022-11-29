@@ -106,6 +106,10 @@ public class FXMLDocumentController implements Initializable {
     private Text arrowIntoUndoButton;
     @FXML
     private Text applyTextIntoButton;
+    @FXML
+    private Text zoomOutInButton;
+    @FXML
+    private Text zoomInInButton;
     
     
     @Override
@@ -384,6 +388,34 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void sizeColorOnMousePressed(MouseEvent event) {
         applyTextIntoButton.setFill(Color.DODGERBLUE);
+    }
+
+    @FXML
+    private void zoomOutOnMouseReleased(MouseEvent event) {
+    }
+
+    @FXML
+    private void zoomOutOnAction(ActionEvent event) {
+        group.setScaleX(0.3);
+        group.setScaleY(0.3);
+    }
+
+    @FXML
+    private void zoomOutOnMousePressed(MouseEvent event) {
+    }
+
+    @FXML
+    private void zoomInOnMouseReleased(MouseEvent event) {
+    }
+
+    @FXML
+    private void zoomInOnAction(ActionEvent event) {
+        group.setScaleX(2);
+        group.setScaleY(2);
+    }
+
+    @FXML
+    private void zoomInOnMousePressed(MouseEvent event) {
     }
 
     

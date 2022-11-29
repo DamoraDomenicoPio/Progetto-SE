@@ -82,6 +82,11 @@
                         <Insets left="21.0" top="2.0" />
                      </HBox.margin>
                   </Label>
+                  <Label text="Zoom out/in">
+                     <HBox.margin>
+                        <Insets left="25.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -158,6 +163,25 @@
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#zoomOutOnAction" onMousePressed="#zoomOutOnMousePressed" onMouseReleased="#zoomOutOnMouseReleased" prefHeight="27.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <Text fx:id="zoomOutInButton" strokeType="OUTSIDE" strokeWidth="0.0" text="🔎-" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#zoomInOnAction" onMousePressed="#zoomInOnMousePressed" onMouseReleased="#zoomInOnMouseReleased" prefHeight="27.0" prefWidth="41.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <Text fx:id="zoomInInButton" strokeType="OUTSIDE" strokeWidth="0.0" text="🔎+" />
+                     </graphic>
                   </Button>
                </children>
                <VBox.margin>
