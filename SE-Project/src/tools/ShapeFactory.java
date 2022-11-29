@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package shapes;
+package tools;
 
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
@@ -11,19 +11,13 @@ import newShapes.*;
 
 
 /**
- * 
- * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
- * Implementation of the pattern factory method for the creation of the shapes
+ *
+ * @author Domenico
  */
 
-
 public class ShapeFactory {
-    /**
-     * 
-     * @param shapeName string containing the shape to create 
-     * @return a shape given a string
-     */
-    public static ShapeTool getShape(String shapeName){
+    public static Tool getShape(String shapeName){
+        System.out.println("HO CREATO UN NUOVO OGGETTO");
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
             return new RectangleTool();
         }
@@ -36,17 +30,12 @@ public class ShapeFactory {
         else if(shapeName.equalsIgnoreCase("MOVE")){
             return new MoveTool(); 
         }
-        else if(shapeName.equalsIgnoreCase("RESIZE") || shapeName.equalsIgnoreCase("ADD")){
+        else if(shapeName.equalsIgnoreCase("RESIZE")){
             System.out.println("Nuovo resize tool");
             return new ResizeTool(); 
         }
         return null;
     }
-    /**
-     * 
-     * @param shapeString string containing the shape to create
-     * @return a shape given a string
-     */
     
     public static Shape shapeCreate(String shapeString){
         String[] values=shapeString.split(";", 2);

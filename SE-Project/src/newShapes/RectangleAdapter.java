@@ -14,6 +14,8 @@ import javafx.scene.shape.Rectangle;
  */
 public class RectangleAdapter extends Rectangle implements NewShape{
 
+    private double resizeX;
+    private double resizeY;
     
     /**
      * Creates a new instance of Rectangle with the given position and size.
@@ -24,6 +26,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     public RectangleAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
+        this.resizeX=d;
+        this.resizeY=d1;
     }
     
     /**
@@ -78,6 +82,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         System.out.println("Move rettangle");
         this.setX(x);
         this.setY(y);
+        this.resizeX=x;
+        this.resizeY=y;
     }
 
     /**
@@ -85,14 +91,26 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
      */
+    
+    
+    
    @Override
     public void newResize(double x, double y) {
         System.out.println("RESIZE RETTANGLE");
-        double startX = super.getX();
-        double startY = super.getY();
+        super.setHeight(abs(resizeY-y));
+        super.setWidth(abs(resizeX-x));
         
-        super.setHeight(abs(startY-y));
-        super.setWidth(abs(startX-x));
+        if(resizeX<x){
+            x=resizeX;
+        }
+        
+        if(resizeY<y){
+            y=resizeY;
+        }
+        
+        super.setX(x);
+        super.setY(y);
+        
     }
     
     

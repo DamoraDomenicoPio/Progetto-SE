@@ -102,6 +102,7 @@ public class LineAdapter extends Line implements NewShape{
         this.setEndY(y+this.lengthY);    
     }
 
+    
     /**
      * Method that allows you to resize the line
      * @param x coordinate of the horizontal axis
@@ -111,6 +112,8 @@ public class LineAdapter extends Line implements NewShape{
     public void newResize(double x, double y) {
         this.setEndX(x);
         this.setEndY(y);
+        this.lengthX=this.getStartX()-x;
+        this.lengthY=this.getStartY()-y;
     }
     
     
