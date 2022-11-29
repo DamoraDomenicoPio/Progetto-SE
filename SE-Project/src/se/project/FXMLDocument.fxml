@@ -132,10 +132,13 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="applySizeButton" mnemonicParsing="false" onMouseClicked="#changeShapeSize" prefHeight="26.0" prefWidth="61.0" text="Apply">
+                  <Button fx:id="applySizeButton" mnemonicParsing="false" onMouseClicked="#changeShapeSize" onMousePressed="#sizeColorOnMousePressed" onMouseReleased="#sizeColorOnMouseReleased" prefHeight="26.0" prefWidth="61.0">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <Text fx:id="applyTextIntoButton" strokeType="OUTSIDE" strokeWidth="0.0" text="Apply" />
+                     </graphic>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#onSelectionButtonPressed" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
                      <HBox.margin>
@@ -145,7 +148,7 @@
                         <Polyline fx:id="polygonIntoSelectionButton" fill="CHARTREUSE" points="-27.59998893737793, 0.20000457763671875, -18.015867233276367, -13.95462417602539, -27.599973678588867, 0.20000457763671875, -32.58307647705078, -7.295635223388672" stroke="#bfbfbf" strokeWidth="3.0" />
                      </graphic>
                   </Button>
-                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoOnMousePressed" onMouseReleased="#undoOnMouseReleased" prefHeight="27.0" prefWidth="23.0" textFill="#bfbfbf">
+                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoColorOnMousePressed" onMouseReleased="#undoColorOnMouseReleased" prefHeight="27.0" prefWidth="23.0" textFill="#bfbfbf">
                      <graphic>
                         <Text fx:id="arrowIntoUndoButton" scaleX="-1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="➜" wrappingWidth="15.0">
                            <font>

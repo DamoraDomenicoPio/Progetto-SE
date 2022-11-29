@@ -104,6 +104,8 @@ public class FXMLDocumentController implements Initializable {
     private Button undoButton;
     @FXML
     private Text arrowIntoUndoButton;
+    @FXML
+    private Text applyTextIntoButton;
     
     
     @Override
@@ -361,12 +363,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void undoOnMouseReleased(MouseEvent event) {
+    private void undoColorOnMouseReleased(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.BLACK);
     }
 
     @FXML
-    private void undoOnMousePressed(MouseEvent event) {
+    private void undoColorOnMousePressed(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.DODGERBLUE);
     }
 
@@ -380,8 +382,20 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void BringToFrontOnAction(ActionEvent event) {
-        this.selectedShape.toFront();  // Node's class method that brings the node 
-                                        // on which the function in invoked on on top of its siblings 
+        if (selectedShape != null) {
+            this.selectedShape.toFront();  // Node's class method that brings the node 
+                                            // on which the function in invoked on on top of its siblings 
+        }
+    }
+    
+    @FXML
+    private void sizeColorOnMouseReleased(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.BLACK);
+    }
+
+    @FXML
+    private void sizeColorOnMousePressed(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.DODGERBLUE);
     }
 
     
