@@ -104,6 +104,8 @@ public class FXMLDocumentController implements Initializable {
     private Button undoButton;
     @FXML
     private Text arrowIntoUndoButton;
+    @FXML
+    private Text applyTextIntoButton;
     
     
     @Override
@@ -361,17 +363,27 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void undoOnMouseReleased(MouseEvent event) {
+    private void undoColorOnMouseReleased(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.BLACK);
     }
 
     @FXML
-    private void undoOnMousePressed(MouseEvent event) {
+    private void undoColorOnMousePressed(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.DODGERBLUE);
     }
 
     @FXML
     private void undoOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void sizeColorOnMouseReleased(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.BLACK);
+    }
+
+    @FXML
+    private void sizeColorOnMousePressed(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.DODGERBLUE);
     }
 
     
