@@ -41,6 +41,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import shapes.ObjectTool;
 import shapes.ShapeTool;
 import shapes.ShapeFactory;
@@ -123,7 +124,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void saveOnAction (ActionEvent event){
         FileChooser fileChooser = new FileChooser();
-        try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showOpenDialog(null).getPath())))){
+        fileChooser.getExtensionFilters().add(
+         new ExtensionFilter("Text Files", "*.txt")
+        );
+        try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showSaveDialog(null).getPath())))){
             for(Node i: group.getChildren()){
                 Shape s=(Shape) i;
                 o.write(s.toString()+"\n");
