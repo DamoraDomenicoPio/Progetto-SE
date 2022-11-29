@@ -41,6 +41,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import shapes.ObjectTool;
 import shapes.ShapeTool;
 import shapes.ShapeFactory;
@@ -105,6 +106,8 @@ public class FXMLDocumentController implements Initializable {
     private Button undoButton;
     @FXML
     private Text arrowIntoUndoButton;
+    @FXML
+    private Text applyTextIntoButton;
     
     
     @Override
@@ -122,7 +125,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void saveOnAction (ActionEvent event){
         FileChooser fileChooser = new FileChooser();
-        try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showOpenDialog(null).getPath())))){
+        fileChooser.getExtensionFilters().add(
+         new ExtensionFilter("Text Files", "*.txt")
+        );
+        try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showSaveDialog(null).getPath())))){
             for(Node i: group.getChildren()){
                 Shape s=(Shape) i;
                 o.write(s.toString()+"\n");
@@ -401,17 +407,51 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void undoOnMouseReleased(MouseEvent event) {
+    private void undoColorOnMouseReleased(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.BLACK);
     }
 
     @FXML
-    private void undoOnMousePressed(MouseEvent event) {
+    private void undoColorOnMousePressed(MouseEvent event) {
         arrowIntoUndoButton.setFill(Color.DODGERBLUE);
     }
 
     @FXML
     private void undoOnAction(ActionEvent event) {
+    }
+
+    /**
+     * Method that Brings the selected shape on top of all the others
+     * @param event 
+     */
+    @FXML
+    private void BringToFrontOnAction(ActionEvent event) {
+        if (selectedShape != null) {
+            this.selectedShape.toFront();  // Node's class method that brings the node 
+                                            // on which the function in invoked on on top of its siblings 
+        }
+    }
+    
+    /**
+     * Method that brings the selected shape behind all the other shapes 
+     * @param event 
+     */
+    @FXML
+    private void BringToBackOnAction(ActionEvent event) {
+        if (selectedShape != null) {
+            this.selectedShape.toBack();  // Node's class method that brings the node on which 
+                                          // the method it's been called behind all its siblings 
+        }
+    }
+    
+    @FXML
+    private void sizeColorOnMouseReleased(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.BLACK);
+    }
+
+    @FXML
+    private void sizeColorOnMousePressed(MouseEvent event) {
+        applyTextIntoButton.setFill(Color.DODGERBLUE);
     }
 
     
