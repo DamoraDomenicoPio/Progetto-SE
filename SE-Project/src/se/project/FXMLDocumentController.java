@@ -377,7 +377,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * <b>Method that Brings the selected shape on top of all the others</b>
+     * Method that Brings the selected shape on top of all the others
      * @param event 
      */
     @FXML
@@ -385,6 +385,18 @@ public class FXMLDocumentController implements Initializable {
         if (selectedShape != null) {
             this.selectedShape.toFront();  // Node's class method that brings the node 
                                             // on which the function in invoked on on top of its siblings 
+        }
+    }
+    
+    /**
+     * Method that brings the selected shape behind all the other shapes 
+     * @param event 
+     */
+    @FXML
+    private void BringToBackOnAction(ActionEvent event) {
+        if (selectedShape != null) {
+            this.selectedShape.toBack();  // Node's class method that brings the node on which 
+                                          // the method it's been called behind all its siblings 
         }
     }
     

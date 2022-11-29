@@ -47,6 +47,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
                         <MenuItem mnemonicParsing="false" onAction="#resizeOnAction" text="Resize" />
                         <MenuItem mnemonicParsing="false" onAction="#BringToFrontOnAction" text="Bring to front" />
+                        <MenuItem mnemonicParsing="false" onAction="#BringToBackOnAction" text="Bring to back" />
                      </items>
                   </Menu>
               </menus>
