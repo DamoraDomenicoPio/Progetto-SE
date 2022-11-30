@@ -9,7 +9,7 @@ import javafx.scene.shape.Shape;
 
 /**
  *
- * @author gianl
+ * @author assun
  */
 public class ChangeColorCommand implements Command{
     
@@ -18,6 +18,7 @@ public class ChangeColorCommand implements Command{
     private Paint newStroke, newFill; 
 
     public ChangeColorCommand(Shape shape, Paint newStroke, Paint newInterior) {
+        System.out.println("Creato il command cambio colore");
         this.shape = shape;
         this.oldStroke = shape.getStroke();
         this.oldFill = shape.getFill(); 
