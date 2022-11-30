@@ -21,13 +21,17 @@ public class Invoker {
     }
     
     public void execute(Command command){
+        System.out.println("Eseguo il comando");
         actionsStack.addLast(command);
         command.execute();
     }
     
     public void undo(){
-        Command last = actionsStack.removeLast();
-        last.undo();
+        System.out.println("undo dell'invoker");
+        if(! this.actionsStack.isEmpty()) {
+            Command last = actionsStack.removeLast();
+            last.undo();
+        }
     }
     
 
