@@ -210,34 +210,9 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
-        /*// Right key
-        if (event.getButton()==MouseButton.SECONDARY){  
-            // Selection
-            if(event.getTarget() instanceof  Shape){
-                this.selectedShape = (Shape) event.getTarget();
-            }
-            else {
-                this.selectedShape = null; 
-            }
+        if(this.actionToDo.equalsIgnoreCase("ADD")){
+            this.selectedShape=null;
         }
-        // Left key 
-        else {   // Otherwise the left button has been clicked 
-            if(shapeToInsert!=""){
-                ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
-                shapeTool.setStartPoint(xPressed, yPressed);
-                if (shapeTool instanceof ObjectTool){
-                    ((ObjectTool) shapeTool).setShape(selectedShape);
-                    Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-
-                }
-                else {
-                    Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-                    shape.setStroke(borderColorPicker.getValue());
-                    shape.setFill(insideColorPicker.getValue());
-                    group.getChildren().add(shape);
-                }
-            }
-        }*/
     }
     
     @FXML
@@ -280,7 +255,7 @@ public class FXMLDocumentController implements Initializable {
             if(event.getTarget() instanceof Shape){
                 this.selectedShape=(Shape) event.getTarget();
                 DropShadow s= new DropShadow(20.0, Color.BLACK);
-                s.setSpread(0.2);
+                s.setSpread(0.3);
                 selectedShape.setEffect(s);
             }
             else{
