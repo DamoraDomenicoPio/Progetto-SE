@@ -87,5 +87,11 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         super.setRadiusX(abs(centerX-x));
         super.setRadiusY(abs(centerY-y));
     } 
+
+    @Override
+    public void newResize(double r) {
+        this.setRadiusX(this.getRadiusX()*r);
+        this.setRadiusY(this.getRadiusY()*r);
+    }
     
 }

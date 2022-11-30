@@ -44,6 +44,7 @@ import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.ShapeTool;
 import tools.ShapeFactory;
@@ -334,8 +335,7 @@ public class FXMLDocumentController implements Initializable {
             if(size<0)
                 shapeSize.setText("1");
             else{
-                selectedShape.setScaleX(size);
-                selectedShape.setScaleY(size);
+                ((NewShape) this.selectedShape).newResize(size);
             }
             }
         catch (Exception e){

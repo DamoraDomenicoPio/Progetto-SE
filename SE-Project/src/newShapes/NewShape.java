@@ -24,4 +24,10 @@ public interface NewShape {
      * @param y coordinate of the vertical axis
      */
     public void stretch(double x, double y);
+    
+    /**
+     * Method that allows you to resize the selected shape
+     * @param r resize factor
+     */
+    public void newResize(double r);
 }
