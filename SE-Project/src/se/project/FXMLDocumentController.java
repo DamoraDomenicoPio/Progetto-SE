@@ -3,6 +3,8 @@
  */
 package se.project;
 
+import command.ChangeColorCommand;
+import command.Invoker;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -116,6 +118,8 @@ public class FXMLDocumentController implements Initializable {
     private Text zoomInInButton;
     @FXML
     private MenuItem selectButton;
+    
+    private Invoker invoker; 
     
     
     @Override
@@ -294,8 +298,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void changeColorShape(ActionEvent event) {
         System.out.println("cambio colore");
-        selectedShape.setStroke(borderColorPicker.getValue());
-        selectedShape.setFill(insideColorPicker.getValue());
+        invoker.execute(new ChangeColorCommand(selectedShape, borderColorPicker.getValue(), insideColorPicker.getValue()));
     }
     
     /**
@@ -407,6 +410,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void undoOnAction(ActionEvent event) {
+        invoker.undo();
     }
 
     /**
