@@ -103,21 +103,20 @@ public class LineAdapter extends Line implements NewShape{
     }
 
     
+    
+    
     /**
-     * Method that allows you to resize the line
+     * Method that allows you to stretch the line
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
      */
     @Override
-    public void newResize(double x, double y) {
+    public void stretch(double x, double y) {
         this.setEndX(x);
         this.setEndY(y);
         this.lengthX=this.getStartX()-x;
         this.lengthY=this.getStartY()-y;
     }
-    
-    
-    
 
         
 }

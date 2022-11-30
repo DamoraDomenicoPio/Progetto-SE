@@ -17,12 +17,11 @@ public interface NewShape {
      */
     public void move(double x, double y);
     
+    
     /**
-     * Method that allows you to resize the selected shape
+     * Method that allows you to stretch the selected shape
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
      */
-    public void newResize(double x, double y);
-    
-    
+    public void stretch(double x, double y);
 }

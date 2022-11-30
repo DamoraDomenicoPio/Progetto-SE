@@ -5,21 +5,31 @@
 package tools;
 
 import static java.lang.Math.abs;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
 import newShapes.EllipseAdapter;
-import tools.Tool;
+
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The EllipseTool allows you to create a new ellipse
  */
-public class EllipseTool extends Tool{
+public class EllipseTool extends ShapeTool{
+    /**
+     * radius of the ellipse on the horizontal axis
+     */
     private double radiusX;
+    /**
+     * radius of the ellipse on the vertical axis
+     */
     private double radiusY;
     
-    
+    /**
+     * Returns a shape representing the ellipse
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape representing the ellipse
+     */
     @Override
     public Shape setEndPoint(double x, double y){
         

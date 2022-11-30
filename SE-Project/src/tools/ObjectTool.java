@@ -6,23 +6,25 @@ package tools;
 
 import javafx.scene.shape.Shape;
 import newShapes.NewShape;
-import tools.Tool;
 
 /**
- *
- * @author assun
- * A Tool that executes a trasformation on a give object 
- */
-public abstract class ObjectTool extends Tool{
-    protected NewShape shape; //The shape on which the trasformation will be executed
+ @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 
+public abstract class ObjectTool extends ShapeTool{
+    /**
+     * Represents the shape on which the trasformation will be executed.
+     */
+    protected NewShape shape; 
+    
+    
     public NewShape getShape() {
         return shape;
     }
-
+    
+    
     public void setShape(Shape shape) {
         this.shape = (NewShape) shape;
     }
-    
     
 }

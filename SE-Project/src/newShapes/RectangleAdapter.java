@@ -94,8 +94,9 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     
     
     
-   @Override
-    public void newResize(double x, double y) {
+    
+    @Override
+    public void stretch(double x, double y) {
         System.out.println("RESIZE RETTANGLE");
         super.setHeight(abs(resizeY-y));
         super.setWidth(abs(resizeX-x));

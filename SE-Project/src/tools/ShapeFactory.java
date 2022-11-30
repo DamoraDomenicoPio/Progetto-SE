@@ -11,13 +11,19 @@ import newShapes.*;
 
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * Implementation of the pattern factory method for the creation of the shapes
  */
 
+
 public class ShapeFactory {
-    public static Tool getShape(String shapeName){
-        System.out.println("HO CREATO UN NUOVO OGGETTO");
+    /**
+     * 
+     * @param shapeName string containing the shape to create 
+     * @return a shape given a string
+     */
+    public static ShapeTool getShape(String shapeName){
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
             return new RectangleTool();
         }
@@ -30,12 +36,19 @@ public class ShapeFactory {
         else if(shapeName.equalsIgnoreCase("MOVE")){
             return new MoveTool(); 
         }
-        else if(shapeName.equalsIgnoreCase("RESIZE")){
-            System.out.println("Nuovo resize tool");
-            return new ResizeTool(); 
+        /*else if(shapeName.equalsIgnoreCase("RESIZE")){
+            return new StretchTool(); 
+        }*/
+        else if(shapeName.equalsIgnoreCase("STRETCH")|| shapeName.equalsIgnoreCase("ADD")){
+            return new StretchTool(); 
         }
         return null;
     }
+    /**
+     * 
+     * @param shapeString string containing the shape to create
+     * @return a shape given a string
+     */
     
     public static Shape shapeCreate(String shapeString){
         String[] values=shapeString.split(";", 2);

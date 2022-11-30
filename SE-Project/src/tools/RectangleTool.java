@@ -8,17 +8,28 @@ import static java.lang.Math.abs;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Shape;
 import newShapes.RectangleAdapter;
-import tools.Tool;
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The RectangleTool allows you to create a new rectangle
  */
-public class RectangleTool extends Tool{
-    
+
+public class RectangleTool extends ShapeTool{
+    /**
+     * Represents the height of the rectangle.
+     */
     private double height;
+    /**
+     * Represents the width of the rectangle.
+     */
     private double width;
-   
+    /**
+     * Returns a shape with modified coordinates
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape with modified coordinates
+     */
     @Override
     public Shape setEndPoint(double x, double y){
         

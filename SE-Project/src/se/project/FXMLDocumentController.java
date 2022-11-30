@@ -44,9 +44,9 @@ import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import shapes.ObjectTool;
-import shapes.ShapeTool;
-import shapes.ShapeFactory;
+import tools.ObjectTool;
+import tools.ShapeTool;
+import tools.ShapeFactory;
 
 
 /**
@@ -280,6 +280,7 @@ public class FXMLDocumentController implements Initializable {
             if(event.getTarget() instanceof Shape){
                 this.selectedShape=(Shape) event.getTarget();
                 DropShadow s= new DropShadow(20.0, Color.BLACK);
+                s.setSpread(0.2);
                 selectedShape.setEffect(s);
             }
             else{
@@ -389,10 +390,7 @@ public class FXMLDocumentController implements Initializable {
      * Method that changes the shapeToInsert string to the string "RESIZE".
      * @param event ActionEvent object generated when the button 'Resize' is selected.
      */
-    @FXML
-    private void resizeOnAction(ActionEvent event) {
-        actionToDo = "RESIZE";
-    }
+    
 
     @FXML
     private void borderColorSelected(ActionEvent event) {
@@ -501,6 +499,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void selectOnAction(ActionEvent event) {
         this.actionToDo="SELECT";
+    }
+
+    @FXML
+    private void stretchOnAction(ActionEvent event) {
+        this.actionToDo="STRETCH";
     }
 
     
