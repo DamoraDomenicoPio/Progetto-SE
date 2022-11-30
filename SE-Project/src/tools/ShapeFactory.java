@@ -15,8 +15,6 @@ import newShapes.*;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * Implementation of the pattern factory method for the creation of the shapes
  */
-
-
 public class ShapeFactory {
     /**
      * 

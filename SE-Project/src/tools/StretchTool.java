@@ -9,6 +9,7 @@ import javafx.scene.shape.Shape;
 /**
  * 
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * Class representing the stretch action
  */
 
 public class StretchTool extends ObjectTool{
