@@ -29,6 +29,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Shadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -112,6 +114,8 @@ public class FXMLDocumentController implements Initializable {
     private Text zoomOutInButton;
     @FXML
     private Text zoomInInButton;
+    @FXML
+    private MenuItem selectButton;
     
     
     @Override
@@ -255,7 +259,10 @@ public class FXMLDocumentController implements Initializable {
         xPressed=event.getX();
         yPressed=event.getY();
         System.out.println(this.actionToDo);
-        if(this.actionToDo=="ADD"){
+        if(this.actionToDo.equalsIgnoreCase("ADD")){
+            if(this.selectedShape!=null){
+                this.selectedShape.setEffect(null);
+            }
             ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
@@ -266,15 +273,20 @@ public class FXMLDocumentController implements Initializable {
             //shape= shapeTool.setEndPoint(event.getX(), event.getY());
             this.selectedShape=shape;
         }
-        else{
-            
-            if(this.selectionButtonStatus && event.getTarget() instanceof Shape){
+        else if(this.actionToDo.equalsIgnoreCase("SELECT")){
+            if(this.selectedShape!=null){
+                this.selectedShape.setEffect(null);
+            }
+            if(event.getTarget() instanceof Shape){
                 this.selectedShape=(Shape) event.getTarget();
+                DropShadow s= new DropShadow(20.0, Color.BLACK);
+                selectedShape.setEffect(s);
             }
             else{
                 this.selectedShape=null;
             }
         }
+        
     }
     
     /**
@@ -484,6 +496,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomInOnMousePressed(MouseEvent event) {
+    }
+
+    @FXML
+    private void selectOnAction(ActionEvent event) {
+        this.actionToDo="SELECT";
     }
 
     

@@ -39,6 +39,7 @@
                     <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                         <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
                         <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
+                        <MenuItem fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" text="Select" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Draw">
