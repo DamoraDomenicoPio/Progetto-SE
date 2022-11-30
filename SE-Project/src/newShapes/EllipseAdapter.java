@@ -78,7 +78,11 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setCenterY(y);    
     }
    
-    
+    /**
+     * Method that allows you to stretch the ellipse
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     */
     @Override
     public void stretch(double x, double y) {
         double centerX = super.getCenterX(); 
@@ -88,6 +92,10 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         super.setRadiusY(abs(centerY-y));
     } 
 
+    /**
+     * Method that allows you to resize the ellipse
+     * @param r resize factor
+     */
     @Override
     public void newResize(double r) {
         this.setRadiusX(this.getRadiusX()*r);

@@ -87,14 +87,10 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     }
 
     /**
-     * Method that allows you to resize the rectangle
+     * Method that allows you to stretch the rectangle
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
      */
-    
-    
-    
-    
     @Override
     public void stretch(double x, double y) {
         System.out.println("RESIZE RETTANGLE");
@@ -114,6 +110,10 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         
     }
 
+    /**
+     * Method that allows you to resize the rectangle
+     * @param r resize factor
+     */
     @Override
     public void newResize(double r) {
         this.setHeight(this.getHeight()*r);

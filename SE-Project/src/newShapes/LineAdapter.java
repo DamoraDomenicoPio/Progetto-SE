@@ -118,6 +118,10 @@ public class LineAdapter extends Line implements NewShape{
         this.lengthY=y-this.getStartY();
     }
 
+    /**
+     * Method that allows you to resize the line
+     * @param r resize factor
+     */
     @Override
     public void newResize(double r) {
         this.lengthX=this.lengthX*r;
