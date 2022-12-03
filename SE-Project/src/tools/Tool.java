@@ -13,7 +13,7 @@ import javafx.scene.shape.Shape;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * 
  */
-public abstract class ShapeTool{
+public abstract class Tool{
     public double xStart;
     public double yStart;
     public double xEnd;

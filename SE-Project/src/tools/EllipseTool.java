@@ -14,7 +14,7 @@ import newShapes.EllipseAdapter;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * The EllipseTool allows you to create a new ellipse
  */
-public class EllipseTool extends ShapeTool{
+public class EllipseTool extends Tool{
     /**
      * radius of the ellipse on the horizontal axis
      */

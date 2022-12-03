@@ -8,7 +8,7 @@ import javafx.scene.control.ComboBoxBase;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
-import shapes.MoveTool;
+import tools.MoveTool;
 import tools.Tool;
 
 /**

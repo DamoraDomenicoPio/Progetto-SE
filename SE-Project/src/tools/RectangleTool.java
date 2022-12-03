@@ -15,7 +15,7 @@ import newShapes.RectangleAdapter;
  * The RectangleTool allows you to create a new rectangle
  */
 
-public class RectangleTool extends ShapeTool{
+public class RectangleTool extends Tool{
     /**
      * Represents the height of the rectangle.
      */

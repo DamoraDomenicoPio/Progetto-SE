@@ -23,7 +23,7 @@ public class DeleteCommand implements Command{
     
     @Override
     public void execute() {
-       if(shape !=null){
+       if(shape != null){
             group.getChildren().remove(shape);
         }
     }

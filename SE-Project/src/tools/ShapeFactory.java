@@ -23,7 +23,7 @@ public class ShapeFactory {
      * @param shapeName string containing the shape to create 
      * @return a shape given a string
      */
-    public static ShapeTool getShape(String shapeName){
+    public static Tool getShape(String shapeName){
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
             return new RectangleTool();
         }
