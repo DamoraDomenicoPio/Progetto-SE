@@ -14,7 +14,7 @@ import newShapes.LineAdapter;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * The LineSegmentTool allows you to create a new line
  */
-public class LineSegmentTool extends ShapeTool{
+public class LineSegmentTool extends Tool{
     /**
      * Returns a shape representing the line
      * @param x coordinate of the horizontal axis

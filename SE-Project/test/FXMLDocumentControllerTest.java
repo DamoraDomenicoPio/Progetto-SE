@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tools.ShapeFactory;
-import tools.ShapeTool;
+import tools.Tool;
 
 /**
  *
@@ -29,7 +29,7 @@ public class FXMLDocumentControllerTest {
     
     public FXMLDocumentControllerTest() {
         String shapeToInsert="Ellipse";
-        ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert, 1.0);
+        Tool shapeTool= ShapeFactory.getShape(shapeToInsert, 1.0);
         shapeTool.setStartPoint(1.5, 4.8);
         Shape shape= shapeTool.setEndPoint(9.3, 18.4);
         shape.setStroke(Paint.valueOf("0x00aedd34"));

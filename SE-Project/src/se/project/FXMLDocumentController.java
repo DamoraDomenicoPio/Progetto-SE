@@ -3,6 +3,7 @@
  */
 package se.project;
 
+import command.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -47,8 +48,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import newShapes.NewShape;
 import tools.ObjectTool;
-import tools.ShapeTool;
+import tools.Tool;
 import tools.ShapeFactory;
+import utility.Clipboard;
 
 
 /**
@@ -131,12 +133,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane anchorPaneGroup;
     
+    private Invoker invoker = new Invoker(); 
+    private Clipboard clipboard; 
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.anchorPaneGroup.setMaxSize(width, height);
         this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
         // TODO
+        this.clipboard = new Clipboard(group); 
     }    
     
     /**
@@ -271,7 +277,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert, this.resizeFactor);
+            Tool shapeTool= ShapeFactory.getShape(shapeToInsert, this.resizeFactor);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             shape.setStroke(borderColorPicker.getValue());
@@ -304,7 +310,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void copyOnAction(ActionEvent event) {
-        copySelected();
+        // clipboard.copy(selectedShape);
+        invoker.execute(new CopyCommand(clipboard, selectedShape));
     }
     
     /**
@@ -313,10 +320,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pasteOnAction(ActionEvent event) {
-        if (this.copiedShape != null) { // If a shape has been selected
-            group.getChildren().add(ShapeFactory.shapeCreate(copiedShape));
-              
-        }
+        // paste(selectedShape);
+        // clipboard.incolla(selectedShape);
+        // clipboard.paste(); 
+        invoker.execute(new PasteCommand(group, clipboard));
     }
     
     /**
@@ -327,8 +334,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void changeColorShape(ActionEvent event) {
         System.out.println("cambio colore");
-        selectedShape.setStroke(borderColorPicker.getValue());
-        selectedShape.setFill(insideColorPicker.getValue());
+        invoker.execute(new ChangeColorCommand(selectedShape, borderColorPicker.getValue(), insideColorPicker.getValue()));
     }
     
     /**
@@ -337,7 +343,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void deleteOnAction(ActionEvent event) {
-        deleteSelected();
+        invoker.execute(new DeleteCommand(group, selectedShape));
     }
     
     /**
@@ -346,8 +352,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void cutOnAction(ActionEvent event) {
-        copySelected(); 
-        deleteSelected();
+        // clipboard.cut(selectedShape);
+        invoker.execute(new CutCommand(clipboard, selectedShape));
     }
 
     /**
@@ -447,6 +453,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void undoOnAction(ActionEvent event) {
+        invoker.undo();
     }
 
     /**
@@ -558,3 +565,4 @@ public class FXMLDocumentController implements Initializable {
     
     
 }
+            

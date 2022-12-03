@@ -11,7 +11,7 @@ import newShapes.NewShape;
  @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
 */
 
-public abstract class ObjectTool extends ShapeTool{
+public abstract class ObjectTool extends Tool{
     /**
      * Represents the shape on which the trasformation will be executed.
      */
