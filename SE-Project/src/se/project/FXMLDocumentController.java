@@ -3,8 +3,7 @@
  */
 package se.project;
 
-import command.ChangeColorCommand;
-import command.Invoker;
+import command.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -47,8 +46,9 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import tools.ObjectTool;
-import tools.ShapeTool;
+import tools.Tool;
 import tools.ShapeFactory;
+import utility.Clipboard;
 
 
 /**
@@ -75,7 +75,7 @@ public class FXMLDocumentController implements Initializable {
    
     private Shape selectedShape = null; 
     
-    private String copiedShape = null; 
+    private String copiedShape = null;  
 
     @FXML
     private ColorPicker borderColorPicker;
@@ -119,12 +119,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem selectButton;
     
-    private Invoker invoker; 
+    private Invoker invoker = new Invoker(); 
+    private Clipboard clipboard; 
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.clipboard = new Clipboard(group); 
     }    
     
     /**
@@ -222,7 +223,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
-            ShapeTool shapeTool= ShapeFactory.getShape(actionToDo);
+            Tool shapeTool= ShapeFactory.getShape(actionToDo);
             if(shapeTool!=null){
                 ((ObjectTool) shapeTool).setShape(selectedShape);
                 selectedShape= shapeTool.setEndPoint(event.getX(), event.getY());
@@ -242,7 +243,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            ShapeTool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            Tool shapeTool= ShapeFactory.getShape(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             shape.setStroke(borderColorPicker.getValue());
@@ -275,7 +276,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void copyOnAction(ActionEvent event) {
-        copySelected();
+        // clipboard.copy(selectedShape);
+        invoker.execute(new CopyCommand(clipboard, selectedShape));
     }
     
     /**
@@ -284,10 +286,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pasteOnAction(ActionEvent event) {
-        if (this.copiedShape != null) { // If a shape has been selected
-            group.getChildren().add(ShapeFactory.shapeCreate(copiedShape));
-              
-        }
+        // paste(selectedShape);
+        // clipboard.incolla(selectedShape);
+        // clipboard.paste(); 
+        invoker.execute(new PasteCommand(group, clipboard));
     }
     
     /**
@@ -307,7 +309,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void deleteOnAction(ActionEvent event) {
-        deleteSelected();
+        invoker.execute(new DeleteCommand(group, selectedShape));
     }
     
     /**
@@ -316,8 +318,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void cutOnAction(ActionEvent event) {
-        copySelected(); 
-        deleteSelected();
+        // clipboard.cut(selectedShape);
+        invoker.execute(new CutCommand(clipboard, selectedShape));
     }
 
     /**
