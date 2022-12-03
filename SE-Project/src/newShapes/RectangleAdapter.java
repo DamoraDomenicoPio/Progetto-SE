@@ -17,6 +17,10 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     private double fixedPointX;
     private double fixedPointY;
     
+    private double resizefactor;
+    private double realHeight;
+    private double realWidth;
+    
     /**
      * Creates a new instance of Rectangle with the given position and size.
      * @param d horizontal position of the rectangle
@@ -24,10 +28,13 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      * @param d2 width of the rectangle
      * @param d3 height of the rectangle
      */
-    public RectangleAdapter(double d, double d1, double d2, double d3) {
+    public RectangleAdapter(double d, double d1, double d2, double d3, double resizeFactor) {
         super(d, d1, d2, d3);
         this.fixedPointX=d;
         this.fixedPointY=d1;
+        this.realHeight=d3/resizeFactor;
+        this.realWidth=d2/resizeFactor;
+        this.resizefactor=resizeFactor;
     }
     
     /**
@@ -40,8 +47,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      * @param stroke the stroke color of the rectangle.
      * @param strokeWidth the width of the stroke of the rectangle.
      */
-    public RectangleAdapter(double d, double d1, double d2, double d3, Paint fill, Paint stroke, double strokeWidth) {
-        this(d, d1, d2, d3);
+    public RectangleAdapter(double d, double d1, double d2, double d3, double resizeFactor, Paint fill, Paint stroke, double strokeWidth) {
+        this(d, d1, d2, d3, resizeFactor);
         this.setFill(fill);
         this.setStroke(stroke);
         this.setStrokeWidth(strokeWidth);
@@ -53,7 +60,7 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     @Override
     public String toString() {
-        return "Rectangle;" + this.getX() + ";" + this.getY() + ";" + this.getWidth() + ";" + this.getHeight() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
+        return "Rectangle;" + this.getX() + ";" + this.getY() + ";" + this.realWidth + ";" + this.realHeight + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
     }
 
     /**
@@ -67,6 +74,7 @@ public class RectangleAdapter extends Rectangle implements NewShape{
                 Double.parseDouble(values[1]),
                 Double.parseDouble(values[2]),
                 Double.parseDouble(values[3]),
+                1.0,
                 Paint.valueOf(values[4]),
                 Paint.valueOf(values[5]),
                 Double.parseDouble(values[6]));
@@ -96,6 +104,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         System.out.println("RESIZE RETTANGLE");
         super.setHeight(abs(this.fixedPointY-y));
         super.setWidth(abs(this.fixedPointX-x));
+        this.realHeight=this.getHeight()/this.resizefactor;
+        this.realWidth=this.getWidth()/this.resizefactor;
         
         if(this.fixedPointX<x){
             x=this.fixedPointX;
@@ -118,6 +128,16 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     public void newResize(double r) {
         this.setHeight(this.getHeight()*r);
         this.setWidth(this.getWidth()*r);
+        this.realHeight=this.getHeight()*this.resizefactor;
+        this.realWidth=this.getWidth()*this.resizefactor;
+    }
+
+    @Override
+    public void zoom(double r) {
+        
+        this.resizefactor=r;
+        this.setHeight(this.realHeight*r);
+        this.setWidth(this.realWidth*r);
     }
     
     

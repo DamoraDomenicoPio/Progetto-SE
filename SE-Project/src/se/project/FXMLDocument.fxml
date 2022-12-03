@@ -195,7 +195,7 @@
          </children></VBox>
       <ScrollPane focusTraversable="false" hbarPolicy="ALWAYS" layoutY="91.0" prefHeight="513.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="91.0">
          <content>
-          <AnchorPane onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="1440.0" prefWidth="2560.0">
+          <AnchorPane fx:id="anchorPaneGroup" onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="1440.0" prefWidth="2560.0">
                <children>
                   <Group fx:id="group" />
                </children>

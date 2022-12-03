@@ -22,7 +22,7 @@ public class RectangleAdapterTest {
     
     @Test
     public void testToString(){
-        RectangleAdapter r =new RectangleAdapter(145.0,171.0,155.0,127.0,Paint.valueOf("0xffffffff"),Paint.valueOf("0x000000ff"),1.0);
+        RectangleAdapter r =new RectangleAdapter(145.0,171.0,155.0,127.0, 1.0, Paint.valueOf("0xffffffff"),Paint.valueOf("0x000000ff"),1.0);
         assertEquals(r.toString(),"Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0");
     }
     

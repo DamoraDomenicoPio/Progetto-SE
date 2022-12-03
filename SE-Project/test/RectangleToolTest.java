@@ -24,7 +24,7 @@ public class RectangleToolTest {
     
     @Test
     public void testSetEndPoint(){
-        RectangleTool e=new RectangleTool();
+        RectangleTool e=new RectangleTool(1.0);
         double startX=7.3;
         double startY=34.7;
         double endX=134.6;
