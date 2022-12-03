@@ -130,5 +130,10 @@ public class LineAdapter extends Line implements NewShape{
         this.setEndY(this.getStartY()+this.lengthY);
     }
 
+    @Override
+    public void zoom(double r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
         
 }

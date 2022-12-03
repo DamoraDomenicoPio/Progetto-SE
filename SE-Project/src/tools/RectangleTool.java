@@ -24,6 +24,12 @@ public class RectangleTool extends Tool{
      * Represents the width of the rectangle.
      */
     private double width;
+
+    public RectangleTool(double resizeFactor) {
+        this.setResizeFactor(resizeFactor);
+    }
+    
+    
     /**
      * Returns a shape with modified coordinates
      * @param x coordinate of the horizontal axis
@@ -47,7 +53,7 @@ public class RectangleTool extends Tool{
             yStart=yEnd;
             yEnd=t;
         }
-        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height);
+        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height, this.resizeFactor);
         
         
         return r;

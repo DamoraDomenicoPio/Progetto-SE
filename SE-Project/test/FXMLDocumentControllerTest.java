@@ -29,7 +29,7 @@ public class FXMLDocumentControllerTest {
     
     public FXMLDocumentControllerTest() {
         String shapeToInsert="Ellipse";
-        Tool shapeTool= ShapeFactory.getShape(shapeToInsert);
+        Tool shapeTool= ShapeFactory.getShape(shapeToInsert, 1.0);
         shapeTool.setStartPoint(1.5, 4.8);
         Shape shape= shapeTool.setEndPoint(9.3, 18.4);
         shape.setStroke(Paint.valueOf("0x00aedd34"));
@@ -37,7 +37,7 @@ public class FXMLDocumentControllerTest {
         group.getChildren().add(shape);
         
         shapeToInsert="Rectangle";
-        shapeTool= ShapeFactory.getShape(shapeToInsert);
+        shapeTool= ShapeFactory.getShape(shapeToInsert, 1.0);
         shapeTool.setStartPoint(1.5, 6.7);
         shape= shapeTool.setEndPoint(3.0, 38.0);
         shape.setStroke(Paint.valueOf("0x00ffffff"));
@@ -45,7 +45,7 @@ public class FXMLDocumentControllerTest {
         group.getChildren().add(shape);
         
         shapeToInsert="Line";
-        shapeTool= ShapeFactory.getShape(shapeToInsert);
+        shapeTool= ShapeFactory.getShape(shapeToInsert, 1.0);
         shapeTool.setStartPoint(180.5, 35.7);
         shape= shapeTool.setEndPoint(11.3, 7.7);
         shape.setStroke(Paint.valueOf("0x00aaaabb"));
