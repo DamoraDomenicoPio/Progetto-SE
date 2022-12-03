@@ -30,8 +30,8 @@ public class LineAdapter extends Line implements NewShape{
      */
     public LineAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
-        this.lengthX=d-d2;
-        this.lengthY=d1-d3;
+        this.lengthX=d2-d;
+        this.lengthY=d3-d1;
     }
 
     /**
@@ -114,8 +114,20 @@ public class LineAdapter extends Line implements NewShape{
     public void stretch(double x, double y) {
         this.setEndX(x);
         this.setEndY(y);
-        this.lengthX=this.getStartX()-x;
-        this.lengthY=this.getStartY()-y;
+        this.lengthX=x-this.getStartX();
+        this.lengthY=y-this.getStartY();
+    }
+
+    /**
+     * Method that allows you to resize the line
+     * @param r resize factor
+     */
+    @Override
+    public void newResize(double r) {
+        this.lengthX=this.lengthX*r;
+        this.lengthY=this.lengthY*r;
+        this.setEndX(this.getStartX()+this.lengthX);
+        this.setEndY(this.getStartY()+this.lengthY);
     }
 
         

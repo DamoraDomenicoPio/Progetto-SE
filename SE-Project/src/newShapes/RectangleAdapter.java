@@ -14,8 +14,8 @@ import javafx.scene.shape.Rectangle;
  */
 public class RectangleAdapter extends Rectangle implements NewShape{
 
-    private double resizeX;
-    private double resizeY;
+    private double fixedPointX;
+    private double fixedPointY;
     
     /**
      * Creates a new instance of Rectangle with the given position and size.
@@ -26,8 +26,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     public RectangleAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
-        this.resizeX=d;
-        this.resizeY=d1;
+        this.fixedPointX=d;
+        this.fixedPointY=d1;
     }
     
     /**
@@ -82,36 +82,42 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         System.out.println("Move rettangle");
         this.setX(x);
         this.setY(y);
-        this.resizeX=x;
-        this.resizeY=y;
+        this.fixedPointX=x;
+        this.fixedPointY=y;
     }
 
     /**
-     * Method that allows you to resize the rectangle
+     * Method that allows you to stretch the rectangle
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
      */
-    
-    
-    
-    
     @Override
     public void stretch(double x, double y) {
         System.out.println("RESIZE RETTANGLE");
-        super.setHeight(abs(resizeY-y));
-        super.setWidth(abs(resizeX-x));
+        super.setHeight(abs(this.fixedPointY-y));
+        super.setWidth(abs(this.fixedPointX-x));
         
-        if(resizeX<x){
-            x=resizeX;
+        if(this.fixedPointX<x){
+            x=this.fixedPointX;
         }
         
-        if(resizeY<y){
-            y=resizeY;
+        if(this.fixedPointY<y){
+            y=this.fixedPointY;
         }
         
         super.setX(x);
         super.setY(y);
         
+    }
+
+    /**
+     * Method that allows you to resize the rectangle
+     * @param r resize factor
+     */
+    @Override
+    public void newResize(double r) {
+        this.setHeight(this.getHeight()*r);
+        this.setWidth(this.getWidth()*r);
     }
     
     

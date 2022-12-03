@@ -45,6 +45,7 @@ import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.Tool;
 import tools.ShapeFactory;
@@ -212,14 +213,20 @@ public class FXMLDocumentController implements Initializable {
         lineIntoButton.setStroke(borderColorPicker.getValue());
     }
     
-    
+    /**
+     * Method that allows to perform actions that require released the mouse
+     * @param event MouseEvent object generate when the mouse is released 
+     */
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
         if(this.actionToDo.equalsIgnoreCase("ADD")){
             this.selectedShape=null;
         }
     }
-    
+    /**
+     * Method that allows to perform actions that require dragging the mouse
+     * @param event MouseEvent object generate when dragging the mouse
+     */
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
@@ -227,13 +234,14 @@ public class FXMLDocumentController implements Initializable {
             if(shapeTool!=null){
                 ((ObjectTool) shapeTool).setShape(selectedShape);
                 selectedShape= shapeTool.setEndPoint(event.getX(), event.getY());
-            }
-            
-        }
-        
+            }          
+        }      
     }
 
-    
+    /**
+     * Method that allows to perform actions that require pressed the mouse
+     * @param event MouseEvent object generate when pressed the mouse button
+     */
     @FXML
     private void groupOnMousePressed(MouseEvent event) {
         xPressed=event.getX();
@@ -332,6 +340,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    /**
+     * Method that allows to change size of a selected shape on the drawing sheet.
+     * @param event MouseEvent object generated when the button 'apply' is pressed.
+     */
     @FXML
     private void changeShapeSize(MouseEvent event) {
         try{
@@ -339,12 +351,10 @@ public class FXMLDocumentController implements Initializable {
             if(size<0)
                 shapeSize.setText("1");
             else{
-                selectedShape.setScaleX(size);
-                selectedShape.setScaleY(size);
+                ((NewShape) this.selectedShape).newResize(size);
             }
-            }
-        catch (Exception e){
-        }
+        } catch (Exception e){
+          }
     }
 
     /**
@@ -367,24 +377,29 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-     * Method that changes the shapeToInsert string to the string "RESIZE".
-     * @param event ActionEvent object generated when the button 'Resize' is selected.
+     * Method that inserts the border color of the figure
+     * @param event ActionEvent object generated when a color is selected and a shaps is created.
      */
-    
-
     @FXML
     private void borderColorSelected(ActionEvent event) {
         ellipseIntoButton.setStroke(borderColorPicker.getValue());
         rectangleIntoButton.setStroke(borderColorPicker.getValue());
         lineIntoButton.setStroke(borderColorPicker.getValue());
     }
-
+    /**
+     * Method that inserts the inside color of the figure
+     * @param event ActionEvent object generated when a color is selected and a shaps is created.
+     */
     @FXML
     private void insideColorSelected(ActionEvent event) {
         ellipseIntoButton.setFill(insideColorPicker.getValue());
         rectangleIntoButton.setFill(insideColorPicker.getValue());
     }
-
+    
+    /**
+     * Method that allows to select a figure
+     * @param event ActionEvent object generated when a button select is pressed.
+     */
     @FXML
     private void onSelectionButtonPressed(ActionEvent event) {
         if(selectionButtonStatus == false){
@@ -478,10 +493,18 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    /**
+     * Method that changes the shapeToInsert string to the string "SELECT".
+     * @param event ActionEvent object generated when the button 'Select' is selected.
+     */
     private void selectOnAction(ActionEvent event) {
         this.actionToDo="SELECT";
     }
-
+    
+    /**
+     * Method that changes the shapeToInsert string to the string "STRETCH".
+     * @param event ActionEvent object generated when the button 'Stretch' is selected.
+     */
     @FXML
     private void stretchOnAction(ActionEvent event) {
         this.actionToDo="STRETCH";
