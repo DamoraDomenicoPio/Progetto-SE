@@ -17,38 +17,29 @@ import tools.Tool;
  */
 public class AddCommand implements Command{
     
-    private Shape addedShape;
     private Group group;
     private Paint borderColor, insideColor; 
-    private int startX, startY, endX, endY; 
-    private Tool shapeTool; 
+    private Shape newShape; 
 
-    public AddCommand(Shape addedShape, Group group, Paint borderColor, Paint insideColor, int startX, int startY, int endX, int endY, Tool shapeTool) {
-        this.addedShape = addedShape;
+    public AddCommand(Group group, Paint borderColor, Paint insideColor, Shape newShape) {
         this.group = group;
         this.borderColor = borderColor;
         this.insideColor = insideColor;
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
-        this.shapeTool = shapeTool;
+        this.newShape = newShape;
     }
+
+    
     
     @Override
     public void execute() {
-        this.shapeTool.setStartPoint(startX, startY); 
-        
-        this.addedShape = shapeTool.setEndPoint(endX, endY);
-        addedShape.setStroke(this.borderColor);
-        addedShape.setFill(this.insideColor);
-        group.getChildren().add(addedShape);
+        this.newShape.getStrokeDashArray().add(0d);  // Replaces the dotted line with a continuous 
+        this.newShape.setStroke(this.borderColor);
+        this.newShape.setFill(this.insideColor);
     }
 
     @Override
     public void undo() {
-        group.getChildren().remove(addedShape);
-        
+        this.group.getChildren().remove(this.newShape);  // Deletes the added shape 
     }
     
 }

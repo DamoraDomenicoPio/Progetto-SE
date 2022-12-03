@@ -122,6 +122,7 @@ public class FXMLDocumentController implements Initializable {
     
     private Invoker invoker = new Invoker(); 
     private Clipboard clipboard; 
+    private Shape newShape; 
     
     
     @Override
@@ -221,6 +222,7 @@ public class FXMLDocumentController implements Initializable {
     private void groupOnMouseReleased(MouseEvent event) {
         if(this.actionToDo.equalsIgnoreCase("ADD")){
             this.selectedShape=null;
+            invoker.execute(new AddCommand(group, borderColorPicker.getValue(), insideColorPicker.getValue(), this.newShape));
         }
     }
     /**
@@ -254,9 +256,11 @@ public class FXMLDocumentController implements Initializable {
             Tool shapeTool= ShapeFactory.getShape(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-            shape.setStroke(borderColorPicker.getValue());
-            shape.setFill(insideColorPicker.getValue());
             group.getChildren().add(shape);
+            shape.getStrokeDashArray().add(10d);
+            shape.setStroke(new Color(0, 0, 0, 1));
+            shape.setFill(new Color(1, 1, 1, 1));
+            this.newShape = shape; 
             //((ObjectTool) shapeTool).setShape(selectedShape);
             //shape= shapeTool.setEndPoint(event.getX(), event.getY());
             this.selectedShape=shape;
