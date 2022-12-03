@@ -288,7 +288,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void copyOnAction(ActionEvent event) {
-        // clipboard.copy(selectedShape);
         invoker.execute(new CopyCommand(clipboard, selectedShape));
     }
     
@@ -298,9 +297,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pasteOnAction(ActionEvent event) {
-        // paste(selectedShape);
-        // clipboard.incolla(selectedShape);
-        // clipboard.paste(); 
         invoker.execute(new PasteCommand(group, clipboard));
     }
     
@@ -311,7 +307,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void changeColorShape(ActionEvent event) {
-        System.out.println("cambio colore");
         invoker.execute(new ChangeColorCommand(selectedShape, borderColorPicker.getValue(), insideColorPicker.getValue()));
     }
     
@@ -334,15 +329,15 @@ public class FXMLDocumentController implements Initializable {
         invoker.execute(new CutCommand(clipboard, selectedShape));
     }
 
-    /**
-     * Method that allows to delete a selected object on the drawing sheet.
-     */
-    private void deleteSelected() {
-        if(selectedShape!=null){
-            group.getChildren().remove(selectedShape);
-            selectedShape=null;
-        }
-    }
+//    /**
+//     * Method that allows to delete a selected object on the drawing sheet.
+//     */
+//    private void deleteSelected() {
+//        if(selectedShape!=null){
+//            group.getChildren().remove(selectedShape);
+//            selectedShape=null;
+//        }
+//    }
     
     /**
      * Method that allows to change size of a selected shape on the drawing sheet.
@@ -361,15 +356,15 @@ public class FXMLDocumentController implements Initializable {
           }
     }
 
-    /**
-     * Method that allows to copy a selected object on the drawing sheet.
-     */
-    private void copySelected() {
-    if (this.selectedShape != null) { // If a shape has been selected
-            this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
-        }
-        // If nothing was selected, nothig gets copied 
-    }
+//    /**
+//     * Method that allows to copy a selected object on the drawing sheet.
+//     */
+//    private void copySelected() {
+//    if (this.selectedShape != null) { // If a shape has been selected
+//            this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
+//        }
+//        // If nothing was selected, nothig gets copied 
+//    }
     
     /**
      * Method that changes the shapeToInsert string to the string "MOVE".
@@ -381,7 +376,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-     * Method that inserts the border color of the figure
+     * Method that sets the selected color as border color of the shapes inside the add shape buttons 
      * @param event ActionEvent object generated when a color is selected and a shaps is created.
      */
     @FXML
@@ -391,7 +386,7 @@ public class FXMLDocumentController implements Initializable {
         lineIntoButton.setStroke(borderColorPicker.getValue());
     }
     /**
-     * Method that inserts the inside color of the figure
+     * Method that sets the selected color as fill color of the shapes inside the add shape buttons 
      * @param event ActionEvent object generated when a color is selected and a shaps is created.
      */
     @FXML
@@ -401,7 +396,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-     * Method that allows to select a figure
+     * Methos that sets the selection tool and changes the color of the check inside the selection button
      * @param event ActionEvent object generated when a button select is pressed.
      */
     @FXML
