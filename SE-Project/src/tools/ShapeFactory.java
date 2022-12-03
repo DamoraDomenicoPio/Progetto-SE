@@ -21,9 +21,9 @@ public class ShapeFactory {
      * @param shapeName string containing the shape to create 
      * @return a shape given a string
      */
-    public static Tool getShape(String shapeName){
+    public static Tool getShape(String shapeName, double resizeFactor){
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
-            return new RectangleTool();
+            return new RectangleTool(resizeFactor);
         }
         else if(shapeName.equalsIgnoreCase("ELLIPSE")){
             return new EllipseTool();
@@ -31,13 +31,14 @@ public class ShapeFactory {
         else if(shapeName.equalsIgnoreCase("LINE")){
             return new LineSegmentTool();
         }
-        else if(shapeName.equalsIgnoreCase("MOVE")){
+        return null;
+    }
+    
+    public static ObjectTool getAction(String actionName){
+        if(actionName.equalsIgnoreCase("MOVE")){
             return new MoveTool(); 
         }
-        /*else if(shapeName.equalsIgnoreCase("RESIZE")){
-            return new StretchTool(); 
-        }*/
-        else if(shapeName.equalsIgnoreCase("STRETCH")|| shapeName.equalsIgnoreCase("ADD")){
+        else if(actionName.equalsIgnoreCase("STRETCH")|| actionName.equalsIgnoreCase("ADD")){
             return new StretchTool(); 
         }
         return null;

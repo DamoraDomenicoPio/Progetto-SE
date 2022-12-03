@@ -34,6 +34,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Shadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
@@ -76,7 +77,9 @@ public class FXMLDocumentController implements Initializable {
    
     private Shape selectedShape = null; 
     
-    private String copiedShape = null;  
+    private String copiedShape = null;
+    
+    private double resizeFactor=1;
 
     @FXML
     private ColorPicker borderColorPicker;
@@ -86,6 +89,14 @@ public class FXMLDocumentController implements Initializable {
     private double xPressed=0;
     
     private double yPressed=0;
+    
+    private double xDragged=0;
+    
+    private double yDragged=0;
+    
+    private final double width=1800;
+    
+    private final double height=900;
     
     private boolean selectionButtonStatus = false;
     
@@ -119,6 +130,8 @@ public class FXMLDocumentController implements Initializable {
     private Text zoomInInButton;
     @FXML
     private MenuItem selectButton;
+    @FXML
+    private AnchorPane anchorPaneGroup;
     
     private Invoker invoker = new Invoker(); 
     private Clipboard clipboard; 
@@ -126,6 +139,9 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.anchorPaneGroup.setMaxSize(width, height);
+        this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
+        // TODO
         this.clipboard = new Clipboard(group); 
     }    
     
@@ -167,6 +183,9 @@ public class FXMLDocumentController implements Initializable {
             group.getChildren().clear();
             i.useLocale(Locale.US);
             i.useDelimiter("\n");
+            this.resizeFactor=1;
+            this.anchorPaneGroup.setMaxSize(width, height);
+            this.anchorPaneGroup.setMinSize(width, height);
             while(i.hasNext()){
                 String shapeString=i.next();
                 Shape s= ShapeFactory.shapeCreate(shapeString);
@@ -230,10 +249,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
-            Tool shapeTool= ShapeFactory.getShape(actionToDo);
-            if(shapeTool!=null){
-                ((ObjectTool) shapeTool).setShape(selectedShape);
-                selectedShape= shapeTool.setEndPoint(event.getX(), event.getY());
+            ObjectTool objectTool= ShapeFactory.getAction(actionToDo);
+            if(objectTool!=null){
+                if(event.getX()>0 && event.getX()<this.width*this.resizeFactor){
+                    this.xDragged=event.getX();
+                }
+                if(event.getY()>0 && event.getY()<this.height*this.resizeFactor){
+                    this.yDragged=event.getY();
+                }
+                ((ObjectTool) objectTool).setShape(selectedShape);
+                selectedShape= objectTool.setEndPoint(this.xDragged, this.yDragged);
+                
             }          
         }      
     }
@@ -251,7 +277,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            Tool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            Tool shapeTool= ShapeFactory.getShape(shapeToInsert, this.resizeFactor);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             shape.setStroke(borderColorPicker.getValue());
@@ -470,8 +496,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomOutOnAction(ActionEvent event) {
-        group.setScaleX(0.3);
-        group.setScaleY(0.3);
+        if(this.resizeFactor>0.6){
+            this.resizeFactor-=0.1;
+            this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
+            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
+            for(Node i: this.group.getChildren()){
+                Shape s=(Shape) i;
+                ((NewShape) s).zoom(resizeFactor);
+            }
+        }
+        
+        /*this.anchorPaneGroup.setScaleX(resizeFactor);
+        this.anchorPaneGroup.setScaleY(resizeFactor);
+        group.setScaleX(this.resizeFactor);
+        group.setScaleY(this.resizeFactor);*/
     }
 
     @FXML
@@ -484,8 +522,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomInOnAction(ActionEvent event) {
-        group.setScaleX(2);
-        group.setScaleY(2);
+        if(this.resizeFactor<1.4){
+            this.resizeFactor+=0.1;
+            this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
+            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
+            for(Node i: this.group.getChildren()){
+                Shape s=(Shape) i;
+                ((NewShape) s).zoom(resizeFactor);
+            }
+        }
+        
+        /*group.setScaleX(this.resizeFactor);
+        group.setScaleY(this.resizeFactor);
+        this.anchorPaneGroup.setScaleX(resizeFactor);
+        this.anchorPaneGroup.setScaleY(resizeFactor);*/
     }
 
     @FXML
@@ -515,3 +565,4 @@ public class FXMLDocumentController implements Initializable {
     
     
 }
+            
