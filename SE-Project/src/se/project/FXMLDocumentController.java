@@ -441,8 +441,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void BringToFrontOnAction(ActionEvent event) {
         if (selectedShape != null) {
-            this.selectedShape.toFront();  // Node's class method that brings the node 
-                                            // on which the function in invoked on on top of its siblings 
+            invoker.execute(new GoFrontCommand(group, selectedShape));
         }
     }
     
@@ -453,8 +452,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void BringToBackOnAction(ActionEvent event) {
         if (selectedShape != null) {
-            this.selectedShape.toBack();  // Node's class method that brings the node on which 
-                                          // the method it's been called behind all its siblings 
+            invoker.execute(new GoBackgroundCommand(group, selectedShape));
         }
     }
     
