@@ -7,7 +7,7 @@ Project documentation
 * Architecture: https://drive.google.com/file/d/1ToLqN0ta9eWSVwTM0WY75rRTfs4OJEZD/view?usp=share_link
 * First sprint: https://drive.google.com/drive/folders/1i7Rf382wC0gOnQQA6xEdWSEgq-WaR4JH?usp=share_link
 * Second sprint: https://drive.google.com/drive/folders/1nnDzVygAL-2ADRCS_lRgYpiCK1-xR2U-?usp=share_link
-* Second sprint: https://drive.google.com/drive/folders/1hQB_5fvq5k7cOeTq9_GRCwHFiJj73AK7?usp=share_link
+* Third sprint: https://drive.google.com/drive/folders/1hQB_5fvq5k7cOeTq9_GRCwHFiJj73AK7?usp=share_link
 * Presentation: https://docs.google.com/presentation/d/1xsJTXux5T6QZLxOTRS5bwsRPU2Y7Jcgf/edit?usp=sharing&ouid=107943012590991985693&rtpof=true&sd=true
 
 | Name  | Freshman  | Email |
