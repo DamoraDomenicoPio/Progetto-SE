@@ -138,7 +138,7 @@ public class FXMLDocumentController implements Initializable {
     private Shape newShape; 
     @FXML
     private ImageView cursorIntoSelectionButton;
-    private Shape newShape; 
+
     
     
     @Override
