@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
@@ -13,13 +13,14 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -42,29 +43,23 @@
                     <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                         <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
                         <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
-                        <MenuItem fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" text="Select" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Draw">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#moveOnAction" text="Move" />
-                        <MenuItem mnemonicParsing="false" onAction="#stretchOnAction" text="Stretch" />
-                        <MenuItem mnemonicParsing="false" onAction="#BringToFrontOnAction" text="Bring to front" />
-                        <MenuItem mnemonicParsing="false" onAction="#BringToBackOnAction" text="Bring to back" />
-                     </items>
-                  </Menu>
               </menus>
             </MenuBar>
-            <ToolBar prefHeight="74.0" prefWidth="800.0">
+            <ToolBar prefHeight="89.0" prefWidth="800.0">
                <items>
-                  <VBox prefHeight="58.0" prefWidth="135.0">
+                  <VBox prefHeight="80.0" prefWidth="121.0">
                      <children>
                         <Label text="Shapes">
                            <VBox.margin>
-                              <Insets bottom="3.0" left="47.0" top="3.0" />
+                              <Insets bottom="3.0" left="6.0" top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
                         </Label>
-                        <HBox prefHeight="40.0" prefWidth="135.0">
+                        <HBox prefHeight="38.0" prefWidth="140.0">
                            <children>
                               <Button fx:id="lineButton" mnemonicParsing="false" onAction="#addLine" prefHeight="26.0" prefWidth="33.0">
                                  <HBox.margin>
@@ -84,7 +79,7 @@
                               </Button>
                               <Button fx:id="ellipseButton" mnemonicParsing="false" onAction="#addEllipse" prefHeight="26.0" prefWidth="35.0">
                                  <HBox.margin>
-                                    <Insets right="20.0" />
+                                    <Insets right="15.0" />
                                  </HBox.margin>
                                  <graphic>
                                     <Ellipse fx:id="ellipseIntoButton" fill="WHITE" radiusX="9.0" radiusY="8.0" stroke="BLACK" strokeType="INSIDE" />
@@ -94,17 +89,20 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="58.0" prefWidth="170.0">
+                  <VBox prefHeight="80.0" prefWidth="150.0">
                      <children>
                         <Label text="Border/Fill Color">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="14.0" top="3.0" />
+                              <Insets top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
                         </Label>
-                        <HBox prefHeight="40.0" prefWidth="135.0">
+                        <HBox prefHeight="40.0" prefWidth="148.0">
                            <children>
                               <ColorPicker fx:id="borderColorPicker" onAction="#borderColorSelected" prefHeight="30.0" prefWidth="45.0">
                                  <value>
@@ -123,23 +121,32 @@
                                  <graphic>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🎨" />
                                  </graphic>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
                               </Button>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="58.0" prefWidth="135.0">
+                  <VBox prefHeight="80.0" prefWidth="121.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="18.0" prefWidth="39.0" text="Scale">
                            <VBox.margin>
-                              <Insets bottom="3.0" left="35.0" top="3.0" />
+                              <Insets bottom="2.0" top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets left="-12.0" />
+                           </padding>
                         </Label>
-                        <HBox prefHeight="40.0" prefWidth="135.0">
+                        <HBox prefHeight="40.0" prefWidth="122.0">
                            <children>
                               <TextField fx:id="shapeSize" prefHeight="26.0" prefWidth="45.0">
                                  <HBox.margin>
-                                    <Insets />
+                                    <Insets right="2.0" />
                                  </HBox.margin>
                               </TextField>
                               <Button fx:id="applySizeButton" mnemonicParsing="false" onMouseClicked="#changeShapeSize" onMousePressed="#sizeColorOnMousePressed" onMouseReleased="#sizeColorOnMouseReleased" prefHeight="26.0" prefWidth="61.0">
@@ -154,21 +161,28 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="66.0" prefWidth="54.0">
+                  <VBox prefHeight="62.0" prefWidth="54.0">
                      <children>
                         <Label text="Select">
                            <VBox.margin>
                               <Insets bottom="3.0" top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
                         </Label>
                         <HBox prefHeight="40.0" prefWidth="135.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#onSelectionButtonPressed" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
+                              <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
                                  <HBox.margin>
-                                    <Insets />
+                                    <Insets right="15.0" />
                                  </HBox.margin>
                                  <graphic>
-                                    <Polyline fx:id="polygonIntoSelectionButton" fill="CHARTREUSE" points="-27.59998893737793, 0.20000457763671875, -18.015867233276367, -13.95462417602539, -27.599973678588867, 0.20000457763671875, -32.58307647705078, -7.295635223388672" stroke="#bfbfbf" strokeWidth="3.0" />
+                                    <ImageView fx:id="cursorIntoSelectionButton" fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.4" scaleY="1.4">
+                                       <image>
+                                          <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/cursor-png-1127.png" />
+                                       </image>
+                                    </ImageView>
                                  </graphic>
                               </Button>
                            </children>
@@ -179,10 +193,13 @@
                      <children>
                         <Label text="Back">
                            <VBox.margin>
-                              <Insets bottom="3.0" left="4.0" top="3.0" />
+                              <Insets bottom="3.0" top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
                         </Label>
-                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoColorOnMousePressed" onMouseReleased="#undoColorOnMouseReleased" prefHeight="27.0" prefWidth="38.0" textFill="#bfbfbf">
+                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoColorOnMousePressed" onMouseReleased="#undoColorOnMouseReleased" prefHeight="26.0" prefWidth="38.0" textFill="#bfbfbf">
                            <graphic>
                               <Text fx:id="arrowIntoUndoButton" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↩" wrappingWidth="9.66664457321167">
                                  <font>
@@ -196,16 +213,79 @@
                         </Button>
                      </children>
                   </VBox>
-                  <VBox prefHeight="58.0" prefWidth="112.0">
+                  <VBox prefHeight="80.0" prefWidth="124.0">
+                     <children>
+                        <Label text="Fore/Background">
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="56.0" prefWidth="178.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#BringToFrontOnAction" prefHeight="26.0" prefWidth="56.0">
+                                 <graphic>
+                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↑↓" wrappingWidth="14.400024890899658" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#BringToBackOnAction" prefHeight="26.0" prefWidth="56.0">
+                                 <graphic>
+                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↓↑">
+                                       <rotationAxis>
+                                          <Point3D x="2.0" z="1.0" />
+                                       </rotationAxis>
+                                    </Text>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="80.0" prefWidth="56.0">
+                     <children>
+                        <Label text="Stretch">
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="56.0" prefWidth="67.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#stretchOnAction" prefHeight="27.0" prefWidth="37.0">
+                                 <graphic>
+                                    <Text scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="↔" translateX="-3.0" translateY="-3.0" wrappingWidth="10.341796875" y="5.0" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="62.0" prefWidth="96.0">
                      <children>
                         <Label text="Zoom out/in">
                            <VBox.margin>
                               <Insets bottom="3.0" top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
                         </Label>
-                        <HBox prefHeight="40.0" prefWidth="135.0">
+                        <HBox prefHeight="40.0" prefWidth="102.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#zoomOutOnAction" onMousePressed="#zoomOutOnMousePressed" onMouseReleased="#zoomOutOnMouseReleased" prefHeight="27.0" prefWidth="40.0">
+                              <Button mnemonicParsing="false" onAction="#zoomOutOnAction" onMousePressed="#zoomOutOnMousePressed" onMouseReleased="#zoomOutOnMouseReleased" prefHeight="27.0" prefWidth="41.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -231,11 +311,38 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <VBox prefHeight="66.0" prefWidth="42.0">
+                     <children>
+                        <Label text="Move">
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="36.0" prefWidth="42.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#moveOnAction" prefHeight="27.0" prefWidth="32.0">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.99" scaleY="1.98">
+                                       <image>
+                                          <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/pngegg.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </items>
             </ToolBar>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
          </children></VBox>
-      <ScrollPane focusTraversable="false" hbarPolicy="ALWAYS" layoutY="102.0" prefHeight="604.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+      <ScrollPane focusTraversable="false" hbarPolicy="ALWAYS" layoutY="117.0" prefHeight="698.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0">
          <content>
           <AnchorPane fx:id="anchorPaneGroup" onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="1440.0" prefWidth="2560.0">
                <children>
@@ -247,7 +354,5 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ScrollPane>
-      <Accordion />
-      <Accordion />
    </children>
 </AnchorPane>
