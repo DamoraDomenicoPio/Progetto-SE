@@ -33,6 +33,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Shadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -67,6 +68,7 @@ public class FXMLDocumentController implements Initializable {
     private Button rectangleButton;
     @FXML
     private Button lineButton;
+    
     private ColorPicker colorPicker;
     @FXML
     private Menu fileMenu;
@@ -102,9 +104,8 @@ public class FXMLDocumentController implements Initializable {
     
     
     
-    private boolean selectionButtonStatus = false;
-    
     private String shapeToInsert="";
+    
     private String actionToDo="";
     @FXML
     private MenuItem deleteButton;
@@ -121,8 +122,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Ellipse ellipseIntoButton;
     @FXML
-    private Polyline polygonIntoSelectionButton;
-    @FXML
     private Button undoButton;
     @FXML
     private Text arrowIntoUndoButton;
@@ -133,13 +132,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Text zoomInInButton;
     @FXML
-    private MenuItem selectButton;
+    private Button selectButton;
     @FXML
     private AnchorPane anchorPaneGroup;
     
-    private Invoker invoker = new Invoker(); 
+    private Invoker invoker = new Invoker();
+    
     private Clipboard clipboard; 
     private Shape newShape; 
+    private ObjectTool currentTool; 
+    @FXML
+    private ImageView cursorIntoSelectionButton;
+
     
     
     @Override
@@ -247,6 +251,11 @@ public class FXMLDocumentController implements Initializable {
         if(this.actionToDo.equalsIgnoreCase("ADD")){
             this.selectedShape=null;
             invoker.execute(new AddCommand(group, borderColorPicker.getValue(), insideColorPicker.getValue(), this.newShape));
+        }
+        else if (! this.actionToDo.equalsIgnoreCase("SELECT")) { 
+            if (currentTool != null) {
+            invoker.execute(new ObjectToolCommand(xPressed, yPressed, event.getX(), event.getY(), currentTool, selectedShape));
+            }
         }
     }
     /**
@@ -375,13 +384,13 @@ public class FXMLDocumentController implements Initializable {
      * @param event MouseEvent object generated when the button 'apply' is pressed.
      */
     @FXML
-    private void changeShapeSize(MouseEvent event) {
+    private void applyScaleOnAction(ActionEvent event){
         try{
             double size= Double.parseDouble(shapeSize.getText());
             if(size<0)
                 shapeSize.setText("1");
             else{
-                ((NewShape) this.selectedShape).newResize(size);
+                invoker.execute(new ScaleCommand(size, selectedShape));
             }
         } catch (Exception e){
           }
@@ -426,24 +435,7 @@ public class FXMLDocumentController implements Initializable {
         rectangleIntoButton.setFill(insideColorPicker.getValue());
     }
     
-    /**
-     * Methos that sets the selection tool and changes the color of the check inside the selection button
-     * @param event ActionEvent object generated when a button select is pressed.
-     */
-    @FXML
-    private void onSelectionButtonPressed(ActionEvent event) {
-        if(selectionButtonStatus == false){
-            selectionButtonStatus = true;
-            polygonIntoSelectionButton.setStroke(Color.DODGERBLUE);
-            polygonIntoSelectionButton.setFill(Color.DODGERBLUE);
-            this.actionToDo="SELECT";
-        }else{
-            selectionButtonStatus = false;
-            polygonIntoSelectionButton.setStroke(Color.rgb(191, 191, 191));
-            polygonIntoSelectionButton.setFill(Color.rgb(191, 191, 191));   
-            this.actionToDo="";
-        }
-    }
+
 
     @FXML
     private void undoColorOnMouseReleased(MouseEvent event) {
@@ -544,7 +536,7 @@ public class FXMLDocumentController implements Initializable {
         this.group.setScaleY(this.resizeFactor);
         /*group.setScaleX(this.resizeFactor);
         group.setScaleY(this.resizeFactor);
-        this.anchorPaneGroup.setScaleX(resizeFactor);
+        this.anchorPaneGroup.setScaleX(resizeFactor);sice
         this.anchorPaneGroup.setScaleY(resizeFactor);*/
     }
 
@@ -570,9 +562,16 @@ public class FXMLDocumentController implements Initializable {
         this.actionToDo="STRETCH";
     }
 
+
+    @FXML
+    private void pasteOnActionContextMenu(ActionEvent event) {
+    }
+
+
     
 
     
     
 }
+            
             
