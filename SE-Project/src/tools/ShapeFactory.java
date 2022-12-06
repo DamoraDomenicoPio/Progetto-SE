@@ -21,9 +21,9 @@ public class ShapeFactory {
      * @param shapeName string containing the shape to create 
      * @return a shape given a string
      */
-    public static Tool getShape(String shapeName, double resizeFactor){
+    public static Tool getShape(String shapeName){
         if(shapeName.equalsIgnoreCase("RECTANGLE")){
-            return new RectangleTool(resizeFactor);
+            return new RectangleTool();
         }
         else if(shapeName.equalsIgnoreCase("ELLIPSE")){
             return new EllipseTool();

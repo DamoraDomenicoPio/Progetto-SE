@@ -30,6 +30,4 @@ public interface NewShape {
      * @param r resize factor
      */
     public void newResize(double r);
-    
-    public void zoom(double r);
 }

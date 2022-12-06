@@ -22,10 +22,10 @@ public class ShapeToolTest {
     
     @Test
     public void testShapeFactory(){
-        assertTrue(ShapeFactory.getShape("Rectangle", 1.0) instanceof RectangleTool);
-        assertTrue(ShapeFactory.getShape("Line", 1.0) instanceof LineSegmentTool);
-        assertTrue(ShapeFactory.getShape("Ellipse", 1.0) instanceof EllipseTool);
-        assertTrue(ShapeFactory.getShape("Elipse", 1.0) == null);
+        assertTrue(ShapeFactory.getShape("Rectangle") instanceof RectangleTool);
+        assertTrue(ShapeFactory.getShape("Line") instanceof LineSegmentTool);
+        assertTrue(ShapeFactory.getShape("Ellipse") instanceof EllipseTool);
+        assertTrue(ShapeFactory.getShape("Elipse") == null);
     }
     
     @Test
@@ -33,7 +33,7 @@ public class ShapeToolTest {
         assertTrue(ShapeFactory.shapeCreate("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
         assertTrue(ShapeFactory.shapeCreate("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
         assertTrue(ShapeFactory.shapeCreate("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
-        assertTrue(ShapeFactory.getShape("Ellipse;258.0;208.0;0.0", 1.0) == null);
+        assertTrue(ShapeFactory.getShape("Ellipse;258.0;208.0;0.0") == null);
     }
 
 }

@@ -101,10 +101,4 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setRadiusX(this.getRadiusX()*r);
         this.setRadiusY(this.getRadiusY()*r);
     }
-
-    @Override
-    public void zoom(double r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

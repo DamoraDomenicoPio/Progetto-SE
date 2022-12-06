@@ -24,10 +24,6 @@ public class RectangleTool extends Tool{
      * Represents the width of the rectangle.
      */
     private double width;
-
-    public RectangleTool(double resizeFactor) {
-        this.setResizeFactor(resizeFactor);
-    }
     
     
     /**
@@ -53,7 +49,7 @@ public class RectangleTool extends Tool{
             yStart=yEnd;
             yEnd=t;
         }
-        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height, this.resizeFactor);
+        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height);
         
         
         return r;
