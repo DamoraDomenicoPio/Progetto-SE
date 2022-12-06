@@ -49,7 +49,6 @@ public class Clipboard {
     
     
     public void cut(Shape shape) {
-        System.out.println("Cutting shape...");
         if (shape != null) {
             this.copy(shape);
             group.getChildren().remove(shape);

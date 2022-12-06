@@ -136,6 +136,7 @@ public class FXMLDocumentController implements Initializable {
     private Invoker invoker = new Invoker(); 
     private Clipboard clipboard; 
     private Shape newShape; 
+    private ObjectTool currentTool; 
     
     
     @Override
@@ -243,6 +244,11 @@ public class FXMLDocumentController implements Initializable {
             this.selectedShape=null;
             invoker.execute(new AddCommand(group, borderColorPicker.getValue(), insideColorPicker.getValue(), this.newShape));
         }
+        else if (! this.actionToDo.equalsIgnoreCase("SELECT")) { 
+            if (currentTool != null) {
+            invoker.execute(new ObjectToolCommand(xPressed, yPressed, event.getX(), event.getY(), currentTool, selectedShape));
+            }
+        }
     }
     /**
      * Method that allows to perform actions that require dragging the mouse
@@ -251,18 +257,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
-            ObjectTool objectTool= ShapeFactory.getAction(actionToDo);
-            if(objectTool!=null){
+            this.currentTool = ShapeFactory.getAction(actionToDo);
+            if(currentTool!=null){
+                // Controls that the mouse is inside the sheet
                 if(event.getX()>0 && event.getX()<this.width*this.resizeFactor){
                     this.xDragged=event.getX();
                 }
                 if(event.getY()>0 && event.getY()<this.height*this.resizeFactor){
                     this.yDragged=event.getY();
                 }
-                ((ObjectTool) objectTool).setShape(selectedShape);
-                selectedShape= objectTool.setEndPoint(this.xDragged, this.yDragged);
+                ((ObjectTool) currentTool).setShape(selectedShape);
+                selectedShape= currentTool.setEndPoint(this.xDragged, this.yDragged);
                 
-            }          
+            }
         }      
     }
 
@@ -279,7 +286,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            Tool shapeTool= ShapeFactory.getShape(shapeToInsert, this.resizeFactor);
+            Tool shapeTool = ShapeFactory.getShapeTool(shapeToInsert, this.resizeFactor);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             group.getChildren().add(shape);
@@ -370,13 +377,13 @@ public class FXMLDocumentController implements Initializable {
      * @param event MouseEvent object generated when the button 'apply' is pressed.
      */
     @FXML
-    private void changeShapeSize(MouseEvent event) {
+    private void applyScaleOnAction(ActionEvent event){
         try{
             double size= Double.parseDouble(shapeSize.getText());
             if(size<0)
                 shapeSize.setText("1");
             else{
-                ((NewShape) this.selectedShape).newResize(size);
+                invoker.execute(new ScaleCommand(size, selectedShape));
             }
         } catch (Exception e){
           }
@@ -531,7 +538,7 @@ public class FXMLDocumentController implements Initializable {
         
         /*group.setScaleX(this.resizeFactor);
         group.setScaleY(this.resizeFactor);
-        this.anchorPaneGroup.setScaleX(resizeFactor);
+        this.anchorPaneGroup.setScaleX(resizeFactor);sice
         this.anchorPaneGroup.setScaleY(resizeFactor);*/
     }
 
