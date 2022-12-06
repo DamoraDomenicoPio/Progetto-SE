@@ -543,6 +543,12 @@ public class FXMLDocumentController implements Initializable {
         this.actionToDo="STRETCH";
     }
 
+
+    @FXML
+    private void pasteOnActionContextMenu(ActionEvent event) {
+    }
+
+
     
 
     
