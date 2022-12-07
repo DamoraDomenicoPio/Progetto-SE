@@ -575,6 +575,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
+        invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
 
 
