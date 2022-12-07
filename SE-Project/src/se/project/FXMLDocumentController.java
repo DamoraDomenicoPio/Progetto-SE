@@ -52,6 +52,7 @@ import tools.ObjectTool;
 import tools.Tool;
 import tools.ShapeFactory;
 import utility.Clipboard;
+import utility.ToolBox;
 
 
 /**
@@ -137,6 +138,8 @@ public class FXMLDocumentController implements Initializable {
     private Clipboard clipboard; 
     private Shape newShape; 
     private ObjectTool currentTool; 
+    private ToolBox toolBox; 
+    
     @FXML
     private ImageView cursorIntoSelectionButton;
 
@@ -148,6 +151,7 @@ public class FXMLDocumentController implements Initializable {
         this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
         // TODO
         this.clipboard = new Clipboard(group); 
+        this.toolBox = new ToolBox(1); 
     }    
     
     /**
@@ -260,7 +264,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
-            this.currentTool = ShapeFactory.getAction(actionToDo);
+            if (actionToDo.equalsIgnoreCase("ADD")){
+                this.currentTool = this.toolBox.getObjectTool("STRETCH");
+            }
+            else {
+                this.currentTool = this.toolBox.getObjectTool(actionToDo);
+            }
             if(currentTool!=null){
                 // Controls that the mouse is inside the sheet
                 if(event.getX()>0 && event.getX()<this.width*this.resizeFactor){
@@ -289,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            Tool shapeTool = ShapeFactory.getShapeTool(shapeToInsert, this.resizeFactor);
+            Tool shapeTool = toolBox.getShapeTool(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             group.getChildren().add(shape);

@@ -6,6 +6,7 @@ package utility;
 
 import javafx.scene.Group;
 import javafx.scene.shape.Shape;
+import newShapes.NewShape;
 import tools.ShapeFactory;
 
 /**
@@ -15,6 +16,7 @@ import tools.ShapeFactory;
 public class Clipboard {
     private Group group; 
     private Shape copiedShape;
+    private NewShape newShape; 
 
     public Clipboard(Group group) {
         this.group = group;
@@ -26,6 +28,12 @@ public class Clipboard {
     
     public void copy(Shape shape) {
         this.copiedShape = duplicate(shape); 
+        if (shape instanceof NewShape) {
+            this.newShape = (NewShape) shape; 
+        }
+        else {
+            throw new RuntimeException("The shape is not a newshape");
+        }
     }
     
     private Shape duplicate(Shape shape) {
@@ -41,6 +49,21 @@ public class Clipboard {
         else{
             return null; 
         }
+    }
+    
+    //Overload del metodo paste che prende in ingresso anche le coordinate dove incollare la forma 
+    public Shape paste (double x, double y) {
+        if (! this.isEmpty()){
+            if (this.copiedShape instanceof NewShape) {
+                ((NewShape) this.copiedShape).move(x, y);
+            }
+            group.getChildren().add(this.copiedShape);
+            return this.copiedShape; 
+        }
+        else{
+            return null; 
+        }
+        
     }
     
     public Shape getCopiedShape() {
