@@ -38,6 +38,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
@@ -138,11 +139,18 @@ public class FXMLDocumentController implements Initializable {
     
     private Invoker invoker = new Invoker();
     
-    private Clipboard clipboard; 
+    private Clipboard clipboard;
+    
     private Shape newShape; 
+    
     private ObjectTool currentTool; 
     @FXML
     private ImageView cursorIntoSelectionButton;
+    @FXML
+    private Pane paneGrid;
+    
+    private boolean gridStatus = false;
+    
 
     
     
@@ -153,6 +161,8 @@ public class FXMLDocumentController implements Initializable {
         //this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff");
         
         this.clipboard = new Clipboard(group); 
+    
+        
     }    
     
     /**
@@ -565,6 +575,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
+    }
+
+    @FXML
+    private void gridButtonOnAction(ActionEvent event) {
+        if(gridStatus == false){
+            paneGrid.setVisible(true);
+            gridStatus=true;
+        }
+        else{
+            paneGrid.setVisible(false);
+            gridStatus=false;
+        }
     }
 
 
