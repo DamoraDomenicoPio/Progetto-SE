@@ -4,6 +4,8 @@
  */
 package newShapes;
 
+import javafx.scene.shape.Shape;
+
 /**
  * An interface that contains helper methods for a shape.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
@@ -44,4 +46,27 @@ public interface NewShape {
     public double getRotationAngle(); 
     
     public void setRotationAngle(double rotationAngle); 
+    
+    /**
+     * Method that restores a shape from its formatString 
+     * @param formatString string containing the shape to create
+     * @return a shape given a string
+     * 
+     * The formatter string can be ottained unsing the toString method
+     */
+    public static Shape stringToShape(String formatString) {
+        String[] values=formatString.split(";", 2);
+        
+        if(values[0].equalsIgnoreCase("RECTANGLE")){
+            return RectangleAdapter.stringToRectangle(values[1]);
+        }
+        else if(values[0].equalsIgnoreCase("ELLIPSE")){
+            return EllipseAdapter.stringToEllipse(values[1]);
+        }
+        else if(values[0].equalsIgnoreCase("LINE")){
+            return LineAdapter.stringToLine(values[1]);
+        }
+        
+        return null;
+    }
 }

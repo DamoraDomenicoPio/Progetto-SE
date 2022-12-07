@@ -2,29 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package command;
+package commands;
 
 import javafx.scene.Group;
-import utility.Clipboard;
 import javafx.scene.shape.Shape;
+import utility.Clipboard;
 
 /**
  *
  * @author assun
  */
-public class PasteCommand implements Command{
+public class PasteInPositionCommand implements Command{
     private Group group; 
     private Clipboard clipboard;
     private Shape pastedShape;  
+    private double x, y; // coordinates where paste the shape
     
-    public PasteCommand(Group group, Clipboard clipboard) {
+    public PasteInPositionCommand(Group group, Clipboard clipboard, double x, double y) {
         this.clipboard = clipboard; 
         this.group = group; 
+        this.x = x; 
+        this.y = y; 
     }
     
     @Override
     public void execute() {
-        this.pastedShape = this.clipboard.paste();
+        this.pastedShape = this.clipboard.paste(x, y);
     }
     
     @Override 

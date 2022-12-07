@@ -7,10 +7,11 @@ import tools.LineSegmentTool;
 import tools.EllipseTool;
 import tools.RectangleTool;
 import javafx.scene.shape.*;
+import newShapes.NewShape;
 import org.junit.*;
 import static org.junit.Assert.*;
-import tools.ShapeFactory;
 import utility.ToolBox;
+// import utility.FileManager;
 
 /**
  *
@@ -33,9 +34,9 @@ public class ShapeToolTest {
     @Test
     public void testShapeCreate(){
         ToolBox tool= new ToolBox();
-        assertTrue(ShapeFactory.shapeCreate("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
-        assertTrue(ShapeFactory.shapeCreate("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
-        assertTrue(ShapeFactory.shapeCreate("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
+        assertTrue(NewShape.stringToShape("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
+        assertTrue(NewShape.stringToShape("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
+        assertTrue(NewShape.stringToShape("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
         assertTrue(tool.getShapeTool("Ellipse;258.0;208.0;0.0") == null);
     }
 

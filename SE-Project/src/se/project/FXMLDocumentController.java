@@ -3,7 +3,19 @@
  */
 package se.project;
 
-import command.*;
+import commands.DeleteCommand;
+import commands.ChangeColorCommand;
+import commands.ScaleCommand;
+import commands.CopyCommand;
+import commands.PasteCommand;
+import commands.ObjectToolCommand;
+import commands.PasteInPositionCommand;
+import commands.AddCommand;
+import commands.Invoker;
+import commands.GoBackgroundCommand;
+import commands.RotateCommand;
+import commands.GoFrontCommand;
+import commands.CutCommand;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -54,7 +66,7 @@ import javafx.stage.Screen;
 import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.Tool;
-import tools.ShapeFactory;
+import utility.FileManager;
 import utility.Clipboard;
 import utility.ToolBox; 
 
@@ -181,18 +193,7 @@ public class FXMLDocumentController implements Initializable {
     */
     @FXML
     private void saveOnAction (ActionEvent event){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(
-         new ExtensionFilter("Text Files", "*.txt")
-        );
-        try(PrintWriter o=new PrintWriter(new BufferedWriter(new FileWriter(fileChooser.showSaveDialog(null).getPath())))){
-            for(Node i: group.getChildren()){
-                Shape s=(Shape) i;
-                o.write(s.toString()+"\n");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FileManager.saveFile(group);
     }
     
     /**
@@ -205,22 +206,10 @@ public class FXMLDocumentController implements Initializable {
     */
     @FXML
     private void loadOnAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        try(Scanner i=new Scanner(new BufferedReader(new FileReader(fileChooser.showOpenDialog(null).getPath())))){
-            group.getChildren().clear();
-            i.useLocale(Locale.US);
-            i.useDelimiter("\n");
-            this.resizeFactor=1;
-            this.anchorPaneGroup.setMaxSize(width, height);
-            this.anchorPaneGroup.setMinSize(width, height);
-            while(i.hasNext()){
-                String shapeString=i.next();
-                Shape s= ShapeFactory.shapeCreate(shapeString);
-                group.getChildren().add(s);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.resizeFactor=1;
+        this.anchorPaneGroup.setMaxSize(width, height);
+        this.anchorPaneGroup.setMinSize(width, height);
+        FileManager.loadFile(group);
     }
     
     /**

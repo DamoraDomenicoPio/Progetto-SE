@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import javafx.scene.Group;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
+import newShapes.NewShape;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +19,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import utility.ToolBox;
 import tools.Tool;
-import tools.ShapeFactory;
+import utility.FileManager;
 
 /**
  *
@@ -61,7 +62,7 @@ public class FXMLDocumentControllerTest {
     public void testPasteOnAction(){
         //get Rectangle
         Shape selectedShape=(Shape) group.getChildren().get(1);
-        Shape shape =ShapeFactory.shapeCreate(selectedShape.toString());
+        Shape shape =NewShape.stringToShape(selectedShape.toString());
         group.getChildren().add(shape);
         assertTrue(group.getChildren().contains(shape));
         assertTrue(group.getChildren().size()==4);

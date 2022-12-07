@@ -7,7 +7,6 @@ package utility;
 import javafx.scene.Group;
 import javafx.scene.shape.Shape;
 import newShapes.NewShape;
-import tools.ShapeFactory;
 
 /**
  *
@@ -33,7 +32,7 @@ public class Clipboard {
     
     private Shape duplicate(Shape shape) {
         String shapeString = shape.toString(); 
-        return ShapeFactory.shapeCreate(shapeString);
+        return NewShape.stringToShape(shapeString);
     }
     
     public Shape paste() {
