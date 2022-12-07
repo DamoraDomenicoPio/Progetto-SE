@@ -55,7 +55,7 @@ public class LineAdapter extends Line implements NewShape{
      */
     @Override
     public String toString() {
-        return "Line;" + this.getStartX()+ ";" + this.getStartY() + ";" + this.getEndX()+ ";" + this.getEndY() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
+        return "Line;" + this.getStartX()+ ";" + this.getStartY() + ";" + this.getEndX()+ ";" + this.getEndY() + ";" + this.getStroke() + ";" + this.getStrokeWidth() + ";" + this.getRotate();
     }
 
     /**
@@ -65,12 +65,14 @@ public class LineAdapter extends Line implements NewShape{
      */
     public static Line stringToLine(String string) {
         String[] values=string.split(";");
-        return new LineAdapter(Double.parseDouble(values[0]),
+        LineAdapter l= new LineAdapter(Double.parseDouble(values[0]),
                 Double.parseDouble(values[1]),
                 Double.parseDouble(values[2]),
                 Double.parseDouble(values[3]),
                 Paint.valueOf(values[4]),
                 Double.parseDouble(values[5]));
+        l.setRotate(Double.parseDouble(values[6]));
+        return l;
     }
 
     public double getLengthX() {
@@ -128,6 +130,11 @@ public class LineAdapter extends Line implements NewShape{
         this.lengthY=this.lengthY*r;
         this.setEndX(this.getStartX()+this.lengthX);
         this.setEndY(this.getStartY()+this.lengthY);
+    }
+
+    @Override
+    public void rotate(double r) {
+        this.setRotate(r);
     }
         
 }

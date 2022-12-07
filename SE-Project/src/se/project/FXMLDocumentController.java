@@ -30,6 +30,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Shadow;
@@ -153,6 +154,8 @@ public class FXMLDocumentController implements Initializable {
     private Pane paneGrid;
     
     private boolean gridStatus = false;
+    @FXML
+    private Slider sliderRotate;
     
 
     
@@ -585,6 +588,15 @@ public class FXMLDocumentController implements Initializable {
             paneGrid.setVisible(false);
             gridStatus=false;
         }
+    }
+
+    @FXML
+    private void rotateSliderOnMouseDragged(MouseEvent event) {
+        double r=this.sliderRotate.getValue()/100*360;
+        if(this.selectedShape!=null){
+            ((NewShape)this.selectedShape).rotate(r);
+        }
+        
     }
 
 

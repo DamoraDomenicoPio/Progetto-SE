@@ -30,4 +30,10 @@ public interface NewShape {
      * @param r resize factor
      */
     public void newResize(double r);
+    
+    /**
+     * Method that allows you to rotate the selected shape
+     * @param r resize factor
+     */
+    public void rotate(double r);
 }
