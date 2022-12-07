@@ -55,6 +55,7 @@ import tools.ObjectTool;
 import tools.Tool;
 import tools.ShapeFactory;
 import utility.Clipboard;
+import utility.ToolBox; 
 
 
 /**
@@ -144,6 +145,8 @@ public class FXMLDocumentController implements Initializable {
     private Shape newShape; 
     
     private ObjectTool currentTool; 
+    private ToolBox toolBox = new ToolBox(); 
+    
     @FXML
     private ImageView cursorIntoSelectionButton;
     @FXML
@@ -275,17 +278,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(this.selectedShape!=null){
-            ObjectTool objectTool= ShapeFactory.getAction(actionToDo);
-            if(objectTool!=null){
-                /*if(event.getX()>0 && event.getX()<this.width*this.resizeFactor){
-                    this.xDragged=event.getX();
-                }
-                if(event.getY()>0 && event.getY()<this.height*this.resizeFactor){
-                    this.yDragged=event.getY();
-                }*/
-                ((ObjectTool) objectTool).setShape(selectedShape);
+            currentTool = this.toolBox.getObjectTool(actionToDo);
+            if(currentTool !=null){
+                currentTool.setShape(selectedShape);
                 //selectedShape= objectTool.setEndPoint(this.xDragged, this.yDragged);
-                selectedShape= objectTool.setEndPoint(event.getX(), event.getY());
+                selectedShape= currentTool.setEndPoint(event.getX(), event.getY());
             }          
         }      
     }
@@ -303,7 +300,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            Tool shapeTool= ShapeFactory.getShape(shapeToInsert);
+            Tool shapeTool= toolBox.getShapeTool(shapeToInsert);
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             group.getChildren().add(shape);
@@ -575,6 +572,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
+        invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
 
     @FXML
@@ -595,5 +593,3 @@ public class FXMLDocumentController implements Initializable {
     
     
 }
-            
-            

@@ -16,33 +16,33 @@ import newShapes.*;
  * Implementation of the pattern factory method for the creation of the shapes
  */
 public class ShapeFactory {
-    /**
-     * 
-     * @param shapeName string containing the shape to create 
-     * @return a shape given a string
-     */
-    public static Tool getShape(String shapeName){
-        if(shapeName.equalsIgnoreCase("RECTANGLE")){
-            return new RectangleTool();
-        }
-        else if(shapeName.equalsIgnoreCase("ELLIPSE")){
-            return new EllipseTool();
-        }
-        else if(shapeName.equalsIgnoreCase("LINE")){
-            return new LineSegmentTool();
-        }
-        return null;
-    }
-    
-    public static ObjectTool getAction(String actionName){
-        if(actionName.equalsIgnoreCase("MOVE")){
-            return new MoveTool(); 
-        }
-        else if(actionName.equalsIgnoreCase("STRETCH")|| actionName.equalsIgnoreCase("ADD")){
-            return new StretchTool(); 
-        }
-        return null;
-    }
+//    /**
+//     * 
+//     * @param shapeName string containing the shape to create 
+//     * @return a shape given a string
+//     */
+//    public static Tool getShapeTool(String shapeName, double resizeFactor){
+//        if(shapeName.equalsIgnoreCase("RECTANGLE")){
+//            return new RectangleTool(resizeFactor);
+//        }
+//        else if(shapeName.equalsIgnoreCase("ELLIPSE")){
+//            return new EllipseTool();
+//        }
+//        else if(shapeName.equalsIgnoreCase("LINE")){
+//            return new LineSegmentTool();
+//        }
+//        return null;
+//    }
+//    
+//    public static ObjectTool getAction(String actionName){
+//        if(actionName.equalsIgnoreCase("MOVE")){
+//            return new MoveTool(); 
+//        }
+//        else if(actionName.equalsIgnoreCase("STRETCH")|| actionName.equalsIgnoreCase("ADD")){
+//            return new StretchTool(); 
+//        } 
+//        return null;
+//    }
     /**
      * 
      * @param shapeString string containing the shape to create
