@@ -147,6 +147,7 @@ public class FXMLDocumentController implements Initializable {
     
     private ObjectTool currentTool; 
     private ToolBox toolBox = new ToolBox(); 
+    private double rotationAngle;
     
     @FXML
     private ImageView cursorIntoSelectionButton;
@@ -324,6 +325,7 @@ public class FXMLDocumentController implements Initializable {
                 DropShadow s= new DropShadow(20.0, Color.BLACK);
                 s.setSpread(0.3);
                 selectedShape.setEffect(s);
+                this.sliderRotate.setValue(((NewShape) selectedShape).getRotationAngle());
             }
             else{
                 this.selectedShape=null;
@@ -592,16 +594,21 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void rotateSliderOnMouseDragged(MouseEvent event) {
-        double r=this.sliderRotate.getValue()/100*360;
+        this.rotationAngle =this.sliderRotate.getValue();  // /100*360
         if(this.selectedShape!=null){
-            ((NewShape)this.selectedShape).rotate(r);
+            ((NewShape)this.selectedShape).rotate(rotationAngle);
         }
         
     }
 
-
+    @FXML
+    private void rotateSliderOnMouseReleased(MouseEvent event) {
+        this.rotationAngle =this.sliderRotate.getValue();
+        invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
+    }
     
-
+    
+    
     
     
 }

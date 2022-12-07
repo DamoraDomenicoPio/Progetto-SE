@@ -31,9 +31,17 @@ public interface NewShape {
      */
     public void newResize(double r);
     
+    
     /**
-     * Method that allows you to rotate the selected shape
-     * @param r resize factor
+     * Method that rotates the shape without updating the rotationAngle attribute
+     * @param r rotation angle 
+     * 
+     * This method is supposed to be used to create animation 
+     * and the setRotationAngle() method should be called once the animation ends
      */
     public void rotate(double r);
+    
+    public double getRotationAngle(); 
+    
+    public void setRotationAngle(double rotationAngle); 
 }

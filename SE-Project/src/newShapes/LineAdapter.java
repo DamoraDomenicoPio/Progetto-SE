@@ -20,6 +20,8 @@ public class LineAdapter extends Line implements NewShape{
      * projection of the line on the vertical axis
      */
     private double lengthY;
+    
+    private double rotationAngle = 0; 
 
     /**
      * Creates a new instance of LineAdapter.
@@ -137,4 +139,16 @@ public class LineAdapter extends Line implements NewShape{
         this.setRotate(r);
     }
         
+    
+    @Override
+    public double getRotationAngle() {
+        return this.rotationAngle; 
+    }
+    
+    @Override
+    public void setRotationAngle(double rotationAngle) {
+        this.rotationAngle = rotationAngle; 
+        this.rotate(rotationAngle); 
+    }
+    
 }

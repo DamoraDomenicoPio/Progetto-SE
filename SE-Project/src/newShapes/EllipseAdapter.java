@@ -13,6 +13,7 @@ import javafx.scene.shape.Ellipse;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public class EllipseAdapter extends Ellipse implements NewShape{
+    private double rotationAngle = 0; 
 
     /**
      * Creates an instance of Ellipse of the given position and size.
@@ -103,11 +104,21 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setRadiusX(this.getRadiusX()*r);
         this.setRadiusY(this.getRadiusY()*r);
     }
-
+    
     @Override
     public void rotate(double r) {
         this.setRotate(r);
     }
     
+    @Override
+    public double getRotationAngle() {
+        return this.rotationAngle; 
+    }
+    
+    @Override
+    public void setRotationAngle(double rotationAngle) {
+        this.rotationAngle = rotationAngle; 
+        this.rotate(rotationAngle);
+    }
     
 }

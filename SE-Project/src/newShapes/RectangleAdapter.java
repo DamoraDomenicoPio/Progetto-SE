@@ -17,6 +17,8 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     private double fixedPointX;
     private double fixedPointY;
     
+    private double rotationAngle = 0; 
+    
     
     /**
      * Creates a new instance of Rectangle with the given position and size.
@@ -124,10 +126,23 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         this.setWidth(this.getWidth()*r);
         
     }
-
+    
     @Override
     public void rotate(double r) {
         this.setRotate(r);
         
+    }
+    
+    @Override
+    public double getRotationAngle() {
+        return this.rotationAngle; 
+    }
+    
+    
+    
+    @Override
+    public void setRotationAngle(double rotationAngle) {
+        this.rotationAngle = rotationAngle; 
+        this.rotate(rotationAngle); 
     }
 }
