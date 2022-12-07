@@ -48,7 +48,7 @@ public class EllipseAdapter extends Ellipse implements NewShape{
      */
     @Override
     public String toString() {
-        return "Ellipse;" + this.getCenterX()+ ";" + this.getCenterY() + ";" + this.getRadiusX() + ";" + this.getRadiusY() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
+        return "Ellipse;" + this.getCenterX()+ ";" + this.getCenterY() + ";" + this.getRadiusX() + ";" + this.getRadiusY() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth() + ";" + this.getRotate();
     }
 
     /**
@@ -58,13 +58,15 @@ public class EllipseAdapter extends Ellipse implements NewShape{
      */
     public static Ellipse stringToEllipse(String string) {
         String[] values=string.split(";");
-        return new EllipseAdapter(Double.parseDouble(values[0]),
+        EllipseAdapter e= new EllipseAdapter(Double.parseDouble(values[0]),
                 Double.parseDouble(values[1]),
                 Double.parseDouble(values[2]),
                 Double.parseDouble(values[3]),
                 Paint.valueOf(values[4]),
                 Paint.valueOf(values[5]),
                 Double.parseDouble(values[6]));
+        e.setRotate(Double.parseDouble(values[7]));
+        return e;
     }
 
     /**
@@ -101,4 +103,11 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setRadiusX(this.getRadiusX()*r);
         this.setRadiusY(this.getRadiusY()*r);
     }
+
+    @Override
+    public void rotate(double r) {
+        this.setRotate(r);
+    }
+    
+    
 }

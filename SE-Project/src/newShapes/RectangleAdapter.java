@@ -54,7 +54,7 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     @Override
     public String toString() {
-        return "Rectangle;" + this.getX() + ";" + this.getY() + ";" + this.getWidth() + ";" + this.getHeight() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth();
+        return "Rectangle;" + this.getX() + ";" + this.getY() + ";" + this.getWidth() + ";" + this.getHeight() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getStrokeWidth()+ ";" + this.getRotate();
     }
 
     /**
@@ -64,13 +64,15 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     public static Rectangle stringToRectangle(String string) {
         String[] values=string.split(";");
-        return new RectangleAdapter(Double.parseDouble(values[0]),
+        RectangleAdapter r= new RectangleAdapter(Double.parseDouble(values[0]),
                 Double.parseDouble(values[1]),
                 Double.parseDouble(values[2]),
                 Double.parseDouble(values[3]),
                 Paint.valueOf(values[4]),
                 Paint.valueOf(values[5]),
                 Double.parseDouble(values[6]));
+        r.setRotate(Double.parseDouble(values[7]));
+        return r;
     }
 
     /**
@@ -83,6 +85,7 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         System.out.println("Move rettangle");
         this.setX(x);
         this.setY(y);
+        
         this.fixedPointX=x;
         this.fixedPointY=y;
     }
@@ -119,5 +122,12 @@ public class RectangleAdapter extends Rectangle implements NewShape{
     public void newResize(double r) {
         this.setHeight(this.getHeight()*r);
         this.setWidth(this.getWidth()*r);
+        
+    }
+
+    @Override
+    public void rotate(double r) {
+        this.setRotate(r);
+        
     }
 }
