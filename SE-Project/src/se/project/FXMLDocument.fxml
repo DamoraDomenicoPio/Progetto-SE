@@ -6,6 +6,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -353,6 +354,16 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#pasteOnActionContextMenu" text="Paste" />
+                  <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </ScrollPane>
    </children>
 </AnchorPane>

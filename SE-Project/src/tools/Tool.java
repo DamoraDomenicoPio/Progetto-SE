@@ -18,7 +18,6 @@ public abstract class Tool{
     public double yStart;
     public double xEnd;
     public double yEnd;
-    public double resizeFactor;
     
     /**
      * 
@@ -70,14 +69,6 @@ public abstract class Tool{
 
     public void setyEnd(double yEnd) {
         this.yEnd = yEnd;
-    }
-
-    public double getResizeFactor() {
-        return resizeFactor;
-    }
-
-    public void setResizeFactor(double resizeFactor) {
-        this.resizeFactor = resizeFactor;
     }
     
     

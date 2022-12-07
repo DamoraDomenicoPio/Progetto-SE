@@ -18,12 +18,11 @@ public class ToolBox {
     
     private double scaleFactor;
     
-    public ToolBox(double scaleFactor){
-        this.scaleFactor = scaleFactor; 
+    public ToolBox(){
         
         this.lineSegmentTool = new LineSegmentTool(); 
         this.ellipseTool = new EllipseTool(); 
-        this.rectangleTool = new RectangleTool(scaleFactor);
+        this.rectangleTool = new RectangleTool();
         this.moveTool = new MoveTool(); 
         this.stretchTool = new StretchTool(); 
     }
