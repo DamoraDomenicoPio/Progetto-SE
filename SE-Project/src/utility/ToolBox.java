@@ -53,7 +53,7 @@ public class ToolBox {
         if(tool.equalsIgnoreCase("MOVE")){
             return this.moveTool; 
         }
-        else if(tool.equalsIgnoreCase("STRETCH")){   //  || actionName.equalsIgnoreCase("ADD")) { 
+        else if(tool.equalsIgnoreCase("STRETCH") || tool.equalsIgnoreCase("ADD")){   //  || actionName.equalsIgnoreCase("ADD")) { 
             return new StretchTool(); 
         }
         return null;
