@@ -45,7 +45,7 @@ public interface NewShape {
     
     public double getRotationAngle(); 
     
-    public void setRotationAngle(double rotationAngle);
+    public void setRotationAngle(double rotationAngle); 
     
     /**
      * Method that restores a shape from its formatString 
