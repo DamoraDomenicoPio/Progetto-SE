@@ -24,6 +24,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -64,6 +65,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Screen;
 import newShapes.NewShape;
+import newShapes.PolygonAdapter;
 import tools.ObjectTool;
 import tools.Tool;
 import utility.FileManager;
@@ -160,6 +162,8 @@ public class FXMLDocumentController implements Initializable {
     private ObjectTool currentTool; 
     private ToolBox toolBox = new ToolBox(); 
     private double rotationAngle;
+    private int numberSide=0;
+    private ArrayList<Double> sides= new ArrayList<>();
     
     @FXML
     private ImageView cursorIntoSelectionButton;
@@ -169,6 +173,10 @@ public class FXMLDocumentController implements Initializable {
     private boolean gridStatus = false;
     @FXML
     private Slider sliderRotate;
+    @FXML
+    private TextField nSidesPolygonTextField;
+    @FXML
+    private Text applyTextIntoButton1;
     
 
     
@@ -263,6 +271,8 @@ public class FXMLDocumentController implements Initializable {
             invoker.execute(new ObjectToolCommand(xPressed, yPressed, event.getX(), event.getY(), currentTool, selectedShape));
             }
         }
+        
+        //aggiungere polygon
     }
     /**
      * Method that allows to perform actions that require dragging the mouse
@@ -293,7 +303,7 @@ public class FXMLDocumentController implements Initializable {
             if(this.selectedShape!=null){
                 this.selectedShape.setEffect(null);
             }
-            Tool shapeTool= toolBox.getShapeTool(shapeToInsert);
+            Tool shapeTool= toolBox.getShapeTool(shapeToInsert);   
             shapeTool.setStartPoint(xPressed, yPressed);
             Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
             group.getChildren().add(shape);
@@ -318,6 +328,25 @@ public class FXMLDocumentController implements Initializable {
             }
             else{
                 this.selectedShape=null;
+            }
+        }
+        else if(this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")){
+            if(this.selectedShape!=null){
+                this.selectedShape.setEffect(null);
+            }
+            if(this.numberSide>=this.sides.size()/2){
+                this.sides.add(xPressed);
+                this.sides.add(yPressed);
+            }
+            if(this.numberSide==this.sides.size()/2){
+                this.numberSide=0;
+                PolygonAdapter p= new PolygonAdapter(sides, insideColorPicker.getValue(), borderColorPicker.getValue());
+                p.getPoints().addAll(sides);
+                
+                
+                group.getChildren().add(p);
+                sides.clear();
+                actionToDo="";
             }
         }
         
@@ -394,7 +423,7 @@ public class FXMLDocumentController implements Initializable {
                 invoker.execute(new ScaleCommand(size, selectedShape));
             }
         } catch (Exception e){
-          }
+        }
     }
 
 //    /**
@@ -501,10 +530,10 @@ public class FXMLDocumentController implements Initializable {
             }*/
             
         }
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
+        this.anchorPaneGroup.setScaleX(this.resizeFactor);
+        this.anchorPaneGroup.setScaleY(this.resizeFactor);
+        /*this.group.setScaleX(this.resizeFactor);
+        this.group.setScaleY(this.resizeFactor);*/
         /*this.anchorPaneGroup.setScaleX(resizeFactor);
         this.anchorPaneGroup.setScaleY(resizeFactor);
         group.setScaleX(this.resizeFactor);
@@ -531,10 +560,10 @@ public class FXMLDocumentController implements Initializable {
             }*/
         }
         
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
+        this.anchorPaneGroup.setScaleX(this.resizeFactor);
+        this.anchorPaneGroup.setScaleY(this.resizeFactor);
+        /*this.group.setScaleX(this.resizeFactor);
+        this.group.setScaleY(this.resizeFactor);*/
         /*group.setScaleX(this.resizeFactor);
         group.setScaleY(this.resizeFactor);
         this.anchorPaneGroup.setScaleX(resizeFactor);sice
@@ -594,6 +623,21 @@ public class FXMLDocumentController implements Initializable {
     private void rotateSliderOnMouseReleased(MouseEvent event) {
         this.rotationAngle =this.sliderRotate.getValue();
         invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
+    }
+
+    @FXML
+    private void createPolygonOnAction(ActionEvent event) {
+        this.shapeToInsert="POLYGON";
+        this.actionToDo="CREATEPOLYGON";
+        try{
+            int sides= Integer.parseInt(this.nSidesPolygonTextField.getText());
+            if(sides<=0)
+                nSidesPolygonTextField.setText("0");
+            else{
+                this.numberSide=sides;
+            }
+        } catch (Exception e){
+          }
     }
     
     

@@ -102,7 +102,6 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         System.out.println("RESIZE RETTANGLE");
         super.setHeight(abs(this.fixedPointY-y));
         super.setWidth(abs(this.fixedPointX-x));
-        
         if(this.fixedPointX<x){
             x=this.fixedPointX;
         }

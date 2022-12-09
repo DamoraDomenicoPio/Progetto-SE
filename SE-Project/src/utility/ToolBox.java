@@ -46,6 +46,9 @@ public class ToolBox {
         else if(tool.equalsIgnoreCase("LINE")){
             return this.lineSegmentTool;
         }
+        else if(tool.equalsIgnoreCase("POLYGON")){
+            return this.ellipseTool;
+        }
         return null;
     }
     
