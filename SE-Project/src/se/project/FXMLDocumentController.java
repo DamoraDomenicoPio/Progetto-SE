@@ -16,52 +16,33 @@ import commands.GoBackgroundCommand;
 import commands.RotateCommand;
 import commands.GoFrontCommand;
 import commands.CutCommand;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Shadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.scene.transform.Scale;
 import javafx.stage.Screen;
 import newShapes.NewShape;
 import tools.ObjectTool;
@@ -149,7 +130,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button selectButton;
     @FXML
-    private AnchorPane anchorPaneGroup;
+    private Pane anchorPaneGroup;
     
     private Invoker invoker = new Invoker();
     
@@ -169,18 +150,32 @@ public class FXMLDocumentController implements Initializable {
     private boolean gridStatus = false;
     @FXML
     private Slider sliderRotate;
+    // @FXML
+    // private ScrollPane scrollPane;
+    @FXML
+    private AnchorPane root;
+    
+    private ScrollPane scrollPane; 
     
 
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // this.scrollPane.setMaxSize(width, height); 
         this.anchorPaneGroup.setMaxSize(width, height);
         this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
         //this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff");
         
         this.clipboard = new Clipboard(group); 
-    
+        // this.scrollPane.setContent(anchorPaneGroup);
+        
+        this.scrollPane = new ScrollPane(); 
+        // scrollPane.setPrefSize(600, 700);
+        // scrollPane.setContent(scrollPaneParent);
+        // scrollPane.fitToHeightProperty(); 
+        // scrollPane.fitToWidthProperty();
+        root.getChildren().add(scrollPane);
         
     }    
     
@@ -370,15 +365,6 @@ public class FXMLDocumentController implements Initializable {
         invoker.execute(new CutCommand(clipboard, selectedShape));
     }
 
-//    /**
-//     * Method that allows to delete a selected object on the drawing sheet.
-//     */
-//    private void deleteSelected() {
-//        if(selectedShape!=null){
-//            group.getChildren().remove(selectedShape);
-//            selectedShape=null;
-//        }
-//    }
     
     /**
      * Method that allows to change size of a selected shape on the drawing sheet.
@@ -397,16 +383,6 @@ public class FXMLDocumentController implements Initializable {
           }
     }
 
-//    /**
-//     * Method that allows to copy a selected object on the drawing sheet.
-//     */
-//    private void copySelected() {
-//    if (this.selectedShape != null) { // If a shape has been selected
-//            this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
-//        }
-//        // If nothing was selected, nothig gets copied 
-//    }
-    
     /**
      * Method that changes the shapeToInsert string to the string "MOVE".
      * @param event ActionEvent object generated when the button 'Move' is selected.
@@ -493,22 +469,20 @@ public class FXMLDocumentController implements Initializable {
     private void zoomOutOnAction(ActionEvent event) {
         if(this.resizeFactor>0.6){
             this.resizeFactor-=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
-            
         }
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
-        /*this.anchorPaneGroup.setScaleX(resizeFactor);
-        this.anchorPaneGroup.setScaleY(resizeFactor);
-        group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);*/
+        
+        anchorPaneGroup.setScaleX(this.resizeFactor);
+        anchorPaneGroup.setScaleY(this.resizeFactor);
+        
+        
+
+//        //Scale con trasform 
+//        anchorPaneGroup.setScaleX(resizeFactor); 
+//        anchorPaneGroup.setScaleY(resizeFactor);
+//        
+//        // SCALE con setScale 
+////        this.group.setScaleX(this.resizeFactor);
+////        this.group.setScaleY(this.resizeFactor);
     }
 
     @FXML
@@ -523,22 +497,20 @@ public class FXMLDocumentController implements Initializable {
     private void zoomInOnAction(ActionEvent event) {
         if(this.resizeFactor<1.4){
             this.resizeFactor+=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
         }
         
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
-        /*group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);
-        this.anchorPaneGroup.setScaleX(resizeFactor);sice
-        this.anchorPaneGroup.setScaleY(resizeFactor);*/
+        Scale scale = new Scale(); 
+        scale.setX(resizeFactor); 
+        scale.setY(resizeFactor); 
+        anchorPaneGroup.getTransforms().add(scale); 
+        // scrollPane.prefViewportHeightProperty(scrollPane.getV)
+        // scrollPane.setPrefSize( width * resizeFactor,  height * resizeFactor);
+        
+//        anchorPaneGroup.setScaleX(this.resizeFactor);
+//        anchorPaneGroup.setScaleY(this.resizeFactor);
+//        scrollPane.setMaxHeight(anchorPaneGroup.getHeight() * resizeFactor);
+//        scrollPane.setMaxWidth(anchorPaneGroup.getWidth() * resizeFactor);
+        
     }
 
     @FXML
@@ -564,7 +536,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
         invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
