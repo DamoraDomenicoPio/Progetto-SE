@@ -157,18 +157,18 @@ public class LineAdapter extends Line implements NewShape{
     
     @Override
     public void mirrorVertical(){
-        if(this.getScaleX()==1)
-            this.setScaleX(-1);
-        else
-            this.setScaleX(1);
+        double xEndPoint=this.getEndX();
+        this.setEndX(this.getStartX());
+        this.setStartX(xEndPoint);
+        this.setRotationAngle(-this.rotationAngle);
     }
     
     @Override
     public void mirrorHorizontal(){
-        if(this.getScaleY()==1)
-            this.setScaleY(-1);
-        else
-            this.setScaleY(1);
+         double yEndPoint=this.getEndY();
+        this.setEndY(this.getStartY());
+        this.setStartY(yEndPoint);
+        this.setRotationAngle(360-this.rotationAngle);
     }
     
 }

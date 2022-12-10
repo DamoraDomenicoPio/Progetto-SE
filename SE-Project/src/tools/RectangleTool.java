@@ -27,10 +27,10 @@ public class RectangleTool extends Tool{
     
     
     /**
-     * Returns a shape with modified coordinates
+     * Returns a shape representing the rectangle
      * @param x coordinate of the horizontal axis
      * @param y coordinate of the vertical axis
-     * @return a shape with modified coordinates
+     * @return a shape representing the rectangle
      */
     @Override
     public Shape setEndPoint(double x, double y){

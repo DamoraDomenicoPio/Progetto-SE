@@ -11,24 +11,30 @@ import javafx.scene.text.Text;
 import newShapes.TextAdapter;
 
 /**
- *
- * @author Domenico
+ * 
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+ * The TextTool allows you to create a new text
  */
 public class TextTool extends Tool{
-    private String text;
-    
-    public TextTool(){
-        this.text="";
-    }
-    
+    /**
+     * Represents the text inside the Text object.
+     */
+    private String text="";
 
+    
+    /**
+     * Returns a shape representing the text
+     * @param x coordinate of the horizontal axis
+     * @param y coordinate of the vertical axis
+     * @return a shape representing the text
+     */
     @Override
     public Shape setEndPoint(double x, double y) {
         this.xEnd=x;
         this.yEnd=y;
         
         TextAdapter t=new TextAdapter(xStart, yStart, text);
-        t.setFont(Font.font(abs(xStart-xEnd)));
+        t.setFont(Font.font(1));
         return t;
     }
 

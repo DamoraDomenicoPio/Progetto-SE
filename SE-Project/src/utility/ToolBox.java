@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package utility;
+import java.util.ArrayList;
 import tools.*; 
 
 /**
@@ -16,9 +17,11 @@ public class ToolBox {
     private MoveTool moveTool; 
     private StretchTool stretchTool;
     private TextTool textTool;
+    private PolygonTool polygonTool;
     
     private double scaleFactor;
     private String text;
+    private ArrayList<Double> list=new ArrayList<>();
     
     public ToolBox(){
         
@@ -28,6 +31,7 @@ public class ToolBox {
         this.moveTool = new MoveTool(); 
         this.stretchTool = new StretchTool();
         this.textTool = new TextTool();
+        this.polygonTool=new PolygonTool();
     }
 
     public double getScaleFactor() {
@@ -50,7 +54,9 @@ public class ToolBox {
             return this.lineSegmentTool;
         }
         else if(tool.equalsIgnoreCase("POLYGON")){
-            return this.ellipseTool;
+            this.polygonTool.setList(list);
+            this.list.clear();
+            return this.polygonTool;
         }
         else if(tool.equalsIgnoreCase("TEXT")){
             this.textTool.setText(text);
@@ -93,6 +99,10 @@ public class ToolBox {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setList(ArrayList<Double> list) {
+        this.list.addAll(list);
     }
     
     

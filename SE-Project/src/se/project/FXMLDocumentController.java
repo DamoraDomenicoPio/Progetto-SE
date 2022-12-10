@@ -266,23 +266,30 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void groupOnMouseReleased(MouseEvent event) {
+        if(event.getButton()==MouseButton.PRIMARY){
             if(this.actionToDo.equalsIgnoreCase("ADD") ){
                 this.selectedShape=null;
-                System.out.println("Qui");
                 invoker.execute(new AddCommand(group, borderColorPicker.getValue(), insideColorPicker.getValue(), this.newShape));
                 this.newShape=null;
+                if(this.shapeToInsert.equalsIgnoreCase("POLYGON")){
+                    shapeToInsert="";
+                    actionToDo="";
+                }
             }
             else if (! this.actionToDo.equalsIgnoreCase("SELECT")) { 
                 if (currentTool != null) {
                 invoker.execute(new ObjectToolCommand(xPressed, yPressed, event.getX(), event.getY(), currentTool, selectedShape));
                 }
             }
-            else if(this.actionToDo.equalsIgnoreCase("CREATEPOLYGON") && this.newShape!=null){
-                invoker.execute(new AddCommand(group, borderColorPicker.getValue(), insideColorPicker.getValue(), this.newShape));
-                this.newShape=null;
+            if(this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")){
+                
+                if(this.numberSide<=this.sides.size()/2+1){
+                    this.actionToDo="ADD";
+                    this.shapeToInsert="POLYGON";
+                }
             }
+        }
         
-        //aggiungere polygon
     }
     /**
      * Method that allows to perform actions that require dragging the mouse
@@ -320,20 +327,24 @@ public class FXMLDocumentController implements Initializable {
                    toolBox.setText(this.addTextTextField.getText());
 
                 }
+                if(this.shapeToInsert.equalsIgnoreCase("POLYGON")){
+                   toolBox.setList(sides);
+                   this.numberSide=0;
+                   this.nSidesPolygonTextField.setText("0");
+                }
+                this.sides.clear();
                 Tool shapeTool= toolBox.getShapeTool(shapeToInsert);
                 shapeTool.setStartPoint(xPressed, yPressed);
                 Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
-
                 group.getChildren().add(shape);
                 shape.getStrokeDashArray().add(10d);
                 shape.setStroke(new Color(0, 0, 0, 1));
                 shape.setFill(new Color(1, 1, 1, 1));
-                this.newShape = shape; 
-                //((ObjectTool) shapeTool).setShape(selectedShape);
-                //shape= shapeTool.setEndPoint(event.getX(), event.getY());
+                this.newShape = shape;
                 this.selectedShape=shape;
             }
             else if(this.actionToDo.equalsIgnoreCase("SELECT")){
+                this.sides.clear();
                 if(this.selectedShape!=null){
                     this.selectedShape.setEffect(null);
                 }
@@ -349,24 +360,14 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
             else if(this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")){
+                
+                
                 if(this.selectedShape!=null){
                     this.selectedShape.setEffect(null);
                 }
-                if(this.numberSide>=this.sides.size()/2){
-                    this.sides.add(xPressed);
-                    this.sides.add(yPressed);
-                }
-                if(this.numberSide==this.sides.size()/2){
-                    this.numberSide=0;
-                    PolygonAdapter p= new PolygonAdapter(sides, insideColorPicker.getValue(), borderColorPicker.getValue());
-                    p.getPoints().addAll(sides);
-
-
-                    group.getChildren().add(p);
-                    sides.clear();
-                    actionToDo="";
-                    this.newShape=p;
-                }
+                this.sides.add(xPressed);
+                this.sides.add(yPressed);
+                
             }
         }
         
@@ -378,7 +379,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void copyOnAction(ActionEvent event) {
-        invoker.execute(new CopyCommand(clipboard, selectedShape));
+        if(selectedShape!=null){
+            invoker.execute(new CopyCommand(clipboard, selectedShape));
+        }
+        
     }
     
     /**
@@ -387,7 +391,9 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pasteOnAction(ActionEvent event) {
-        invoker.execute(new PasteCommand(group, clipboard));
+        if(selectedShape!=null){
+            invoker.execute(new PasteCommand(group, clipboard));
+        }
     }
     
     /**
@@ -397,7 +403,9 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void changeColorShape(ActionEvent event) {
-        invoker.execute(new ChangeColorCommand(selectedShape, borderColorPicker.getValue(), insideColorPicker.getValue()));
+        if(selectedShape!=null){
+            invoker.execute(new ChangeColorCommand(selectedShape, borderColorPicker.getValue(), insideColorPicker.getValue()));
+        }
     }
     
     /**
@@ -406,7 +414,9 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void deleteOnAction(ActionEvent event) {
-        invoker.execute(new DeleteCommand(group, selectedShape));
+        if(selectedShape!=null){
+            invoker.execute(new DeleteCommand(group, selectedShape));
+        }
     }
     
     /**
@@ -415,8 +425,9 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void cutOnAction(ActionEvent event) {
-        // clipboard.cut(selectedShape);
-        invoker.execute(new CutCommand(clipboard, selectedShape));
+        if(selectedShape!=null){
+            invoker.execute(new CutCommand(clipboard, selectedShape));
+        }
     }
 
 //    /**
@@ -641,19 +652,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void rotateSliderOnMouseReleased(MouseEvent event) {
-        this.rotationAngle =this.sliderRotate.getValue();
-        invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
+        if(selectedShape!=null){
+            this.rotationAngle =this.sliderRotate.getValue();
+            invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
+        }
     }
 
     @FXML
     private void createPolygonOnAction(ActionEvent event) {
-        this.shapeToInsert="POLYGON";
-        this.actionToDo="CREATEPOLYGON";
+        
         try{
             int sides= Integer.parseInt(this.nSidesPolygonTextField.getText());
             if(sides<=0)
                 nSidesPolygonTextField.setText("0");
             else{
+                this.shapeToInsert="POLYGON";
+                this.actionToDo="CREATEPOLYGON";
                 this.numberSide=sides;
             }
         } catch (Exception e){
@@ -670,7 +684,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void mirrorHorizontalOnAction(ActionEvent event) {
         if(this.selectedShape!=null){
-            ((NewShape) this.selectedShape).mirrorVertical();
+            ((NewShape) this.selectedShape).mirrorHorizontal();
         }
     }
     

@@ -73,7 +73,9 @@ public interface NewShape {
         else if(values[0].equalsIgnoreCase("POLYGON")){
             return PolygonAdapter.stringToPolygon(values[1]);
         }
-        
+        else if(values[0].equalsIgnoreCase("TEXT")){
+            return TextAdapter.stringToText(values[1]);
+        }
         return null;
     }
 }

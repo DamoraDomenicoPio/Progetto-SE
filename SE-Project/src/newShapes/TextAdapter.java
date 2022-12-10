@@ -14,7 +14,9 @@ import javafx.scene.text.Text;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
 public class TextAdapter extends Text implements NewShape{
-    private double rotationAngle = 0; 
+    private double rotationAngle = 0;
+    private double fixedPointX;
+    private double fixedPointY;
     
     /**
      * Creates a new instance of Text with the given position and text.
@@ -24,6 +26,8 @@ public class TextAdapter extends Text implements NewShape{
      */
     public TextAdapter(double x, double y, String value){
         super(x, y, value);
+        this.fixedPointX=x;
+        this.fixedPointY=y;
     }
     
     /**
@@ -49,7 +53,7 @@ public class TextAdapter extends Text implements NewShape{
      */
     @Override
     public String toString() {
-        return "Text;" + this.getX() + ";" + this.getY() + ";" + this.getText() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getFont().getSize()+ ";" + this.getRotate();
+        return "Text;" + this.getX() + ";" + this.getY() + ";" + this.getText() + ";" + this.getFill() + ";" + this.getStroke() + ";" + this.getFont().getSize() + ";" + this.getScaleX() + ";" + this.getScaleY() + ";" + this.getRotate();
     }
 
     /**
@@ -65,7 +69,9 @@ public class TextAdapter extends Text implements NewShape{
                 Paint.valueOf(values[3]),
                 Paint.valueOf(values[4]),
                 Font.font(Double.parseDouble(values[5])));
-        t.setRotate(Double.parseDouble(values[6]));
+        t.setScaleX(Double.parseDouble(values[6]));
+        t.setScaleY(Double.parseDouble(values[7]));
+        t.setRotate(Double.parseDouble(values[8]));
         return t;
     }
 
@@ -78,6 +84,8 @@ public class TextAdapter extends Text implements NewShape{
     public void move(double x, double y) {
         this.setX(x);
         this.setY(y);
+        this.fixedPointX=x;
+        this.fixedPointY=y;
     }
 
     /**
@@ -87,7 +95,21 @@ public class TextAdapter extends Text implements NewShape{
      */
     @Override
     public void stretch(double x, double y) {
-        this.setFont(Font.font(2*(x-this.getX())/this.getText().length()));
+        double len=2*(x-this.fixedPointX)/this.getText().length();
+        if(len<-2 || len>2){
+            this.setFont(Font.font(abs(len)));
+            this.setScaleY(2*(y-this.fixedPointY)/this.getFont().getSize());
+            if(this.fixedPointX>x){
+                super.setX(x);
+                this.setScaleX(-1);
+            }
+            else{
+                this.setScaleX(1);
+            }
+        
+        }
+        
+        
     }
 
     /**
@@ -124,12 +146,14 @@ public class TextAdapter extends Text implements NewShape{
 
     @Override
     public void mirrorVertical() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setScaleX(-1*this.getScaleX());
+        this.setRotationAngle(-this.rotationAngle);
     }
 
     @Override
     public void mirrorHorizontal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setScaleY(-1*this.getScaleY());
+        this.setRotationAngle(360-this.rotationAngle);
     }
     
 }
