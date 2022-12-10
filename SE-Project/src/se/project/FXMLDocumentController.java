@@ -169,6 +169,10 @@ public class FXMLDocumentController implements Initializable {
     private boolean gridStatus = false;
     @FXML
     private Slider sliderRotate;
+    @FXML
+    private Pane scrollParent;
+    @FXML
+    private Group zoomGroup;
     
 
     
@@ -564,7 +568,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
         invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
