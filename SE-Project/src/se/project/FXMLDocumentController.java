@@ -169,27 +169,9 @@ public class FXMLDocumentController implements Initializable {
     private boolean gridStatus = false;
     @FXML
     private Slider sliderRotate;
+    
 
-    public class Controller implements Initializable{
-
-
-     Group elementGroup = new Group();
-     elementGroup.getChildren().add(drawableWindow);
-     scrollPane.setContent(elementGroup);
-
-
-
-     slider.setShowTickMarks(true);
-     slider.setSnapToTicks(true);
-     slider.setShowTickLabels(true);
-
-     drawableWindow.scaleXProperty().bind(slider.getSlider().valueProperty());
-     drawableWindow.scaleYProperty().bind(slider.getSlider().valueProperty());
-
-    }
-
-    // <Slider fx:id="slider" blockIncrement="0.25" majorTickUnit="0.25" max="5.0" min="0.25" minorTickCount="0" prefHeight="54.0" prefWidth="182.0" showTickMarks="true" value="1.0">
-
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -197,12 +179,8 @@ public class FXMLDocumentController implements Initializable {
         this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000");
         //this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff");
         
-        this.clipboard = new Clipboard(group);
-        
-        // this.scrollPane = new ScrollPane(); 
-        // scrollPane.setContent(anchorPaneGroup); 
-        // this.scrollPartent.getChildren().add(scrollPane); 
-        
+        this.clipboard = new Clipboard(group); 
+    
         
     }    
     
@@ -586,6 +564,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
+    @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
         invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
