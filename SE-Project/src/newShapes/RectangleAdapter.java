@@ -144,4 +144,14 @@ public class RectangleAdapter extends Rectangle implements NewShape{
         this.rotationAngle = rotationAngle; 
         this.rotate(rotationAngle); 
     }
+    
+    @Override
+    public void mirrorVertical(){
+        this.setRotate(-this.getRotate());
+    }
+    
+    @Override
+    public void mirrorHorizontal(){
+        this.setRotate(180-this.getRotate());
+    }
 }

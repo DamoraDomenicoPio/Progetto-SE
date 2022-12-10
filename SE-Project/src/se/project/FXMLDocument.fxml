@@ -420,10 +420,12 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Button mnemonicParsing="false" onAction="#mirrorVerticalOnAction" text="mirrorVertical" />
+                  <Button mnemonicParsing="false" onAction="#mirrorHorizontalOnAction" text="mirrorHorizontal" />
                </items>
             </ToolBar>
          </children></VBox>
-      <ScrollPane focusTraversable="false" hbarPolicy="ALWAYS" layoutY="117.0" prefHeight="700.0" prefWidth="1126.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0">
+      <ScrollPane focusTraversable="false" layoutY="117.0" prefHeight="700.0" prefWidth="1126.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0">
          <content>
           <AnchorPane fx:id="anchorPaneGroup" onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="685.0" prefWidth="1198.0">
                <children>
