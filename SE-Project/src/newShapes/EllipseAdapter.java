@@ -105,6 +105,10 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setRadiusY(this.getRadiusY()*r);
     }
     
+    /**
+     * Method that allows you to rotate the ellipse
+     * @param r angle in degrees
+     */
     @Override
     public void rotate(double r) {
         this.setRotate(r);

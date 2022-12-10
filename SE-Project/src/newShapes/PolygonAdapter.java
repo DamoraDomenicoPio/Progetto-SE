@@ -14,9 +14,10 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 
 
+
 /**
- *
- * @author Domenico
+ * The PolygonAdapter class creates and manages a polygon.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
 public class PolygonAdapter extends Polygon implements NewShape{
     private double xMin;
@@ -28,6 +29,10 @@ public class PolygonAdapter extends Polygon implements NewShape{
     
     private double rotationAngle = 0; 
     
+    /**
+     * Creates a new instance of Polygon given the coordinates.
+     * @param collection collection of doubles containing coordinates.
+     */
     public PolygonAdapter(ArrayList<Double> collection) {
         
         super();
@@ -65,17 +70,35 @@ public class PolygonAdapter extends Polygon implements NewShape{
         
     }
     
+    /**
+     * Creates a new instance of Polygon given the coordinates.
+     * @param collection collection of doubles containing coordinates.
+     * @param fill the fill color of the polygon.
+     * @param stroke the stroke color of the polygon.
+     */
     public PolygonAdapter(ArrayList<Double> collection, Paint fill, Paint stroke) {
         this(collection);
         this.setFill(fill);
         this.setStroke(stroke);
     }
     
+
+    /**
+     * Creates a new instance of Polygon given the coordinates.
+     * @param collection collection of doubles containing coordinates.
+     * @param fill the fill color of the polygon.
+     * @param stroke the stroke color of the polygon.
+     * @param strokeWidth the width of the stroke of the rectangle.
+     */
     public PolygonAdapter(ArrayList<Double> collection, Paint fill, Paint stroke, double strokeWidth) {
         this(collection, fill, stroke);
         this.setStrokeWidth(strokeWidth);
     }
 
+    /**
+     * Returns a string representation of this {@code PolygonAdapter} object.
+     * @return a string representation of this {@code PolygonAdapter} object.
+     */
     @Override
     public String toString(){
         String points="";
@@ -92,6 +115,11 @@ public class PolygonAdapter extends Polygon implements NewShape{
     
     }
     
+    /**
+     * Return a Polyogn from a string.
+     * @param string String representing the object.
+     * @return a Polygon Object
+     */
     public static Polygon stringToPolygon(String string) {
         String[] values=string.split(";");
         int size=Integer.parseInt(values[0]);
@@ -109,6 +137,11 @@ public class PolygonAdapter extends Polygon implements NewShape{
     }
     
 
+    /**
+     * Method that allows you to move the polygon.
+     * @param x horizontal coordinate of the midpoint.
+     * @param y vertical coordinate of the midpoint.
+     */
     @Override
     public void move(double x, double y) {
         
@@ -132,6 +165,11 @@ public class PolygonAdapter extends Polygon implements NewShape{
         this.yMidPoint=y;
     }
     
+    /**
+     * Method that allows you to stretch the polygon.
+     * @param x horizontal coordinate of the endpoint.
+     * @param y vertical coordinate of the endpoint.
+     */
     @Override
     public void stretch(double x, double y) {
         
@@ -161,7 +199,10 @@ public class PolygonAdapter extends Polygon implements NewShape{
     
     
     
-
+    /**
+     * Method that allows you to resize the polygon.
+     * @param r resize factor.
+     */
     @Override
     public void newResize(double r) {
         int i=0;
@@ -187,6 +228,10 @@ public class PolygonAdapter extends Polygon implements NewShape{
         this.fixedPointY=yMin;
     }
 
+    /**
+     * Method that allows you to rotate the rectangle.
+     * @param r angle in degrees.
+     */
     @Override
     public void rotate(double r) {
         this.setRotate(r);

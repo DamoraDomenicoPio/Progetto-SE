@@ -14,9 +14,11 @@ public class ToolBox {
     private EllipseTool ellipseTool; 
     private RectangleTool rectangleTool; 
     private MoveTool moveTool; 
-    private StretchTool stretchTool; 
+    private StretchTool stretchTool;
+    private TextTool textTool;
     
     private double scaleFactor;
+    private String text;
     
     public ToolBox(){
         
@@ -24,7 +26,8 @@ public class ToolBox {
         this.ellipseTool = new EllipseTool(); 
         this.rectangleTool = new RectangleTool();
         this.moveTool = new MoveTool(); 
-        this.stretchTool = new StretchTool(); 
+        this.stretchTool = new StretchTool();
+        this.textTool = new TextTool();
     }
 
     public double getScaleFactor() {
@@ -48,6 +51,11 @@ public class ToolBox {
         }
         else if(tool.equalsIgnoreCase("POLYGON")){
             return this.ellipseTool;
+        }
+        else if(tool.equalsIgnoreCase("TEXT")){
+            this.textTool.setText(text);
+            this.text="";
+            return this.textTool;
         }
         return null;
     }
@@ -81,6 +89,10 @@ public class ToolBox {
 
     public StretchTool getStretchTool() {
         return stretchTool;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
     
     
