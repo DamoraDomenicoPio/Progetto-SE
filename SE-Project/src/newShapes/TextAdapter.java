@@ -121,5 +121,15 @@ public class TextAdapter extends Text implements NewShape{
         this.rotationAngle = rotationAngle; 
         this.rotate(rotationAngle); 
     }
+
+    @Override
+    public void mirrorVertical() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mirrorHorizontal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

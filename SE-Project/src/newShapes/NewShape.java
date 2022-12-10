@@ -47,6 +47,10 @@ public interface NewShape {
     
     public void setRotationAngle(double rotationAngle); 
     
+    public void mirrorVertical();
+    
+    public void mirrorHorizontal();
+    
     /**
      * Method that restores a shape from its formatString 
      * @param formatString string containing the shape to create

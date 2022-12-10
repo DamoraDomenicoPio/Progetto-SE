@@ -49,8 +49,8 @@ public class RectangleTool extends Tool{
             yStart=yEnd;
             yEnd=t;
         }
-        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height);
         
+        RectangleAdapter r=new RectangleAdapter(this.xStart, this.yStart, this.width, this.height);
         
         return r;
     }

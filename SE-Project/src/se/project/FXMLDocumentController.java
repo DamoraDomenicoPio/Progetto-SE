@@ -661,6 +661,20 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    private void mirrorVerticalOnAction(ActionEvent event) {
+        if(this.selectedShape!=null){
+            ((NewShape) this.selectedShape).mirrorVertical();
+        }
+    }
+
+    @FXML
+    private void mirrorHorizontalOnAction(ActionEvent event) {
+        if(this.selectedShape!=null){
+            ((NewShape) this.selectedShape).mirrorVertical();
+        }
+    }
+    
+    @FXML
     private void addTextOnAction(ActionEvent event) {
         shapeToInsert="Text";
         this.actionToDo="ADD";

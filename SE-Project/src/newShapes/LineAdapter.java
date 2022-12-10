@@ -155,4 +155,20 @@ public class LineAdapter extends Line implements NewShape{
         this.rotate(rotationAngle); 
     }
     
+    @Override
+    public void mirrorVertical(){
+        if(this.getScaleX()==1)
+            this.setScaleX(-1);
+        else
+            this.setScaleX(1);
+    }
+    
+    @Override
+    public void mirrorHorizontal(){
+        if(this.getScaleY()==1)
+            this.setScaleY(-1);
+        else
+            this.setScaleY(1);
+    }
+    
 }
