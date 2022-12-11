@@ -209,9 +209,11 @@ public class FXMLDocumentController implements Initializable {
         gridArray[1] = grid1; 
         gridArray[2] = grid2; 
         gridArray[3] = grid3; 
-        gridArray[4] = grid4; 
-        
+        gridArray[4] = grid4;
         this.gridManager = new GridManager(gridArray); 
+        
+        this.actionToDo = "ADD"; 
+        this.shapeToInsert = "LINE";
         
     }    
     
