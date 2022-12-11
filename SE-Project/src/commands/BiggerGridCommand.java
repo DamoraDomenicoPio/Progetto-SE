@@ -7,12 +7,16 @@ package commands;
 import utility.GridManager;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to zoom in on the grid
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class BiggerGridCommand implements Command {
     private GridManager gridManager; 
 
+    /**
+     * Creates a new instance of BiggerGridCommand
+     * @param gridManager the GridManager object that manages the grid
+     */
     public BiggerGridCommand(GridManager gridManager) {
         this.gridManager = gridManager;
     }

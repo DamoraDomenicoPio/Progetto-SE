@@ -8,13 +8,18 @@ import javafx.scene.shape.Shape;
 import newShapes.NewShape;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to scale a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 public class ScaleCommand implements Command {
     private double scaleFactor; 
     private NewShape shape;
 
+    /**
+     * Creates a new instance of ScaleCommand
+     * @param scaleFactor the scale factor
+     * @param shape the shape to be scaled
+     */
     public ScaleCommand(double scaleFactor, Shape shape) {
         this.scaleFactor = scaleFactor;
         this.shape = (NewShape) shape;

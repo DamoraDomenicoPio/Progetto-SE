@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import tools.*; 
 
 /**
- *
- * @author assun
+ * The Tool Boxallows you to create a new Tool
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
 public class ToolBox {
     private LineSegmentTool lineSegmentTool; 
@@ -18,13 +18,14 @@ public class ToolBox {
     private StretchTool stretchTool;
     private TextTool textTool;
     private PolygonTool polygonTool;
-    
     private double scaleFactor;
     private String text;
     private ArrayList<Double> list=new ArrayList<>();
     
+    /**
+     * Creates a new instance of ToolBox
+     */
     public ToolBox(){
-        
         this.lineSegmentTool = new LineSegmentTool(); 
         this.ellipseTool = new EllipseTool(); 
         this.rectangleTool = new RectangleTool();
@@ -40,9 +41,13 @@ public class ToolBox {
 
     public void setScaleFactor(double scaleFactor) {
         this.scaleFactor = scaleFactor;
-        // this.rectangleTool.setScaleFactor; 
     }
     
+    /**
+     * Method that returns a Tool specifying a string
+     * @param tool string representing the Tool
+     * @return the Tool object
+     */
     public Tool getShapeTool(String tool) {
         if(tool.equalsIgnoreCase("RECTANGLE")){
             return this.rectangleTool;
@@ -66,6 +71,11 @@ public class ToolBox {
         return null;
     }
     
+    /**
+     * Method that returns a ObjectTool specifying a string
+     * @param tool string representing the ObjectTool
+     * @return the ObjectTool object
+     */
     public ObjectTool getObjectTool(String tool) {
         if(tool.equalsIgnoreCase("MOVE")){
             return this.moveTool; 

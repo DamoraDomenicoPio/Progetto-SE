@@ -10,9 +10,8 @@ import newShapes.EllipseAdapter;
 
 
 /**
- * 
- * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * The EllipseTool allows you to create a new ellipse
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public class EllipseTool extends Tool{
     /**

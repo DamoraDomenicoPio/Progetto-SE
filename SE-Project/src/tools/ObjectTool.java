@@ -8,9 +8,9 @@ import javafx.scene.shape.Shape;
 import newShapes.NewShape;
 
 /**
+ * Class representing a tool that does an operation on a shape
  @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
 */
-
 public abstract class ObjectTool extends Tool{
     /**
      * Represents the shape on which the trasformation will be executed.

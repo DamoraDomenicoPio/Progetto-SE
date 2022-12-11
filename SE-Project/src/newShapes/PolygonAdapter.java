@@ -5,11 +5,6 @@
 package newShapes;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 

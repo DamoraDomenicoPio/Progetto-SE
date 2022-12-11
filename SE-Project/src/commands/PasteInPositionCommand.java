@@ -9,15 +9,22 @@ import javafx.scene.shape.Shape;
 import utility.Clipboard;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to paste a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 public class PasteInPositionCommand implements Command{
     private Group group; 
     private Clipboard clipboard;
     private Shape pastedShape;  
     private double x, y; // coordinates where paste the shape
     
+    /**
+     * Creates a new instance of PasteCommand
+     * @param group Object that contains the shapes
+     * @param clipboard clipboard that allows you to make the copy
+     * @param x horizontal coordinate to copy to
+     * @param y vertical coordinate to copy to
+     */
     public PasteInPositionCommand(Group group, Clipboard clipboard, double x, double y) {
         this.clipboard = clipboard; 
         this.group = group; 

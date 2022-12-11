@@ -7,12 +7,16 @@ package commands;
 import newShapes.NewShape;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to mirror a shape vertically
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class MirrorVerticalCommand implements Command {
     private NewShape shape; 
     
+    /**
+     * Creates a new instance of MirrorVerticalCommand
+     * @param shape the figure to be mirrored
+     */
     public MirrorVerticalCommand(NewShape shape) {
         this.shape = shape; 
     }

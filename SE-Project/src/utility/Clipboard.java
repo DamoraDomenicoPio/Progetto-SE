@@ -9,34 +9,53 @@ import javafx.scene.shape.Shape;
 import newShapes.NewShape;
 
 /**
- *
- * @author assun
+ * The Clipboard allows you to copy and paste a shape
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public class Clipboard {
     private Group group; 
     private Shape copiedShape;  // String that repredents the copied shape in the moment it gets copied 
     private boolean pasted;  // true if the copied shape has already been pasted 
 
+    /**
+     * Creates a new instance of Clipboard
+     * @param group Object that contains the shapes
+     */
     public Clipboard(Group group) {
         this.group = group;
     }
     
+    /**
+     * Method that returns true if a shape was copied previously, otherwise false
+     * @return true if a shape was copied previously, otherwise false
+     */
     public boolean isEmpty() {
         return copiedShape == null;
     }
     
+    /**
+     * Method that allows you to copy a shape
+     * @param shape the copied shape
+     */
     public void copy(Shape shape) {
         this.copiedShape = duplicate(shape);
         this.pasted = false; 
     }
     
+    /**
+     * Method that allows you to duplicate a shape
+     * @param shape the duplicated shape
+     */
     private Shape duplicate(Shape shape) {
         String shapeString = shape.toString(); 
         return NewShape.stringToShape(shapeString);
     }
     
+    /**
+     * Method that allows you to paste a shape
+     * @return the copied shape
+     */
     public Shape paste() {
-        System.out.println("Incollando...");
         if (! this.isEmpty()) {
             if (pasted == true) { // if the shape has been already pasted once
                 this.copiedShape = duplicate(copiedShape);  // it create a new shape to paste 
@@ -52,7 +71,12 @@ public class Clipboard {
         }
     }
     
-    //Overload del metodo paste che prende in ingresso anche le coordinate dove incollare la forma 
+    /**
+     * Method that allows you to paste a shape
+     * @param x horizontal coordinate in which to copy the shape
+     * @param y vertical coordinate in which to copy the shape
+     * @return the copied shape
+     */
     public Shape paste (double x, double y) {
         if (! this.isEmpty()) {
             if (pasted == true) { // if the shape has been already pasted once
@@ -71,11 +95,18 @@ public class Clipboard {
         
     }
     
+    /**
+     * Method that returns the copied figure
+     * @return the copied figure
+     */
     public Shape getCopiedShape() {
         return this.copiedShape;
     }
     
-    
+    /**
+     * Method that allows you to cut a shape
+     * @param shape the cutted shape 
+     */
     public void cut(Shape shape) {
         if (shape != null) {
             this.copy(shape);

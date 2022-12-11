@@ -4,11 +4,8 @@
  */
 package tools;
 
-import javafx.scene.control.ColorPicker;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import newShapes.LineAdapter;
-import java.lang.Math;
 
 /**
  * 

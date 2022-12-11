@@ -8,13 +8,18 @@ import javafx.scene.shape.Shape;
 import utility.Clipboard;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to cut a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class CutCommand implements Command {
     private Clipboard clipboard; 
     private Shape shape; // The shape that has to be cutted 
 
+    /**
+     * Creates a new instance of cutCommand
+     * @param clipboard clipboard that allows you to make the cop
+     * @param shape the shape to be cut
+     */
     public CutCommand(Clipboard clipboard, Shape shape) {
         this.clipboard = clipboard;
         this.shape = shape; 

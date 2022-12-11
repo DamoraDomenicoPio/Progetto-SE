@@ -8,12 +8,16 @@ import javafx.scene.Group;
 import javafx.scene.transform.Scale;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to zoom out on the sheet.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 public class ZoomOutCommand implements Command {
     private Group group; 
     
+    /**
+     * Creates a new instance of ZoomOutCommand
+     * @param group Object that contains the shapes
+     */
     public ZoomOutCommand(Group group) {
         this.group = group; 
     }

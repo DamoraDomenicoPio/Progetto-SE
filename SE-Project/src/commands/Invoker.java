@@ -6,28 +6,33 @@ package commands;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
-
 /**
- *
- * @author gianl
- */
+ * Class that allows you to execute commands.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class Invoker {
     
     private Deque<Command> actionsStack;
     
+    /**
+     * Creates a new instance of Invoker
+     */
     public Invoker(){
         actionsStack = new ArrayDeque<>();
     }
     
+    /**
+     * Method that allows you to execute the command
+     */
     public void execute(Command command){
-        System.out.println("Eseguo il comando");
         actionsStack.addLast(command);
         command.execute();
     }
     
+    /**
+     * Method that allows you to undo the command
+     */
     public void undo(){
-        System.out.println("undo dell'invoker");
         if(! this.actionsStack.isEmpty()) {
             Command last = actionsStack.removeLast();
             last.undo();

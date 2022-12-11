@@ -5,7 +5,6 @@
 package tools;
 
 import static java.lang.Math.abs;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.shape.Shape;
 import newShapes.RectangleAdapter;
 
@@ -14,7 +13,6 @@ import newShapes.RectangleAdapter;
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * The RectangleTool allows you to create a new rectangle
  */
-
 public class RectangleTool extends Tool{
     /**
      * Represents the height of the rectangle.
