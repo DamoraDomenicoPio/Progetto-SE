@@ -8,17 +8,22 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to change the color of a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class ChangeColorCommand implements Command{
     
     private Shape shape;
     private Paint oldStroke, oldFill; 
     private Paint newStroke, newFill; 
 
+    /**
+     * Creates a new instance of ChangeColorCommand
+     * @param shape the shape to perform the action on
+     * @param newStroke the stroke color of the shape
+     * @param newInterior the fill color of the shape
+     */
     public ChangeColorCommand(Shape shape, Paint newStroke, Paint newInterior) {
-        System.out.println("Creato il command cambio colore");
         this.shape = shape;
         this.oldStroke = shape.getStroke();
         this.oldFill = shape.getFill(); 

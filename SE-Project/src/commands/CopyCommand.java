@@ -4,19 +4,23 @@
  */
 package commands;
 
-import javafx.scene.Group;
 import javafx.scene.shape.Shape;
 import utility.Clipboard;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to copy a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class CopyCommand implements Command{
     private Clipboard clipboard; 
     private Shape newCopied; 
     private Shape oldCopied; 
 
+    /**
+     * Creates a new instance of AddCommand
+     * @param clipboard clipboard that allows you to make the copy
+     * @param newCopied the shape to be copied
+     */
     public CopyCommand(Clipboard clipboard, Shape newCopied) {
         this.clipboard = clipboard;
         this.newCopied = newCopied;

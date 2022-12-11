@@ -8,14 +8,19 @@ import javafx.scene.Group;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to delete a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class DeleteCommand implements Command{
     
     private Shape shape;
     private Group group; 
 
+    /**
+     * Creates a new instance of DeleteCommand
+     * @param group Object that contains the shapes
+     * @param shape the shape to be deleted
+     */
     public DeleteCommand(Group group, Shape shape) {
         this.group = group; 
         this.shape = shape;
@@ -30,7 +35,6 @@ public class DeleteCommand implements Command{
 
     @Override
     public void undo() {
-        System.out.println("undo delete command");
         this.group.getChildren().add(shape);
     }
     

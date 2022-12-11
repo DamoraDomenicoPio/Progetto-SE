@@ -9,15 +9,20 @@ import javafx.scene.Group;
 import javafx.scene.shape.Shape;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to go background a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 public class GoBackgroundCommand implements Command {
     
     private Group group; 
     private Shape shape; 
     private int index;   // Z-order of the shape 
 
+    /**
+     * Creates a new instance of GoBackgroundCommand
+     * @param group Object that contains the shapes
+     * @param shape Represents the form that must go into the background
+     */
     public GoBackgroundCommand(Group group, Shape shape) {
         this.group = group;
         this.shape = shape;

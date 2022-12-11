@@ -4,20 +4,22 @@
  */
 package commands;
 
-import java.util.logging.Logger;
 import newShapes.NewShape;
 
 /**
- *
- * @author assun
- */
-
-
+ * Class that allows you to rotate a shape.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
+*/
 public class RotateCommand implements Command {
     private NewShape shape;  // Shape to be roated
     private double rotationAngle; 
     private double oldAngle;  
 
+    /**
+     * Creates a new instance of RotateCommand
+     * @param shape the figure that needs to be rotated
+     * @param rotationAngle the angle of rotation
+     */
     public RotateCommand(NewShape shape, double rotationAngle) {
         this.shape = shape;
         this.rotationAngle = rotationAngle; 

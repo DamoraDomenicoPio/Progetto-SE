@@ -4,16 +4,13 @@
  */
 package tools;
 
-import static java.lang.Math.abs;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import newShapes.TextAdapter;
 
 /**
- * 
- * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * The TextTool allows you to create a new text
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
 public class TextTool extends Tool{
     /**

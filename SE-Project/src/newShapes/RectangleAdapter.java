@@ -84,7 +84,6 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     @Override
     public void move(double x, double y) {
-        System.out.println("Move rettangle");
         this.setX(x);
         this.setY(y);
         
@@ -99,7 +98,6 @@ public class RectangleAdapter extends Rectangle implements NewShape{
      */
     @Override
     public void stretch(double x, double y) {
-        System.out.println("RESIZE RETTANGLE");
         super.setHeight(abs(this.fixedPointY-y));
         super.setWidth(abs(this.fixedPointX-x));
         if(this.fixedPointX<x){

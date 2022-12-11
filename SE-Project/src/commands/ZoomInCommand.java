@@ -8,13 +8,16 @@ import javafx.scene.Group;
 import javafx.scene.transform.Scale;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to zoom in on the sheet.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class ZoomInCommand implements Command {
     private Group group; 
     
-    
+    /**
+     * Creates a new instance of ZoomInCommand
+     * @param group Object that contains the shapes
+     */
     public ZoomInCommand(Group group) {
         this.group = group; 
     }

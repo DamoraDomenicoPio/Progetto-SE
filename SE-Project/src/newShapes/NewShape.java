@@ -43,8 +43,16 @@ public interface NewShape {
      */
     public void rotate(double r);
     
+    /**
+     * Method that returns the rotation angle
+     * @return the angle of rotation
+     */
     public double getRotationAngle(); 
     
+    /**
+     * Method that sets the rotation angle
+     * @param rotationAngle the angle of rotation
+     */
     public void setRotationAngle(double rotationAngle); 
     
     /**

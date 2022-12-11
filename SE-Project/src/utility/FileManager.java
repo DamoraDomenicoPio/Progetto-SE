@@ -13,48 +13,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
-// import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Group;
 import javafx.scene.Node;
-// import javafx.scene.paint.Paint;
-// import javafx.scene.shape.*;
 import javafx.scene.shape.Shape;
 import javafx.stage.FileChooser;
 import newShapes.*;
-// import se.project.FXMLDocumentController;
 
 
 /**
- * 
- * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  * Implementation of the pattern factory method for the creation of the shapes
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
 public class FileManager {
-    
-    
-    /**
-     * 
-     * @param shapeString string containing the shape to create
-     * @return a shape given a string
-     */
-    
-//    public static Shape shapeCreate(String shapeString){
-//        String[] values=shapeString.split(";", 2);
-//        
-//        if(values[0].equalsIgnoreCase("RECTANGLE")){
-//            return RectangleAdapter.stringToRectangle(values[1]);
-//        }
-//        else if(values[0].equalsIgnoreCase("ELLIPSE")){
-//            return EllipseAdapter.stringToEllipse(values[1]);
-//        }
-//        else if(values[0].equalsIgnoreCase("LINE")){
-//            return LineAdapter.stringToLine(values[1]);
-//        }
-//        
-//        return null;
-//    }
-    
     
     /**
     *
@@ -76,7 +47,7 @@ public class FileManager {
                 group.getChildren().add(s);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger("File not foud!");
+            Logger.getLogger("File not fonud!");
         }
     }
     
