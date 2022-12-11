@@ -12,7 +12,7 @@ import javafx.scene.shape.Ellipse;
  * The EllipseAdapter class creates and manages an ellipse.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
  */
-public class EllipseAdapter extends Ellipse implements NewShape{
+public class EllipseAdapter extends Ellipse implements ShapeAdapter{
     private double rotationAngle = 0; 
 
     /**

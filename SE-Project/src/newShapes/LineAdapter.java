@@ -11,7 +11,7 @@ import javafx.scene.shape.Line;
  * The LineAdapter class creates and manages a line.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
-public class LineAdapter extends Line implements NewShape{
+public class LineAdapter extends Line implements ShapeAdapter{
     /**
      * projection of the line on the horizontal axis.
      */

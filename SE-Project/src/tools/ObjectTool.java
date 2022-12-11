@@ -5,7 +5,7 @@
 package tools;
 
 import javafx.scene.shape.Shape;
-import newShapes.NewShape;
+import newShapes.ShapeAdapter;
 
 /**
  * Class representing a tool that does an operation on a shape
@@ -15,16 +15,16 @@ public abstract class ObjectTool extends Tool{
     /**
      * Represents the shape on which the trasformation will be executed.
      */
-    protected NewShape shape; 
+    protected ShapeAdapter shape; 
     
     
-    public NewShape getShape() {
+    public ShapeAdapter getShape() {
         return shape;
     }
     
     
     public void setShape(Shape shape) {
-        this.shape = (NewShape) shape;
+        this.shape = (ShapeAdapter) shape;
     }
     
 }

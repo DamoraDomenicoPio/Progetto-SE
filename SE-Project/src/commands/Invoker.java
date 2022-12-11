@@ -23,6 +23,7 @@ public class Invoker {
     
     /**
      * Method that allows you to execute the command
+     * @param command command that must be executed
      */
     public void execute(Command command){
         actionsStack.addLast(command);

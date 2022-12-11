@@ -10,7 +10,7 @@ import javafx.scene.shape.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 import utility.ToolBox;
-import newShapes.NewShape;
+import newShapes.ShapeAdapter;
 /**
  *
  * @author Domenico
@@ -32,9 +32,9 @@ public class ShapeToolTest {
     @Test
     public void testShapeCreate(){
         ToolBox tool= new ToolBox();
-        assertTrue(NewShape.stringToShape("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
-        assertTrue(NewShape.stringToShape("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
-        assertTrue(NewShape.stringToShape("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
+        assertTrue(ShapeAdapter.stringToShape("Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0") instanceof Rectangle);
+        assertTrue(ShapeAdapter.stringToShape("Line;138.0;94.0;201.0;208.0;0x000000ff;1.0") instanceof Line);
+        assertTrue(ShapeAdapter.stringToShape("Ellipse;247.0;200.0;128.0;119.0;0xffffffff;0x000000ff;1.0") instanceof Ellipse);
         assertTrue(tool.getShapeTool("Ellipse;258.0;208.0;0.0") == null);
     }
 

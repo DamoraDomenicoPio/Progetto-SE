@@ -12,7 +12,7 @@ import javafx.scene.shape.Rectangle;
  * The RectangleAdapter class creates and manages a rectangle.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
-public class RectangleAdapter extends Rectangle implements NewShape{
+public class RectangleAdapter extends Rectangle implements ShapeAdapter{
 
     private double fixedPointX;
     private double fixedPointY;

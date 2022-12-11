@@ -43,7 +43,7 @@ public class FileManager {
             i.useDelimiter("\n");
             while(i.hasNext()){
                 String shapeString=i.next();
-                Shape s= NewShape.stringToShape(shapeString);
+                Shape s= ShapeAdapter.stringToShape(shapeString);
                 group.getChildren().add(s);
             }
         } catch (FileNotFoundException ex) {

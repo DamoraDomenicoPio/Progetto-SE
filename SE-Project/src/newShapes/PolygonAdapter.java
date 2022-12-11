@@ -14,7 +14,7 @@ import javafx.scene.shape.Polygon;
  * The PolygonAdapter class creates and manages a polygon.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
-public class PolygonAdapter extends Polygon implements NewShape{
+public class PolygonAdapter extends Polygon implements ShapeAdapter{
     private double xMin;
     private double yMin;
     private double fixedPointX;

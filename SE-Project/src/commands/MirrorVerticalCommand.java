@@ -4,20 +4,20 @@
  */
 package commands;
 
-import newShapes.NewShape;
+import newShapes.ShapeAdapter;
 
 /**
  * Class that allows you to mirror a shape vertically
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
 */
 public class MirrorVerticalCommand implements Command {
-    private NewShape shape; 
+    private ShapeAdapter shape; 
     
     /**
      * Creates a new instance of MirrorVerticalCommand
      * @param shape the figure to be mirrored
      */
-    public MirrorVerticalCommand(NewShape shape) {
+    public MirrorVerticalCommand(ShapeAdapter shape) {
         this.shape = shape; 
     }
     

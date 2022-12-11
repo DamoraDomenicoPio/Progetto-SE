@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
  * The TextAdapter class creates and manages a text.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
-public class TextAdapter extends Text implements NewShape{
+public class TextAdapter extends Text implements ShapeAdapter{
     private double rotationAngle = 0;
     private double fixedPointX;
     private double fixedPointY;

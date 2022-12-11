@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import utility.ToolBox;
 import tools.Tool;
 import utility.FileManager;
-import newShapes.NewShape;
+import newShapes.ShapeAdapter;
 
 /**
  *
@@ -62,7 +62,7 @@ public class FXMLDocumentControllerTest {
     public void testPasteOnAction(){
         //get Rectangle
         Shape selectedShape=(Shape) group.getChildren().get(1);
-        Shape shape =NewShape.stringToShape(selectedShape.toString());
+        Shape shape =ShapeAdapter.stringToShape(selectedShape.toString());
         group.getChildren().add(shape);
         assertTrue(group.getChildren().contains(shape));
         assertTrue(group.getChildren().size()==4);
