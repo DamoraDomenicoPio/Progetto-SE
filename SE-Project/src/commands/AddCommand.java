@@ -9,7 +9,7 @@ import javafx.scene.shape.Shape;
 
 /**
  * Class that allows you to change the color of a shape.
- @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
 */
 public class AddCommand implements Command{
     
