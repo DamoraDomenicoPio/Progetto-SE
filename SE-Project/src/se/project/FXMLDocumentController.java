@@ -16,58 +16,44 @@ import commands.GoBackgroundCommand;
 import commands.RotateCommand;
 import commands.GoFrontCommand;
 import commands.CutCommand;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import static java.lang.Math.ceil;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Shadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.scene.transform.Scale;
 import javafx.stage.Screen;
 import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.Tool;
 import utility.FileManager;
 import utility.Clipboard;
+import utility.Grid;
 import utility.ToolBox; 
 
 
@@ -163,12 +149,39 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private ImageView cursorIntoSelectionButton;
-    @FXML
     private Pane paneGrid;
     
     private boolean gridStatus = false;
     @FXML
     private Slider sliderRotate;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private Group zoomGroup;
+    @FXML
+    private Group contentGroup;
+    private GridPane gridPane;
+    
+    private int gridIndex = 2; 
+    
+    @FXML
+    private VBox gridSmall;
+    @FXML
+    private GridPane grid1;
+    @FXML
+    private GridPane grid2;
+    @FXML
+    private GridPane grid3;
+    @FXML
+    private GridPane grid4;
+    @FXML
+    private GridPane grid5;
+    private Grid grid;
+    
+    GridPane grids[] = new GridPane[5];
+    
+    private int nColumns = 14; 
+    private int nRows = 8;
     
 
     
@@ -180,9 +193,64 @@ public class FXMLDocumentController implements Initializable {
         //this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff");
         
         this.clipboard = new Clipboard(group); 
-    
+        
+        scrollPane.setContent(contentGroup);
+        // grid = new Grid(anchorPaneGroup);
+        
+        GridPane griglia = new GridPane();
+        for (int i = 0; i < 5; i++) {
+            ColumnConstraints column = new ColumnConstraints(100);
+            griglia.getColumnConstraints().add(column);
+        }
+        anchorPaneGroup.getChildren().add(griglia); 
+        griglia.setGridLinesVisible(true);
+        
+//        grid3.setGridLinesVisible(true);
+//        grid1.setOpacity(0.3); 
+//        grid2.setOpacity(0.3); 
+//        grid3.setOpacity(0.3); 
+//        grid4.setOpacity(0.3); 
+//        grid5.setOpacity(0.3); 
+//        
+//        
+//        grids[0] = grid1;
+//        grids[1] = grid2; 
+//        grids[2] = grid3; 
+//        grids[3] = grid4; 
+//        grids[4] = grid5; 
         
     }    
+    
+    
+    private GridPane createGrid(int nCols, int nRows) {
+        System.out.println("Creando una nuova griglia...");
+        GridPane gridpane = new GridPane(); 
+        
+        for (int i = 0; i < 5; i++) {
+            ColumnConstraints column = new ColumnConstraints(100);
+            gridpane.getColumnConstraints().add(column);
+        }
+        return gridpane; 
+    }
+//        GridPane newGrid = new GridPane(); 
+//        System.out.println("Nuova griglia creata"+newGrid.getClass());
+//        for(int i=0; i<nCols; i++) {
+//            ColumnConstraints column = new ColumnConstraints(); 
+//            column.setPercentWidth(100/nCols);
+//            newGrid.getColumnConstraints().add(column);
+//        }
+//        System.out.println("colonne ok");
+//        for(int i=0; i<nRows; i++) {
+//            System.out.println("Nuova riga");
+//            RowConstraints row = new RowConstraints(); 
+//            row.setPercentHeight(100/nRows);
+//            newGrid.getRowConstraints().add(row);
+//        }
+//        System.out.println("righe ok");
+//        System.out.println("Nuova griglia creata"+newGrid.getClass());
+//        newGrid.setOpacity(0.3);
+//        return newGrid; 
+//    }
     
     /**
     *
@@ -491,24 +559,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomOutOnAction(ActionEvent event) {
-        if(this.resizeFactor>0.6){
-            this.resizeFactor-=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
-            
-        }
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
-        /*this.anchorPaneGroup.setScaleX(resizeFactor);
-        this.anchorPaneGroup.setScaleY(resizeFactor);
-        group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);*/
+        
+        Scale scale = new Scale(0.9, 0.9, 0, 0); 
+        zoomGroup.getTransforms().add(scale);
     }
 
     @FXML
@@ -521,24 +574,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomInOnAction(ActionEvent event) {
-        if(this.resizeFactor<1.4){
-            this.resizeFactor+=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
-        }
         
-        /*this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);*/
-        this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);
-        /*group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);
-        this.anchorPaneGroup.setScaleX(resizeFactor);sice
-        this.anchorPaneGroup.setScaleY(resizeFactor);*/
+        Scale scale = new Scale(1.1, 1.1, 0, 0); 
+        zoomGroup.getTransforms().add(scale); 
     }
 
     @FXML
@@ -564,22 +602,28 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
         invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
 
-    @FXML
-    private void gridButtonOnAction(ActionEvent event) {
-        if(gridStatus == false){
-            paneGrid.setVisible(true);
-            gridStatus=true;
-        }
-        else{
-            paneGrid.setVisible(false);
-            gridStatus=false;
-        }
-    }
+//    private void gridButtonOnAction(ActionEvent event) {
+//        
+//        ColumnConstraints column = new ColumnConstraints();
+//        gridPane.getColumnConstraints().add(column); 
+//        for(ColumnConstraints col : gridPane.getColumnConstraints()) {
+//            col.setPercentWidth(100/(nGrid)); 
+//        }
+//        
+//        RowConstraints row = new RowConstraints();
+//        gridPane.getRowConstraints().add(row);
+//        for(RowConstraints r : gridPane.getRowConstraints()) {
+//            r.setPercentHeight(100/(nGrid));
+//        }
+//        
+//        nGrid++;
+//        
+//        System.out.println("Nuova grid "+nGrid);
+//    }
 
     @FXML
     private void rotateSliderOnMouseDragged(MouseEvent event) {
@@ -595,6 +639,72 @@ public class FXMLDocumentController implements Initializable {
         this.rotationAngle =this.sliderRotate.getValue();
         invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
     }
+
+    @FXML
+    private void gridBiggerOnAction(ActionEvent event) {
+        
+        // grid.getBigger(); 
+        
+        if (gridIndex < 4) {
+            gridIndex++; 
+            System.out.println("Smaller squares"+gridIndex);
+            grids[gridIndex-1].setGridLinesVisible(false); 
+            grids[gridIndex].setGridLinesVisible(true); 
+        }
+    }
+        
+//        nColumns++;
+//        for(ColumnConstraints col : grid3.getColumnConstraints()) {
+//            col.setPercentWidth(100/(nColumns)); 
+//        }
+//        ColumnConstraints column = new ColumnConstraints();
+//        column.setPercentWidth(ceil(100/(nColumns))); 
+//        grid3.getColumnConstraints().add(column); 
+//        
+//        
+//        
+//        nRows++;
+//        for(RowConstraints r : grid3.getRowConstraints()) {
+//            r.setPercentHeight(100/(nRows));
+//        }
+//        RowConstraints row = new RowConstraints();
+//        row.setPercentHeight(ceil(100/(nRows)));
+//        grid3.getRowConstraints().add(row);
+//        
+//    }
+
+    @FXML
+    private void gridSmallerOnAction(ActionEvent event) {
+        
+//        grid.getSmaller(); 
+        
+        if (gridIndex > 0) {
+            gridIndex--;
+            System.out.println("Bigger squares" + gridIndex);
+            grids[gridIndex+1].setGridLinesVisible(false); 
+            grids[gridIndex].setGridLinesVisible(true); 
+        }
+    }
+    
+        
+//        System.out.println("Decremento");
+//        nColumns--;
+//        // ColumnConstraints column = new ColumnConstraints();
+//        // gridPane.getColumnConstraints().add(column); 
+//        for(ColumnConstraints col : grid1.getColumnConstraints()) {
+//            col.setPercentWidth(100/(nColumns)); 
+//        }
+//        
+//        nRows--;
+//        // RowConstraints row = new RowConstraints();
+//        // gridPane.getRowConstraints().add(row);
+//        for(RowConstraints r : grid1.getRowConstraints()) {
+//            r.setPercentHeight(100/(nRows));
+//        }
+        
+        
+        
+    
     
     
     
