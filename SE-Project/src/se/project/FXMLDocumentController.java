@@ -156,6 +156,7 @@ public class FXMLDocumentController implements Initializable {
     private double rotationAngle;
     private int numberSide=0;
     private ArrayList<Double> sides= new ArrayList<>();
+    private Polyline polyline;
     
     @FXML
     private ImageView cursorIntoSelectionButton;
@@ -223,7 +224,9 @@ public class FXMLDocumentController implements Initializable {
     */
     @FXML
     private void saveOnAction (ActionEvent event){
+        this.removePolyline();
         FileManager.saveFile(group);
+        
     }
     
     /**
@@ -294,20 +297,20 @@ public class FXMLDocumentController implements Initializable {
                     actionToDo="";
                 }
             }
-            else if (! this.actionToDo.equalsIgnoreCase("SELECT")) { 
+            else if (! this.actionToDo.equalsIgnoreCase("SELECT") && ! this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")) { 
                 if (currentTool != null) {
                 invoker.execute(new ObjectToolCommand(xPressed, yPressed, event.getX(), event.getY(), currentTool, selectedShape));
                 }
             }
             if(this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")){
-                
+                this.selectedShape=null;
+                this.shapeToInsert="POLYGON";
                 if(this.numberSide<=this.sides.size()/2+1){
                     this.actionToDo="ADD";
-                    this.shapeToInsert="POLYGON";
+                    
                 }
             }
         }
-        
     }
     /**
      * Method that allows to perform actions that require dragging the mouse
@@ -316,6 +319,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void groupOnMouseDragged(MouseEvent event) {
         if(event.isPrimaryButtonDown()){
+            
             if(this.selectedShape!=null){
                 currentTool = this.toolBox.getObjectTool(actionToDo);
                 if(currentTool !=null){
@@ -333,7 +337,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void groupOnMousePressed(MouseEvent event) {
-        
         xPressed=event.getX();
         yPressed=event.getY();
         if(event.isPrimaryButtonDown()){
@@ -349,8 +352,10 @@ public class FXMLDocumentController implements Initializable {
                    toolBox.setList(sides);
                    this.numberSide=0;
                    this.nSidesPolygonTextField.setText("0");
+                   
                 }
                 this.sides.clear();
+                
                 Tool shapeTool= toolBox.getShapeTool(shapeToInsert);
                 shapeTool.setStartPoint(xPressed, yPressed);
                 Shape shape= shapeTool.setEndPoint(event.getX(), event.getY());
@@ -385,7 +390,13 @@ public class FXMLDocumentController implements Initializable {
                 }
                 this.sides.add(xPressed);
                 this.sides.add(yPressed);
-                
+                polyline.getPoints().add(xPressed);
+                polyline.getPoints().add(yPressed);
+            }
+            if(!this.actionToDo.equalsIgnoreCase("CREATEPOLYGON")){
+                this.group.getChildren().remove(polyline);
+                polyline=null;
+                sides.clear();
             }
         }
         
@@ -409,9 +420,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pasteOnAction(ActionEvent event) {
-        if(selectedShape!=null){
-            invoker.execute(new PasteCommand(group, clipboard));
-        }
+        
+        invoker.execute(new PasteCommand(group, clipboard));
     }
     
     /**
@@ -510,6 +520,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void undoOnAction(ActionEvent event) {
+
+        removePolyline();
         invoker.undo();
     }
 
@@ -592,6 +604,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pasteOnActionContextMenu(ActionEvent event) {
+        removePolyline();
         invoker.execute(new PasteInPositionCommand(group, clipboard, xPressed, yPressed));
     }
 
@@ -627,7 +640,14 @@ public class FXMLDocumentController implements Initializable {
             else{
                 this.shapeToInsert="POLYGON";
                 this.actionToDo="CREATEPOLYGON";
+                if(this.selectedShape!=null){
+                    this.selectedShape.setEffect(null);
+                    selectedShape=null;
+                }
+                
                 this.numberSide=sides;
+                polyline=new Polyline();
+                group.getChildren().add(polyline);
             }
         } catch (Exception e){
           }
@@ -663,7 +683,14 @@ public class FXMLDocumentController implements Initializable {
         invoker.execute(new SmallerGridCommand(gridManager));
     }
     
-    
+    private void removePolyline(){
+        if(polyline!=null){
+            this.group.getChildren().remove(polyline);
+            polyline=null;
+            sides.clear();
+            this.actionToDo="";
+        }
+    }
     
     
     

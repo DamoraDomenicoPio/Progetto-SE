@@ -40,7 +40,9 @@ public class Clipboard {
         if (! this.isEmpty()) {
             if (pasted == true) { // if the shape has been already pasted once
                 this.copiedShape = duplicate(copiedShape);  // it create a new shape to paste 
+                
             }
+            ((NewShape) this.copiedShape).moveOffset(5.0);
             group.getChildren().add(copiedShape); 
             pasted = true; 
             return copiedShape; 

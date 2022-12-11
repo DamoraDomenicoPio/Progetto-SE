@@ -47,9 +47,21 @@ public interface NewShape {
     
     public void setRotationAngle(double rotationAngle); 
     
+    /**
+     * method that allows you to mirror vertically
+     */
     public void mirrorVertical();
     
+    /**
+     * method that allows you to mirror horizontally
+     */
     public void mirrorHorizontal();
+    
+    /**
+     * method that moves the pasted shape by one offset
+     * @param r the offset
+     */
+    public void moveOffset(double r);
     
     /**
      * Method that restores a shape from its formatString 
