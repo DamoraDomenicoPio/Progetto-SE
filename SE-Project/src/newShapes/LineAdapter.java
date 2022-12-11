@@ -155,6 +155,9 @@ public class LineAdapter extends Line implements NewShape{
         this.rotate(rotationAngle); 
     }
     
+    /**
+     * method that allows you to mirror vertically
+     */
     @Override
     public void mirrorVertical(){
         double xEndPoint=this.getEndX();
@@ -163,6 +166,9 @@ public class LineAdapter extends Line implements NewShape{
         this.setRotationAngle(-this.rotationAngle);
     }
     
+    /**
+     * method that allows you to mirror horizontally
+     */
     @Override
     public void mirrorHorizontal(){
          double yEndPoint=this.getEndY();
@@ -171,4 +177,12 @@ public class LineAdapter extends Line implements NewShape{
         this.setRotationAngle(360-this.rotationAngle);
     }
     
+    /**
+     * method that moves the pasted shape by one offset
+     * @param r the offset
+     */
+    @Override
+    public void moveOffset(double r) {
+        this.move(this.getStartX()+r, this.getStartY()+r);
+    }
 }

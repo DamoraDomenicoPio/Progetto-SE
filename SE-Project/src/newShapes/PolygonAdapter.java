@@ -248,14 +248,30 @@ public class PolygonAdapter extends Polygon implements NewShape{
         this.rotate(rotationAngle);
     }
 
+    /**
+     * method that allows you to mirror vertically
+     */
      @Override
     public void mirrorVertical(){
         this.setRotate(-this.getRotate());
     }
     
+    /**
+     * method that allows you to mirror horizontally
+     */
     @Override
     public void mirrorHorizontal(){
         this.setRotate(180-this.getRotate());
     }
     
+    
+    /**
+     * method that moves the pasted shape by one offset
+     * @param r the offset
+     */
+    @Override
+    public void moveOffset(double r) {
+        this.move(this.xMidPoint+r, this.yMidPoint+r);
+    }
+
 }

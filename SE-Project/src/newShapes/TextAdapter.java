@@ -144,16 +144,31 @@ public class TextAdapter extends Text implements NewShape{
         this.rotate(rotationAngle); 
     }
 
+    /**
+     * method that allows you to mirror vertically
+     */
     @Override
     public void mirrorVertical() {
         this.setScaleX(-1*this.getScaleX());
         this.setRotationAngle(-this.rotationAngle);
     }
 
+    /**
+     * method that allows you to mirror horizontally
+     */
     @Override
     public void mirrorHorizontal() {
         this.setScaleY(-1*this.getScaleY());
         this.setRotationAngle(360-this.rotationAngle);
     }
     
+    
+    /**
+     * method that moves the pasted shape by one offset
+     * @param r the offset
+     */
+    @Override
+    public void moveOffset(double r) {
+        this.move(this.getX()+r, this.getY()+r);
+    }
 }
