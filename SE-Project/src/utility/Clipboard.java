@@ -6,7 +6,7 @@ package utility;
 
 import javafx.scene.Group;
 import javafx.scene.shape.Shape;
-import newShapes.ShapeAdapter;
+import newShapes.NewShape;
 
 /**
  * The Clipboard allows you to copy and paste a shape
@@ -48,7 +48,7 @@ public class Clipboard {
      */
     private Shape duplicate(Shape shape) {
         String shapeString = shape.toString(); 
-        return ShapeAdapter.stringToShape(shapeString);
+        return NewShape.stringToShape(shapeString);
     }
     
     /**
@@ -61,7 +61,7 @@ public class Clipboard {
                 this.copiedShape = duplicate(copiedShape);  // it create a new shape to paste 
                 
             }
-            ((ShapeAdapter) this.copiedShape).moveOffset(5.0);
+            ((NewShape) this.copiedShape).moveOffset(5.0);
             group.getChildren().add(copiedShape); 
             pasted = true; 
             return copiedShape; 
@@ -82,8 +82,8 @@ public class Clipboard {
             if (pasted == true) { // if the shape has been already pasted once
                 this.copiedShape = duplicate(copiedShape);  // it create a new shape to paste 
             }
-            if (copiedShape instanceof ShapeAdapter) {  // moves the pasted shape to the desidered position 
-                ((ShapeAdapter) copiedShape).move(x, y);
+            if (copiedShape instanceof NewShape) {  // moves the pasted shape to the desidered position 
+                ((NewShape) copiedShape).move(x, y);
             }
             group.getChildren().add(copiedShape); 
             pasted = true; 

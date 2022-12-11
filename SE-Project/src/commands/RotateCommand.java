@@ -4,14 +4,14 @@
  */
 package commands;
 
-import newShapes.ShapeAdapter;
+import newShapes.NewShape;
 
 /**
  * Class that allows you to rotate a shape.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca
 */
 public class RotateCommand implements Command {
-    private ShapeAdapter shape;  // Shape to be roated
+    private NewShape shape;  // Shape to be roated
     private double rotationAngle; 
     private double oldAngle;  
 
@@ -20,7 +20,7 @@ public class RotateCommand implements Command {
      * @param shape the figure that needs to be rotated
      * @param rotationAngle the angle of rotation
      */
-    public RotateCommand(ShapeAdapter shape, double rotationAngle) {
+    public RotateCommand(NewShape shape, double rotationAngle) {
         this.shape = shape;
         this.rotationAngle = rotationAngle; 
     }

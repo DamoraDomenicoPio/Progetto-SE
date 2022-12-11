@@ -458,7 +458,7 @@
                <children>
                   <Group fx:id="zoomGroup">
                      <children>
-                      <AnchorPane fx:id="anchorPaneGroup" onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased">
+                      <AnchorPane fx:id="anchorPaneGroup" onMouseDragged="#groupOnMouseDragged" onMousePressed="#groupOnMousePressed" onMouseReleased="#groupOnMouseReleased" prefHeight="685.0" prefWidth="1198.0">
                            <children>
                               <GridPane fx:id="grid0" layoutX="10.0" layoutY="10.0" prefHeight="685.0" prefWidth="1198.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>

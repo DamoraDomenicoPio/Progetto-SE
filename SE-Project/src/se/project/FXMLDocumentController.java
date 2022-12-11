@@ -24,10 +24,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
+import newShapes.PolygonAdapter;
+import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.Tool;
 import utility.*;
-import newShapes.ShapeAdapter;
 
 
 /**
@@ -310,7 +311,7 @@ public class FXMLDocumentController implements Initializable {
                     DropShadow s= new DropShadow(20.0, Color.BLACK);
                     s.setSpread(0.3);
                     selectedShape.setEffect(s);
-                    this.sliderRotate.setValue(((ShapeAdapter) selectedShape).getRotationAngle());
+                    this.sliderRotate.setValue(((NewShape) selectedShape).getRotationAngle());
                 }
                 else{
                     this.selectedShape=null;
@@ -570,7 +571,7 @@ public class FXMLDocumentController implements Initializable {
     private void rotateSliderOnMouseDragged(MouseEvent event) {
         this.rotationAngle =this.sliderRotate.getValue();  // /100*360
         if(this.selectedShape!=null){
-            ((ShapeAdapter)this.selectedShape).rotate(rotationAngle);
+            ((NewShape)this.selectedShape).rotate(rotationAngle);
         }
     }
 
@@ -582,7 +583,7 @@ public class FXMLDocumentController implements Initializable {
     private void rotateSliderOnMouseReleased(MouseEvent event) {
         if(selectedShape!=null){
             this.rotationAngle =this.sliderRotate.getValue();
-            invoker.execute(new RotateCommand(((ShapeAdapter) selectedShape), this.rotationAngle));
+            invoker.execute(new RotateCommand(((NewShape) selectedShape), this.rotationAngle));
         }
     }
 
@@ -593,7 +594,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void mirrorVerticalOnAction(ActionEvent event) {
         if(this.selectedShape!=null){
-            invoker.execute(new MirrorVerticalCommand((ShapeAdapter) selectedShape));
+            invoker.execute(new MirrorVerticalCommand((NewShape) selectedShape));
         }
     }
 
@@ -604,7 +605,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void mirrorHorizontalOnAction(ActionEvent event) {
         if(this.selectedShape!=null){
-            invoker.execute(new MirrorHorizontalCommand((ShapeAdapter) selectedShape));
+            invoker.execute(new MirrorHorizontalCommand((NewShape) selectedShape));
         }
     }
 

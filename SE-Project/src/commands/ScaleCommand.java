@@ -5,7 +5,7 @@
 package commands;
 
 import javafx.scene.shape.Shape;
-import newShapes.ShapeAdapter;
+import newShapes.NewShape;
 
 /**
  * Class that allows you to scale a shape.
@@ -13,7 +13,7 @@ import newShapes.ShapeAdapter;
 */
 public class ScaleCommand implements Command {
     private double scaleFactor; 
-    private ShapeAdapter shape;
+    private NewShape shape;
 
     /**
      * Creates a new instance of ScaleCommand
@@ -22,7 +22,7 @@ public class ScaleCommand implements Command {
      */
     public ScaleCommand(double scaleFactor, Shape shape) {
         this.scaleFactor = scaleFactor;
-        this.shape = (ShapeAdapter) shape;
+        this.shape = (NewShape) shape;
     }
 
     @Override

@@ -10,7 +10,7 @@ import javafx.scene.shape.Shape;
  * An interface that contains helper methods for a shape.
  * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
  */
-public interface ShapeAdapter {
+public interface NewShape {
     
     /**
      * Method that allows you to move the selected shape
