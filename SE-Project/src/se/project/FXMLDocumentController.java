@@ -16,6 +16,8 @@ import commands.GoBackgroundCommand;
 import commands.RotateCommand;
 import commands.GoFrontCommand;
 import commands.CutCommand;
+import commands.ZoomInCommand;
+import commands.ZoomOutCommand;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -61,6 +63,7 @@ import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Screen;
@@ -181,6 +184,12 @@ public class FXMLDocumentController implements Initializable {
     private TextField addTextTextField;
     @FXML
     private Text applyTextIntoButton11;
+    @FXML
+    private Group contentGroup;
+    @FXML
+    private Group zoomGroup;
+    @FXML
+    private ScrollPane scrollPane;
     
 
     
@@ -192,6 +201,8 @@ public class FXMLDocumentController implements Initializable {
         //this.anchorPaneGroup.setStyle("-fx-background-color: #ffffff");
         
         this.clipboard = new Clipboard(group); 
+        
+        this.scrollPane.setContent(contentGroup); 
     
         
     }    
@@ -430,15 +441,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-//    /**
-//     * Method that allows to delete a selected object on the drawing sheet.
-//     */
-//    private void deleteSelected() {
-//        if(selectedShape!=null){
-//            group.getChildren().remove(selectedShape);
-//            selectedShape=null;
-//        }
-//    }
     
     /**
      * Method that allows to change size of a selected shape on the drawing sheet.
@@ -457,15 +459,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-//    /**
-//     * Method that allows to copy a selected object on the drawing sheet.
-//     */
-//    private void copySelected() {
-//    if (this.selectedShape != null) { // If a shape has been selected
-//            this.copiedShape = this.selectedShape.toString();  // Copies the selected shape
-//        }
-//        // If nothing was selected, nothig gets copied 
-//    }
     
     /**
      * Method that changes the shapeToInsert string to the string "MOVE".
@@ -551,24 +544,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomOutOnAction(ActionEvent event) {
-        if(this.resizeFactor>0.6){
-            this.resizeFactor-=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
-            
-        }
-        this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);
-        /*this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);*/
-        /*this.anchorPaneGroup.setScaleX(resizeFactor);
-        this.anchorPaneGroup.setScaleY(resizeFactor);
-        group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);*/
+        invoker.execute(new ZoomOutCommand(zoomGroup));
     }
 
     @FXML
@@ -581,24 +557,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void zoomInOnAction(ActionEvent event) {
-        if(this.resizeFactor<1.4){
-            this.resizeFactor+=0.1;
-            /*this.anchorPaneGroup.setMaxSize(width*resizeFactor, height*resizeFactor);
-            this.anchorPaneGroup.setMinSize(width*resizeFactor, height*resizeFactor);
-            for(Node i: this.group.getChildren()){
-                Shape s=(Shape) i;
-                ((NewShape) s).zoomAndTranslate(resizeFactor, this.width, this.height);
-            }*/
-        }
-        
-        this.anchorPaneGroup.setScaleX(this.resizeFactor);
-        this.anchorPaneGroup.setScaleY(this.resizeFactor);
-        /*this.group.setScaleX(this.resizeFactor);
-        this.group.setScaleY(this.resizeFactor);*/
-        /*group.setScaleX(this.resizeFactor);
-        group.setScaleY(this.resizeFactor);
-        this.anchorPaneGroup.setScaleX(resizeFactor);sice
-        this.anchorPaneGroup.setScaleY(resizeFactor);*/
+        invoker.execute(new ZoomInCommand(zoomGroup));
     }
 
     @FXML
