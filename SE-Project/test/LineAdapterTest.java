@@ -25,12 +25,12 @@ public class LineAdapterTest {
     @Test
     public void testToString(){
         LineAdapter l =new LineAdapter(148.0,96.0,111.0,44.0,Paint.valueOf("0x00aedd34"),1.0);
-        assertEquals(l.toString(),"Line;148.0;96.0;111.0;44.0;0x00aedd34;1.0");
+        assertEquals(l.toString(),"Line;148.0;96.0;111.0;44.0;0x00aedd34;1.0;0.0");
     }
     
     @Test
     public void testStringToLine(){
-        Line l=LineAdapter.stringToLine("148.0;96.0;111.0;44.0;0x00aedd34;1.0");
+        Line l=LineAdapter.stringToLine("148.0;96.0;111.0;44.0;0x00aedd34;1.0;1.1");
         
         assertTrue(148.0==l.getStartX());
         assertTrue(96.0==l.getStartY());
@@ -38,7 +38,7 @@ public class LineAdapterTest {
         assertTrue(44.0==l.getEndY());
         assertTrue("0x00aedd34".equals(l.getStroke().toString()));
         assertTrue(1.0==l.getStrokeWidth());
-        
+        assertTrue(1.1==l.getRotate());
         
     }
 

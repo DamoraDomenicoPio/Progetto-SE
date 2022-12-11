@@ -4,35 +4,35 @@
  */
 
 import javafx.scene.shape.Shape;
-import newShapes.LineAdapter;
+import newShapes.PolygonAdapter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tools.LineSegmentTool;
+import tools.PolygonTool;
 
 /**
  *
  * @author Domenico
  */
-public class LinseSegmentToolTest {
+public class PolygonToolTest {
     
-    public LinseSegmentToolTest() {
+    public PolygonToolTest() {
     }
     
     @Test
     public void testSetEndPoint(){
-        LineSegmentTool e=new LineSegmentTool();
-        double startX=66.1;
-        double startY=43.5;
-        double endX=44.6;
-        double endY=108.0;
+        PolygonTool p=new PolygonTool();
+        double startX=54.3;
+        double startY=8.7;
+        double endX=23.8;
+        double endY=24.0;
         
-        e.setStartPoint(startX, startY);
-        Shape s=e.setEndPoint(endX, endY);
+        p.setStartPoint(startX, startY);
+        Shape s=p.setEndPoint(endX, endY);
         
-        assertTrue(s instanceof LineAdapter);
+        assertTrue(s instanceof PolygonAdapter);
     }
 }

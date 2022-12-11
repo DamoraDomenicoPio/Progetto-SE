@@ -23,12 +23,12 @@ public class RectangleAdapterTest {
     @Test
     public void testToString(){
         RectangleAdapter r =new RectangleAdapter(145.0,171.0,155.0,127.0, Paint.valueOf("0xffffffff"),Paint.valueOf("0x000000ff"),1.0);
-        assertEquals(r.toString(),"Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0");
+        assertEquals(r.toString(),"Rectangle;145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0;0.0");
     }
     
     @Test
     public void testStringToRectangle(){
-        Rectangle r=RectangleAdapter.stringToRectangle("145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0");
+        Rectangle r=RectangleAdapter.stringToRectangle("145.0;171.0;155.0;127.0;0xffffffff;0x000000ff;1.0;3.0");
         
         assertTrue(145.0==r.getX());
         assertTrue(171.0==r.getY());
@@ -37,6 +37,6 @@ public class RectangleAdapterTest {
         assertTrue("0xffffffff".equals(r.getFill().toString()));
         assertTrue("0x000000ff".equals(r.getStroke().toString()));
         assertTrue(1.0==r.getStrokeWidth());
-        
+        assertTrue(3.0==r.getRotate());
     }
 }
