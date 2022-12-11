@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import javafx.scene.Group;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
-import newShapes.NewShape;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,6 +19,7 @@ import static org.junit.Assert.*;
 import utility.ToolBox;
 import tools.Tool;
 import utility.FileManager;
+import newShapes.NewShape;
 
 /**
  *

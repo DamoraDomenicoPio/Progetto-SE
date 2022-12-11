@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
+import newShapes.PolygonAdapter;
 import newShapes.NewShape;
 import tools.ObjectTool;
 import tools.Tool;

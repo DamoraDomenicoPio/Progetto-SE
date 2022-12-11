@@ -7,12 +7,10 @@ import tools.LineSegmentTool;
 import tools.EllipseTool;
 import tools.RectangleTool;
 import javafx.scene.shape.*;
-import newShapes.NewShape;
 import org.junit.*;
 import static org.junit.Assert.*;
 import utility.ToolBox;
-// import utility.FileManager;
-
+import newShapes.NewShape;
 /**
  *
  * @author Domenico
