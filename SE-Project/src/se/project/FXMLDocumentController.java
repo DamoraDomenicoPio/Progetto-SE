@@ -55,7 +55,6 @@ import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Screen;
-import newShapes.NewShape;
 import newShapes.PolygonAdapter;
 import tools.ObjectTool;
 import tools.Tool;
@@ -63,6 +62,7 @@ import utility.FileManager;
 import utility.Clipboard;
 import utility.GridManager;
 import utility.ToolBox; 
+import newShapes.NewShape;
 
 
 /**

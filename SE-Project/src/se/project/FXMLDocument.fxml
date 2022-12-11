@@ -15,8 +15,6 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -178,17 +176,10 @@
                         </Label>
                         <HBox prefHeight="40.0" prefWidth="135.0">
                            <children>
-                              <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
+                              <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" prefHeight="26.0" prefWidth="33.0" text="☝ ">
                                  <HBox.margin>
                                     <Insets right="15.0" />
                                  </HBox.margin>
-                                 <graphic>
-                                    <ImageView fx:id="cursorIntoSelectionButton" fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.4" scaleY="1.4">
-                                       <image>
-                                          <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/cursor-png-1127.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
                               </Button>
                            </children>
                         </HBox>
@@ -230,17 +221,17 @@
                         </Label>
                         <HBox prefHeight="56.0" prefWidth="178.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#BringToFrontOnAction" prefHeight="26.0" prefWidth="56.0">
+                              <Button mnemonicParsing="false" onAction="#BringToFrontOnAction" prefHeight="26.0" prefWidth="36.0">
                                  <graphic>
-                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↑↓" wrappingWidth="14.400024890899658" />
+                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⤒ " wrappingWidth="11.400024890899658" />
                                  </graphic>
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#BringToBackOnAction" prefHeight="26.0" prefWidth="56.0">
+                              <Button mnemonicParsing="false" onAction="#BringToBackOnAction" prefHeight="26.0" prefWidth="39.0">
                                  <graphic>
-                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↓↑">
+                                    <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⤓ ">
                                        <rotationAxis>
                                           <Point3D x="2.0" z="1.0" />
                                        </rotationAxis>
@@ -268,7 +259,7 @@
                            <children>
                               <Button mnemonicParsing="false" onAction="#stretchOnAction" prefHeight="27.0" prefWidth="37.0">
                                  <graphic>
-                                    <Text scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="↔" translateX="-3.0" translateY="-3.0" wrappingWidth="10.341796875" y="5.0" />
+                                    <Text scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="⇲" translateX="-3.0" translateY="-3.0" wrappingWidth="10.341796875" y="5.0" />
                                  </graphic>
                                  <HBox.margin>
                                     <Insets right="15.0" />
@@ -328,18 +319,7 @@
                         </Label>
                         <HBox prefHeight="36.0" prefWidth="42.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#moveOnAction" prefHeight="27.0" prefWidth="32.0">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.99" scaleY="1.98">
-                                       <image>
-                                          <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/pngegg.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets right="15.0" />
-                                 </HBox.margin>
-                              </Button>
+                              <Button mnemonicParsing="false" onAction="#moveOnAction" prefHeight="30.0" prefWidth="33.0" text="✢" />
                            </children>
                         </HBox>
                      </children>
@@ -360,14 +340,10 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#gridButtonOnAction" prefHeight="27.0" prefWidth="33.0">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/grid.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
+                              <Button mnemonicParsing="false" onAction="#gridButtonOnAction" prefHeight="27.0" prefWidth="33.0" text="⌗">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>
