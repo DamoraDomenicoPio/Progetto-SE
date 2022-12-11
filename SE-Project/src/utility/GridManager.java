@@ -4,18 +4,21 @@
  */
 package utility;
 
-import static java.lang.Math.ceil;
 import javafx.scene.layout.GridPane;
 
 /**
- *
- * @author assun
- */
+ * Class that allows you to manage a grid
+ * @author Cuomo Ferdinando, D'Amora Domenico Pio, Della Porta Assunta, Galasso Gianluca.
+*/
 public class GridManager {
     private GridPane grids[];
     private int currentGridIndex; 
     private boolean gridOn; 
 
+    /**
+     * Creates a new instance of GridManager
+     * @param grids the grid array
+     */
     public GridManager(GridPane[] grids) {
         this.grids = grids;
         this.currentGridIndex = grids.length/2;
@@ -27,28 +30,35 @@ public class GridManager {
         
     }
     
+    /**
+     * Method that makes the grid larger
+     */
     public void getBigger() {
         if(gridOn) {
             if (currentGridIndex < grids.length-1) {
-                currentGridIndex++; 
-                System.out.println("Smaller squares"+currentGridIndex);
+                currentGridIndex++;
                 grids[currentGridIndex-1].setGridLinesVisible(false);
                 grids[currentGridIndex].setGridLinesVisible(true); 
             }
         }
     }
     
+    /**
+     * Method that makes the grid smaller
+     */
     public void getSmaller() {
         if(gridOn) {
             if (currentGridIndex > 0) {
                 currentGridIndex--;
-                System.out.println("Bigger squares" + currentGridIndex);
                 grids[currentGridIndex+1].setGridLinesVisible(false); 
                 grids[currentGridIndex].setGridLinesVisible(true); 
             }
         }
     }
     
+    /**
+     * Method that allows you to show/hide the grid
+     */
     public void gridSwitch() {
         if(gridOn == true){
             gridOn = false; 

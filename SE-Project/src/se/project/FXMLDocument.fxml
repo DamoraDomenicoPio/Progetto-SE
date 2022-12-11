@@ -36,15 +36,15 @@
          <children>
             <MenuBar prefHeight="26.0" prefWidth="800.0">
               <menus>
-                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="File">
                   <items>
-                    <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
-                        <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#loadOnAction" text="Load" />
+                    <MenuItem mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#loadOnAction" text="Load" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>
-                    <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
+                    <MenuItem mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
                     <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                         <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
                         <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
@@ -66,7 +66,7 @@
                         </Label>
                         <HBox prefHeight="38.0" prefWidth="140.0">
                            <children>
-                              <Button fx:id="lineButton" mnemonicParsing="false" onAction="#addLine" prefHeight="26.0" prefWidth="33.0">
+                              <Button mnemonicParsing="false" onAction="#addLine" prefHeight="26.0" prefWidth="33.0">
                                  <HBox.margin>
                                     <Insets left="6.0" right="10.0" />
                                  </HBox.margin>
@@ -74,7 +74,7 @@
                                     <Line fx:id="lineIntoButton" endX="-89.50711059570312" endY="9.69288444519043" startX="-100.0" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="rectangleButton" mnemonicParsing="false" onAction="#addRectangle" prefHeight="26.0" prefWidth="35.0">
+                              <Button mnemonicParsing="false" onAction="#addRectangle" prefHeight="26.0" prefWidth="35.0">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -82,7 +82,7 @@
                                     <Rectangle fx:id="rectangleIntoButton" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="ellipseButton" mnemonicParsing="false" onAction="#addEllipse" prefHeight="26.0" prefWidth="35.0">
+                              <Button mnemonicParsing="false" onAction="#addEllipse" prefHeight="26.0" prefWidth="35.0">
                                  <HBox.margin>
                                     <Insets right="15.0" />
                                  </HBox.margin>
@@ -154,7 +154,7 @@
                                     <Insets right="2.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button fx:id="applySizeButton" mnemonicParsing="false" onAction="#applyScaleOnAction" onMousePressed="#sizeColorOnMousePressed" onMouseReleased="#sizeColorOnMouseReleased" prefHeight="26.0" prefWidth="61.0">
+                              <Button mnemonicParsing="false" onAction="#applyScaleOnAction" onMousePressed="#sizeColorOnMousePressed" onMouseReleased="#sizeColorOnMouseReleased" prefHeight="26.0" prefWidth="61.0">
                                  <HBox.margin>
                                     <Insets right="15.0" />
                                  </HBox.margin>
@@ -178,12 +178,12 @@
                         </Label>
                         <HBox prefHeight="40.0" prefWidth="135.0">
                            <children>
-                              <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectOnAction" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
+                              <Button mnemonicParsing="false" onAction="#selectOnAction" prefHeight="26.0" prefWidth="33.0" textFill="#bfbfbf">
                                  <HBox.margin>
                                     <Insets right="15.0" />
                                  </HBox.margin>
                                  <graphic>
-                                    <ImageView fx:id="cursorIntoSelectionButton" fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.4" scaleY="1.4">
+                                    <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" scaleX="1.4" scaleY="1.4">
                                        <image>
                                           <Image url="file:/C:/Users/Cuomo%20Ferdinando/Desktop/Desktop/Cartelle%20e%20altro/Repository_Progetto_SE/Progetto-SE/SE-Project/images/cursor-png-1127.png" />
                                        </image>
@@ -204,7 +204,7 @@
                               <Font name="Calibri" size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoColorOnMousePressed" onMouseReleased="#undoColorOnMouseReleased" prefHeight="26.0" prefWidth="38.0" textFill="#bfbfbf">
+                        <Button mnemonicParsing="false" onAction="#undoOnAction" onMousePressed="#undoColorOnMousePressed" onMouseReleased="#undoColorOnMouseReleased" prefHeight="26.0" prefWidth="38.0" textFill="#bfbfbf">
                            <graphic>
                               <Text fx:id="arrowIntoUndoButton" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="↩" wrappingWidth="9.66664457321167">
                                  <font>
@@ -290,23 +290,23 @@
                         </Label>
                         <HBox prefHeight="40.0" prefWidth="102.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#zoomOutOnAction" onMousePressed="#zoomOutOnMousePressed" onMouseReleased="#zoomOutOnMouseReleased" prefHeight="27.0" prefWidth="41.0">
+                              <Button mnemonicParsing="false" onAction="#zoomOutOnAction" prefHeight="27.0" prefWidth="41.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                                  <graphic>
-                                    <Text fx:id="zoomOutInButton" strokeType="OUTSIDE" strokeWidth="0.0" text="🔎-" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🔎-" />
                                  </graphic>
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#zoomInOnAction" onMousePressed="#zoomInOnMousePressed" onMouseReleased="#zoomInOnMouseReleased" prefHeight="27.0" prefWidth="41.0">
+                              <Button mnemonicParsing="false" onAction="#zoomInOnAction" prefHeight="27.0" prefWidth="41.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                                  <graphic>
-                                    <Text fx:id="zoomInInButton" strokeType="OUTSIDE" strokeWidth="0.0" text="🔎+" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🔎+" />
                                  </graphic>
                                  <HBox.margin>
                                     <Insets right="15.0" />
@@ -429,7 +429,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                                  <graphic>
-                                    <Text fx:id="applyTextIntoButton1" strokeType="OUTSIDE" strokeWidth="0.0" text="Create" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create" />
                                  </graphic>
                               </Button>
                            </children>
@@ -461,7 +461,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                                  <graphic>
-                                    <Text fx:id="applyTextIntoButton11" strokeType="OUTSIDE" strokeWidth="0.0" text="Add" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add" />
                                  </graphic>
                               </Button>
                            </children>
