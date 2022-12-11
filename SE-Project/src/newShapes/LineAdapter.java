@@ -13,11 +13,11 @@ import javafx.scene.shape.Line;
  */
 public class LineAdapter extends Line implements NewShape{
     /**
-     * projection of the line on the horizontal axis
+     * projection of the line on the horizontal axis.
      */
     private double lengthX;
     /**
-     * projection of the line on the vertical axis
+     * projection of the line on the vertical axis.
      */
     private double lengthY;
     
@@ -25,10 +25,10 @@ public class LineAdapter extends Line implements NewShape{
 
     /**
      * Creates a new instance of LineAdapter.
-     * @param d the horizontal coordinate of the start point of the line segment
-     * @param d1 the vertical coordinate of the start point of the line segment
-     * @param d2 the horizontal coordinate of the end point of the line segment
-     * @param d3 the vertical coordinate of the end point of the line segment
+     * @param d the horizontal coordinate of the start point of the line segment.
+     * @param d1 the vertical coordinate of the start point of the line segment.
+     * @param d2 the horizontal coordinate of the end point of the line segment.
+     * @param d3 the vertical coordinate of the end point of the line segment.
      */
     public LineAdapter(double d, double d1, double d2, double d3) {
         super(d, d1, d2, d3);
@@ -63,7 +63,7 @@ public class LineAdapter extends Line implements NewShape{
     /**
      * Return a Line from a string.
      * @param string String representing the object.
-     * @return a Line Object
+     * @return a Line Object.
      */
     public static Line stringToLine(String string) {
         String[] values=string.split(";");
@@ -94,9 +94,9 @@ public class LineAdapter extends Line implements NewShape{
     }
 
     /**
-     * Method that allows you to move the line
-     * @param x coordinate of the horizontal axis
-     * @param y coordinate of the vertical axis
+     * Method that allows you to move the line.
+     * @param x coordinate of the horizontal axis.
+     * @param y coordinate of the vertical axis.
      */
     @Override
     public void move(double x, double y) {
@@ -110,9 +110,9 @@ public class LineAdapter extends Line implements NewShape{
     
     
     /**
-     * Method that allows you to stretch the line
-     * @param x coordinate of the horizontal axis
-     * @param y coordinate of the vertical axis
+     * Method that allows you to stretch the line.
+     * @param x coordinate of the horizontal axis.
+     * @param y coordinate of the vertical axis.
      */
     @Override
     public void stretch(double x, double y) {
@@ -123,8 +123,8 @@ public class LineAdapter extends Line implements NewShape{
     }
 
     /**
-     * Method that allows you to resize the line
-     * @param r resize factor
+     * Method that allows you to resize the line.
+     * @param r resize factor.
      */
     @Override
     public void newResize(double r) {
@@ -134,6 +134,10 @@ public class LineAdapter extends Line implements NewShape{
         this.setEndY(this.getStartY()+this.lengthY);
     }
 
+    /**
+     * Method that allows you to rotate the line.
+     * @param r angle in degrees.
+     */
     @Override
     public void rotate(double r) {
         this.setRotate(r);
@@ -149,6 +153,22 @@ public class LineAdapter extends Line implements NewShape{
     public void setRotationAngle(double rotationAngle) {
         this.rotationAngle = rotationAngle; 
         this.rotate(rotationAngle); 
+    }
+    
+    @Override
+    public void mirrorVertical(){
+        double xEndPoint=this.getEndX();
+        this.setEndX(this.getStartX());
+        this.setStartX(xEndPoint);
+        this.setRotationAngle(-this.rotationAngle);
+    }
+    
+    @Override
+    public void mirrorHorizontal(){
+         double yEndPoint=this.getEndY();
+        this.setEndY(this.getStartY());
+        this.setStartY(yEndPoint);
+        this.setRotationAngle(360-this.rotationAngle);
     }
     
 }

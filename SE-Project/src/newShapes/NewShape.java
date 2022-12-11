@@ -47,6 +47,10 @@ public interface NewShape {
     
     public void setRotationAngle(double rotationAngle); 
     
+    public void mirrorVertical();
+    
+    public void mirrorHorizontal();
+    
     /**
      * Method that restores a shape from its formatString 
      * @param formatString string containing the shape to create
@@ -66,7 +70,12 @@ public interface NewShape {
         else if(values[0].equalsIgnoreCase("LINE")){
             return LineAdapter.stringToLine(values[1]);
         }
-        
+        else if(values[0].equalsIgnoreCase("POLYGON")){
+            return PolygonAdapter.stringToPolygon(values[1]);
+        }
+        else if(values[0].equalsIgnoreCase("TEXT")){
+            return TextAdapter.stringToText(values[1]);
+        }
         return null;
     }
 }

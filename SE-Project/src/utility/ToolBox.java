@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package utility;
+import java.util.ArrayList;
 import tools.*; 
 
 /**
@@ -14,9 +15,13 @@ public class ToolBox {
     private EllipseTool ellipseTool; 
     private RectangleTool rectangleTool; 
     private MoveTool moveTool; 
-    private StretchTool stretchTool; 
+    private StretchTool stretchTool;
+    private TextTool textTool;
+    private PolygonTool polygonTool;
     
     private double scaleFactor;
+    private String text;
+    private ArrayList<Double> list=new ArrayList<>();
     
     public ToolBox(){
         
@@ -24,7 +29,9 @@ public class ToolBox {
         this.ellipseTool = new EllipseTool(); 
         this.rectangleTool = new RectangleTool();
         this.moveTool = new MoveTool(); 
-        this.stretchTool = new StretchTool(); 
+        this.stretchTool = new StretchTool();
+        this.textTool = new TextTool();
+        this.polygonTool=new PolygonTool();
     }
 
     public double getScaleFactor() {
@@ -45,6 +52,16 @@ public class ToolBox {
         }
         else if(tool.equalsIgnoreCase("LINE")){
             return this.lineSegmentTool;
+        }
+        else if(tool.equalsIgnoreCase("POLYGON")){
+            this.polygonTool.setList(list);
+            this.list.clear();
+            return this.polygonTool;
+        }
+        else if(tool.equalsIgnoreCase("TEXT")){
+            this.textTool.setText(text);
+            this.text="";
+            return this.textTool;
         }
         return null;
     }
@@ -78,6 +95,14 @@ public class ToolBox {
 
     public StretchTool getStretchTool() {
         return stretchTool;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setList(ArrayList<Double> list) {
+        this.list.addAll(list);
     }
     
     

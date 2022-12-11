@@ -105,6 +105,10 @@ public class EllipseAdapter extends Ellipse implements NewShape{
         this.setRadiusY(this.getRadiusY()*r);
     }
     
+    /**
+     * Method that allows you to rotate the ellipse
+     * @param r angle in degrees
+     */
     @Override
     public void rotate(double r) {
         this.setRotate(r);
@@ -119,6 +123,16 @@ public class EllipseAdapter extends Ellipse implements NewShape{
     public void setRotationAngle(double rotationAngle) {
         this.rotationAngle = rotationAngle; 
         this.rotate(rotationAngle);
+    }
+    
+    @Override
+    public void mirrorVertical(){
+        this.setRotationAngle(-this.getRotate());
+    }
+    
+    @Override
+    public void mirrorHorizontal(){
+        this.setRotationAngle(180-this.getRotate());
     }
     
 }
