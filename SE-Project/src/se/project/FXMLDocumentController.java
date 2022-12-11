@@ -3,21 +3,7 @@
  */
 package se.project;
 
-import commands.DeleteCommand;
-import commands.ChangeColorCommand;
-import commands.ScaleCommand;
-import commands.CopyCommand;
-import commands.PasteCommand;
-import commands.ObjectToolCommand;
-import commands.PasteInPositionCommand;
-import commands.AddCommand;
-import commands.Invoker;
-import commands.GoBackgroundCommand;
-import commands.RotateCommand;
-import commands.GoFrontCommand;
-import commands.CutCommand;
-import commands.ZoomInCommand;
-import commands.ZoomOutCommand;
+import commands.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -53,6 +39,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -73,6 +61,7 @@ import tools.ObjectTool;
 import tools.Tool;
 import utility.FileManager;
 import utility.Clipboard;
+import utility.GridManager;
 import utility.ToolBox; 
 
 
@@ -170,7 +159,6 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private ImageView cursorIntoSelectionButton;
-    @FXML
     private Pane paneGrid;
     
     private boolean gridStatus = false;
@@ -190,7 +178,18 @@ public class FXMLDocumentController implements Initializable {
     private Group zoomGroup;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private GridPane grid3;
+    @FXML
+    private GridPane grid2;
+    @FXML
+    private GridPane grid1;
+    @FXML
+    private GridPane grid0;
+    @FXML
+    private GridPane grid4;
     
+    private GridManager gridManager; 
 
     
     
@@ -203,7 +202,15 @@ public class FXMLDocumentController implements Initializable {
         this.clipboard = new Clipboard(group); 
         
         this.scrollPane.setContent(contentGroup); 
-    
+        
+        GridPane gridArray[] = new GridPane[5];
+        gridArray[0] = grid0; 
+        gridArray[1] = grid1; 
+        gridArray[2] = grid2; 
+        gridArray[3] = grid3; 
+        gridArray[4] = grid4; 
+        
+        this.gridManager = new GridManager(gridArray); 
         
     }    
     
@@ -590,14 +597,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void gridButtonOnAction(ActionEvent event) {
-        if(gridStatus == false){
-            paneGrid.setVisible(true);
-            gridStatus=true;
-        }
-        else{
-            paneGrid.setVisible(false);
-            gridStatus=false;
-        }
+        invoker.execute(new GridSwitchCommand(gridManager));
     }
 
     @FXML
@@ -651,6 +651,16 @@ public class FXMLDocumentController implements Initializable {
     private void addTextOnAction(ActionEvent event) {
         shapeToInsert="Text";
         this.actionToDo="ADD";
+    }
+
+    @FXML
+    private void getBiggerGridOnAction(ActionEvent event) {
+        invoker.execute(new BiggerGridCommand(gridManager));
+    }
+
+    @FXML
+    private void getSmallerGridOnAction(ActionEvent event) {
+        invoker.execute(new SmallerGridCommand(gridManager));
     }
     
     
