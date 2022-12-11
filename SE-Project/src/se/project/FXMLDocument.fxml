@@ -375,12 +375,12 @@
                   </VBox>
                   <VBox prefHeight="81.0" prefWidth="33.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#getBiggerGridOnAction" text="+">
+                        <Button mnemonicParsing="false" onAction="#getBiggerGridOnAction" prefHeight="25.0" prefWidth="28.0" text="-">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getSmallerGridOnAction" prefHeight="25.0" prefWidth="26.0" text="-">
+                        <Button mnemonicParsing="false" onAction="#getSmallerGridOnAction" prefHeight="25.0" prefWidth="26.0" text="+">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>

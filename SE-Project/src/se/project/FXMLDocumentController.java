@@ -656,14 +656,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void mirrorVerticalOnAction(ActionEvent event) {
         if(this.selectedShape!=null){
-            ((NewShape) this.selectedShape).mirrorVertical();
+            invoker.execute(new MirrorVerticalCommand((NewShape) selectedShape));
         }
     }
 
     @FXML
     private void mirrorHorizontalOnAction(ActionEvent event) {
         if(this.selectedShape!=null){
-            ((NewShape) this.selectedShape).mirrorHorizontal();
+            invoker.execute(new MirrorHorizontalCommand((NewShape) selectedShape));
         }
     }
     
