@@ -46,8 +46,7 @@ public class FileManager {
                 Shape s= NewShape.stringToShape(shapeString);
                 group.getChildren().add(s);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger("File not fonud!");
+        } catch (Exception ex) {
         }
     }
     
@@ -68,8 +67,7 @@ public class FileManager {
                 Shape s=(Shape) i;
                 o.write(s.toString()+"\n");
             }
-        } catch (IOException ex) {
-            Logger.getLogger("File not found!");
+        } catch (Exception ex) {
         }
     }
 
